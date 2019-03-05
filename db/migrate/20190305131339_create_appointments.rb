@@ -1,8 +1,8 @@
 class CreateAppointments < ActiveRecord::Migration[5.2]
   def change
     create_table :appointments do |t|
-      t.references :author, foreign_key: { to_table: :users }
-      t.references :receiver, foreign_key: { to_table: :users}
+      t.references :barber, foreign_key: { to_table: :users }
+      t.references :client, foreign_key: { to_table: :users}
       t.references :services, foreign_key: true
       t.string :location_address
       t.float :location_latitude
