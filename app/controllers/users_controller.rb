@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   def index
-
-    # @users = User.where(?)
+    @users = User.where("name ILIKE ?", "%#{params[:query]}%")
   end
 
   def show
