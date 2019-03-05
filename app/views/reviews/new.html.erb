@@ -1,0 +1,8 @@
+<h1>Reviews#new</h1>
+<p>Find me in app/views/reviews/new.html.erb</p>
+
+<form action="/reviews" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input type="text" name="@review" placeholder="content">
+  <input type="create review">
+</form>
