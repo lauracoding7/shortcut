@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'appointments/new'
+  get 'appointments/create'
+  get 'appointments/show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'pages#home'
   get 'dashboard', to: 'pages#dashboard'
