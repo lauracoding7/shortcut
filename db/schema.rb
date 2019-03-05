@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_131947) do
+ActiveRecord::Schema.define(version: 2019_03_05_153342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(version: 2019_03_05_131947) do
     t.string "name"
     t.string "email"
     t.string "encrypted_password"
-    t.float "commute_area_center"
     t.float "commute_area_radius"
     t.integer "commute_price"
     t.string "host_service_address"
@@ -78,6 +77,9 @@ ActiveRecord::Schema.define(version: 2019_03_05_131947) do
     t.float "host_service_longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "commute_area_address"
+    t.float "commute_area_latitude"
+    t.float "commute_area_longitude"
   end
 
   add_foreign_key "appointments", "services", column: "services_id"
