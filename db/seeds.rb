@@ -62,4 +62,47 @@ appt1.client = filo
 appt1.save!
 puts 'Done!'
 
+puts 'Creating reviews'
+ivan_review1 = Review.new(content: 'Amazing beard trimmer!', rating: 5, barber_review: true)
+ivan_review1.receiver = ivan
+ivan_review1.author = isaac
+ivan_review1.save!
 
+ivan_review2 = Review.new(content: 'Incredible beard trimmer!', rating: 4, barber_review: true)
+ivan_review2.receiver = ivan
+ivan_review2.author = fred
+ivan_review2.save!
+
+ivan_review3 = Review.new(content: 'Unbelievable beard trimmer!', rating: 5, barber_review: true)
+ivan_review3.receiver = ivan
+ivan_review3.author = tom
+ivan_review3.save!
+
+fred_review1 = Review.new(content: 'I got a nice haircut ;)', rating: 4, barber_review: true)
+fred_review1.receiver = fred
+fred_review1.author = tom
+fred_review1.save!
+
+fred_review2 = Review.new(content: 'Meh...', rating: 2, barber_review: true)
+fred_review2.receiver = fred
+fred_review2.author = isaac
+fred_review2.save!
+
+fred_review3 = Review.new(content: 'I LOOK LIKE A GOD! Thanks man!', rating: 5, barber_review: true)
+fred_review3.receiver = fred
+fred_review3.author = ivan
+fred_review3.save!
+
+filo_review = Review.new(content: 'Filo is a nice guy to have a chat with, his apartment does not smell bad and he seem to shower regularly, judging from his incredibly silky hair...', rating: 5, barber_review: false)
+filo_review.receiver = filo
+filo_review.author = fred
+filo_review.save!
+puts 'Done!'
+
+puts 'Creating messages'
+message = Message.new(content: 'Hi beardlova, remember where my house is right?')
+message.appointment = appt1
+message.author = ivan
+message.receiver = filo
+message.save!
+puts 'Done!'
