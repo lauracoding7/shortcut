@@ -38,7 +38,8 @@
 
   </head>
   <body>
-    <p>Here we need to render the partials NavBar and Flashes</p>
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
