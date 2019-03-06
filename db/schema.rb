@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2019_03_05_174012) do
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
-    t.bigint "barber_id"
-    t.bigint "client_id"
+    t.bigint "author_id"
+    t.bigint "receiver_id"
     t.bigint "services_id"
     t.string "location_address"
     t.float "location_latitude"
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2019_03_05_174012) do
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["barber_id"], name: "index_appointments_on_barber_id"
-    t.index ["client_id"], name: "index_appointments_on_client_id"
+    t.index ["author_id"], name: "index_appointments_on_author_id"
+    t.index ["receiver_id"], name: "index_appointments_on_receiver_id"
     t.index ["services_id"], name: "index_appointments_on_services_id"
   end
 
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_174012) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.float "commute_area_radius"
+    t.float "commute_are_radius"
     t.integer "commute_price"
     t.string "host_service_address"
     t.float "host_service_latitude"
@@ -88,8 +88,8 @@ ActiveRecord::Schema.define(version: 2019_03_05_174012) do
   end
 
   add_foreign_key "appointments", "services", column: "services_id"
-  add_foreign_key "appointments", "users", column: "barber_id"
-  add_foreign_key "appointments", "users", column: "client_id"
+  add_foreign_key "appointments", "users", column: "author_id"
+  add_foreign_key "appointments", "users", column: "receiver_id"
   add_foreign_key "messages", "appointments"
   add_foreign_key "messages", "users", column: "author_id"
   add_foreign_key "messages", "users", column: "receiver_id"

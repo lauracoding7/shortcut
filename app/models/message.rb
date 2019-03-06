@@ -1,5 +1,5 @@
 class Message < ApplicationRecord
-  belongs_to :author
-  belongs_to :receiver
+  belongs_to :author, class_name: "User"
+  belongs_to :receiver, class_name: "User"
   belongs_to :appointment
 end
