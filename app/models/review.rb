@@ -1,8 +1,10 @@
 class Review < ApplicationRecord
-  belongs_to :author
-  belongs_to :receiver
-  validates :content, length: { minimum: 20, maximum: 1500 }
+  belongs_to :author, class_name: "User"
+  belongs_to :receiver, class_name: "User"
+  validates :content, length: { maximum: 1500 }
+  validates :content, presence: true
   validates :rating, numericality: { less_than: 6, greater_than_or_equal_to: 0 }
+  validates :rating, presence: true
   validate :author_cannot_be_same_as_receiver
 end
 
