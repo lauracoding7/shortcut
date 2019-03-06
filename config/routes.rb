@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:index, :show] do
     resources :reviews, only: [:index, :new, :create]
-    resources :services, only: [:index, :new, :create, :destroy]
+    resources :services, only: [:index]
   end
   resources :appointments, only: [:index, :show, :new, :create] do
     resources :messages, only: [:index, :new, :create]
