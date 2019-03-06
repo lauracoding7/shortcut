@@ -1,8 +1,8 @@
 <h1>Create a Booking Requests</h1>
 
-<!-- <%= simple_form_for [@user, @appointment_request] do |f| %>
-  <%= f.input :date_from %>
-  <%= f.input :date_till %>
+<%= simple_form_for [@user, @appointment_request] do |f| %>
+  <%= f.input :location_adress %>
+  <%= f.input :datetime %>
   <%= f.submit "Submit", class: "btn btn-danger" %>
 <% end %>
 <%= link_to 'Go back', root %>
