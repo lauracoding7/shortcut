@@ -7,22 +7,17 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new
-
   end
 
   def create
-    #need a user
-    #need a author
-    #need the params (location / adress / date)
-    #user_id should be the current user
     @appointment_request = Appointment.new(appointment_params)
     @appointment_request.receiver_id = @user.id
     @appointment_request.author_id = current_user.id
 
     @appointment_request.save
 
+    redirect_to appointment_path(@appointment)
   end
-
 
 private
 
