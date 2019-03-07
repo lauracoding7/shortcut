@@ -12,7 +12,15 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(params[:message])
+    @message = Message.new(message_params)
+    @message.user = User.find(params[:receiver_id])
+    @message.appointment = Appointment.find(params[:appointment_id])
     @message.save
   end
+  private
+
+   def message_params
+    params.require(:message).permit(:content)
+  end
 end
+
