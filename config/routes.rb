@@ -1,14 +1,4 @@
 Rails.application.routes.draw do
-  get 'messages/index'
-  get 'messages/show'
-  get 'messages/new'
-  get 'messages/create'
-  get 'messages/index'
-  get 'messages/new'
-  get 'messages/create'
-  get 'messages/search'
-  get 'messages/new'
-  get 'messages/create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'pages#home'
   get 'dashboard', to: 'pages#dashboard'
