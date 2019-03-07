@@ -10,25 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_174012) do
+ActiveRecord::Schema.define(version: 2019_03_06_134248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
-    t.bigint "author_id"
-    t.bigint "receiver_id"
-    t.bigint "services_id"
+    t.bigint "barber_id"
+    t.bigint "client_id"
+
     t.string "location_address"
     t.float "location_latitude"
     t.float "location_longitude"
     t.datetime "datetime"
-    t.string "state"
+    t.string "state", default: "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_appointments_on_author_id"
-    t.index ["receiver_id"], name: "index_appointments_on_receiver_id"
-    t.index ["services_id"], name: "index_appointments_on_services_id"
+    t.bigint "service_id"
+    t.index ["barber_id"], name: "index_appointments_on_barber_id"
+    t.index ["client_id"], name: "index_appointments_on_client_id"
+    t.index ["service_id"], name: "index_appointments_on_service_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -59,16 +60,15 @@ ActiveRecord::Schema.define(version: 2019_03_05_174012) do
     t.bigint "barber_id"
     t.string "title"
     t.string "description"
-    t.float "duration"
-    t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "duration"
+    t.integer "price"
     t.index ["barber_id"], name: "index_services_on_barber_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.float "commute_are_radius"
     t.integer "commute_price"
     t.string "host_service_address"
     t.float "host_service_latitude"
@@ -83,13 +83,14 @@ ActiveRecord::Schema.define(version: 2019_03_05_174012) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "commute_area_radius"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "appointments", "services", column: "services_id"
-  add_foreign_key "appointments", "users", column: "author_id"
-  add_foreign_key "appointments", "users", column: "receiver_id"
+  add_foreign_key "appointments", "services"
+  add_foreign_key "appointments", "users", column: "barber_id"
+  add_foreign_key "appointments", "users", column: "client_id"
   add_foreign_key "messages", "appointments"
   add_foreign_key "messages", "users", column: "author_id"
   add_foreign_key "messages", "users", column: "receiver_id"
