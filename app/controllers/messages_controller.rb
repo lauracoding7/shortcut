@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
   end
 
   def new
+    @appointment = Appointment.find(params[:appointment_id])
     @message = Message.new
   end
 
@@ -19,8 +20,7 @@ class MessagesController < ApplicationController
   end
   private
 
-   def message_params
+  def message_params
     params.require(:message).permit(:content)
   end
 end
-
