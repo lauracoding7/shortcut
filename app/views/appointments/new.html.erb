@@ -1,0 +1,8 @@
+<h1>Create a Booking Requests</h1>
+
+<%= simple_form_for [@user, @service, @appointment_request] do |f| %>
+<%= hidden_field_tag :location_address, @user.commute_area_address%>
+  <%= f.input :datetime %>
+  <%= f.submit "Submit", class: "btn btn-danger" %>
+<% end %>
+<%= link_to 'Go back', root_path %>
