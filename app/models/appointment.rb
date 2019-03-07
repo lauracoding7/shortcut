@@ -6,7 +6,12 @@ class Appointment < ApplicationRecord
   validates :datetime, :location_address, :location_longitude, :location_latitude, presence: true
   validates :state, inclusion: { in: %w(pending approved rejected paid), message: "%{value} is not a valid state" }
   validate :barber_cannot_be_same_as_client
+
+  geocoded_by :location_address, latitude: :location_latitude, longitude: :location_longitude
+  after_validation :geocode, if: :will_save_change_to_location_address?
 end
+
+private
 
 def barber_cannot_be_same_as_client
   if barber_id == client_id
