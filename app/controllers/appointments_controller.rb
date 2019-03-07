@@ -8,6 +8,7 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new
+    @appointment_request = Appointment.new
 
   end
 
@@ -15,7 +16,7 @@ class AppointmentsController < ApplicationController
     @appointment_request = Appointment.new(appointment_params)
     @appointment_request.barber_id = @user.id
     @appointment_request.client_id = current_user.id
-
+raise
     if @appointment_request.save
       redirect_to appointment_path(@appointment)
     else
