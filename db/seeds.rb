@@ -17,13 +17,13 @@ puts 'Done!'
 puts 'Creating users'
 filo = User.create!(email: 'fitog4@hotmail.it', password: 'secret', name: 'Filo')
 
-ivan = User.create!(email: 'ivan@mail.com', password: 'secret', name: 'Ivan', host_service_address: 'Amsterdam Transvaalstraat 17', host_service_latitude: 52.3554425, host_service_longitude: 4.9270905)
+ivan = User.create!(email: 'ivan@mail.com', password: 'secret', name: 'Ivan', host_service_address: 'Amsterdam Transvaalstraat 17')
 
-isaac = User.create!(email: 'isaac@mail.com', password: 'secret', name: 'Isaac', host_service_address: 'Rotterdam Centraal, Stationshal, 3013 AL Rotterdam, Netherlands', host_service_latitude: 51.9239359, host_service_longitude: 4.4696361)
+isaac = User.create!(email: 'isaac@mail.com', password: 'secret', name: 'Isaac', host_service_address: 'Rotterdam Centraal, Stationshal, 3013 AL Rotterdam, Netherlands')
 
-fred = User.create!(email: 'fred@mail.com', password: 'secret', name: 'Fred', commute_area_address: 'A-Lab Amsterdam', commute_area_longitude: 4.88969, commute_area_latitude: 52.37403, commute_area_radius: 10, commute_price: 5)
+fred = User.create!(email: 'fred@mail.com', password: 'secret', name: 'Fred', commute_area_address: 'Amsterdam mercatorplein', commute_area_radius: 10, commute_price: 5)
 
-tom = User.create!(email: 'tom@mail.com', password: 'secret', name: 'Tom', commute_area_address: 'Amsterdam Rokin', commute_area_longitude: 4.8927669, commute_area_latitude: 52.368404, commute_area_radius: 5, commute_price: 7, host_service_address: 'Amsterdam, Ingogostraat 14', host_service_latitude: 52.355207, host_service_longitude: 4.9259661)
+tom = User.create!(email: 'tom@mail.com', password: 'secret', name: 'Tom', commute_area_address: 'Amsterdam Rokin', commute_area_radius: 5, commute_price: 7, host_service_address: 'Amsterdam, Ingogostraat 14')
 puts 'Done!'
 
 puts 'Creating services'

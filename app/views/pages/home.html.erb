@@ -1,1 +1,10 @@
 <h1>Homepage Shortcut!</h1>
+
+<%= form_tag users_path, method: :get do %>
+  <%= text_field_tag :query, params[:query],
+      class: "form-control",
+      placeholder: "Search for a barber"%>
+  <%= button_tag 'Search', class: 'btn btn-danger'%>
+<% end %>
+
+
