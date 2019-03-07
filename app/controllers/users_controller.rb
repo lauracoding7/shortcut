@@ -11,7 +11,8 @@ class UsersController < ApplicationController
         @markers = hosting_barbers.map do |barber|
           {
             lng: barber.host_service_longitude,
-            lat: barber.host_service_latitude
+            lat: barber.host_service_latitude,
+            infoWindow: render_to_string(partial: "infowindow", locals: { barber: barber })
           }
         end
         return
@@ -30,7 +31,8 @@ class UsersController < ApplicationController
         @markers = hosting_barbers_matching_address.map do |barber|
           {
             lng: barber.host_service_longitude,
-            lat: barber.host_service_latitude
+            lat: barber.host_service_latitude,
+            infoWindow: render_to_string(partial: "infowindow", locals: { barber: barber })
           }
         end
         return
