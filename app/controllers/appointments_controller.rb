@@ -12,8 +12,6 @@ class AppointmentsController < ApplicationController
       show_rejected
     elsif @appointment.state == 'paid'
       show_paid
-    else
-      raise "state was " + @appointment.state
     end
   end
 
@@ -47,7 +45,6 @@ class AppointmentsController < ApplicationController
   def show_paid
     render :show_paid
   end
-
 
 private
 
