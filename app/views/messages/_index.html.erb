@@ -1,4 +1,4 @@
-<ul>
+<ul class="sent-message">
 <% @messages.each do |message| %>
 <li><strong><%= message.content %></strong> written by <%= message.author.email%></li>
 <% end %>
