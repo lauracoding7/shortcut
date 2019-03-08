@@ -2,7 +2,6 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   include PgSearch
-  multisearchable against: [:name]
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -15,6 +14,10 @@ class User < ApplicationRecord
   geocoded_by :commute_area_address, latitude: :commute_area_latitude, longitude: :commute_area_longitude
 
   after_validation :geocode_endpoints
+
+  def is_client?
+    self.services.first.nil?
+  end
 
   private
 
