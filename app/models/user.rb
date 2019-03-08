@@ -16,10 +16,6 @@ class User < ApplicationRecord
 
   after_validation :geocode_endpoints
 
-  def is_client?
-    self.services.first.nil?
-  end
-
   private
 
   def geocode_endpoints
