@@ -1,10 +1,12 @@
+<ul>
 <% @messages.each do |message| %>
-<%= message.content %>
+<li><strong><%= message.content %></strong> written by <%= message.author.email%></li>
 <% end %>
+</ul>
 
-<h1>Chat with <%= @appointment.barber.name %></h1>
+<p>Chat with <%= @appointment.barber.name %></p>
 <%= simple_form_for [@appointment, @message] do |f| %>
-  <%= f.input :content %>
+  <%= f.input_field :content, as: :text, placeholder: 'Go for it'%>
   <%= f.submit "Send", class: "btn btn-primary" %>
 <% end %>
 
