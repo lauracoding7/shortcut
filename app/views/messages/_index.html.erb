@@ -1,2 +1,6 @@
-<h1>Messages#index</h1>
-<p>Find me in app/views/messages/index.html.erb</p>
+<h2>Messages related to this appointment:</h2>
+<ul>
+  <% appointment.messages.each do |message| %>
+  <li><%= message.content %></li>
+  <% end %>
+</ul>

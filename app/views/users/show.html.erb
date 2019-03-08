@@ -5,7 +5,7 @@
 <ul>
   <% @user.services.each do |service| %>
   <li>
-    <%= service.title %> for <%= service.price %> €
+    <%= link_to "#{service.title} for #{service.price} €", new_user_service_appointment_path(@user, service) %>
   </li>
   <% end %>
 </ul>
