@@ -3,6 +3,7 @@ class ServicesController < ApplicationController
 
   def index
     @services = Service.where(barber: @user)
+    redirect_to user_path(@user)
   end
 
   private
@@ -11,6 +12,3 @@ class ServicesController < ApplicationController
     @user = User.find(params[:user_id])
   end
 end
-
-
-
