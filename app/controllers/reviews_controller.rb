@@ -10,17 +10,16 @@ class ReviewsController < ApplicationController
     @review.receiver = @user
   end
 
-  def create # this needs to be updated
+  def create
     @review = Review.new(review_params)
     @review.author = current_user
     @review.receiver = @user
     @review.barber_review = current_user.is_client?
     if @review.save
       if current_user.is_client?
-        redirect_to user_path(@user)
+        redirect_to user_reviews_path(@user)
       else
         raise "Not implemented yet!"
-        # redirect_to user_reviews_path(@user)
       end
     else
       render :new
@@ -30,7 +29,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:content, :rating, :barber_review)
+    params.require(:review).permit(:content, :rating)
   end
 
   def set_user
