@@ -2,22 +2,37 @@ require 'time'
 
 class PagesController < ApplicationController
   def home
-    # @user = User.new #why does the homepage need a User? for the form?
   end
 
   def dashboard
-    @user = Appointment.where(barber: current_user)
+    @user = current_user
+    @appointments = Appointment.where(client: current_user)
+    @reviews = Review.where(receiver: current_user)
   end
 
   def dashboard_upcoming
-    upcoming = Appointment.where(barber: current_user)
+    @user = current_user
+    upcoming = Appointment.where(client: current_user)
     @appointments = upcoming.select { |appointment| appointment.datetime >= Time.now }
+    @markers = @appointments.map do |appointment|
+      {
+        lng: appointment.location_longitude,
+        lat: appointment.location_latitude,
+      }
+    end
     render :dashboard
   end
 
   def dashboard_previous
-    previous = Appointment.where(barber: current_user)
+    @user = current_user
+    previous = Appointment.where(client: current_user)
     @appointments = previous.select { |appointment| appointment.datetime < Time.now }
+    @markers = @appointments.map do |appointment|
+      {
+        lng: appointment.location_longitude,
+        lat: appointment.location_latitude,
+      }
+    end
     render :dashboard
   end
 end
