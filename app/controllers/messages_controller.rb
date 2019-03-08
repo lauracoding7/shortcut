@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_action :set_appointment
 
   def index
-    @messages = Messages.where(appointment_id: set_appointment)
+    @messages = Message.where(appointment_id: set_appointment)
   end
 
   def new
