@@ -2,7 +2,8 @@
   "name": "shortcut",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "3.5"
+    "@rails/webpacker": "3.5",
+    "mapbox-gl": "^0.53.1"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"

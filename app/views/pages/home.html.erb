@@ -1,12 +1,30 @@
-<h1>Homepage Shortcut!</h1>
 
-<%= form_tag users_path, method: :get do %>
-  <%= text_field_tag :query, params[:query],
+<div class="banner">
+  <div class="search-container">
+
+     <%= form_tag dashboard_path, method: :get, id: 'search_form' do %>
+      <%= text_field_tag :query,
+      params[:query],
       class: "form-control",
-      placeholder: "Search for a barber"%>
-  <%= button_tag 'Search', class: 'btn btn-danger'%>
-<% end %>
+      placeholder: "Type a location or a barber name"
+      %>
+      <%= button_tag 'Search', class: 'btn btn-blue', id: 'search_button' %>
+    <% end %>
+  </div>
+</div>
+ <div>
+    <h1>blabla</h1>
+    <h2>blabkfj</h2>
+    <h1>blabla</h1>
+    <h2>blabkfj</h2>
+    <h1>blabla</h1>
+    <h2>blabkfj</h2>
+    <h1>blabla</h1>
+    <h2>blabkfj</h2>
+    <h1>blabla</h1>
+    <h2>blabkfj</h2>
 
+  </div>
 
 <div class="container">
 <h1>This is a main title</h1>

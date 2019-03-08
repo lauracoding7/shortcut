@@ -1,2 +1,15 @@
 <h1>Appointments#show</h1>
 <p>Find me in app/views/appointments/show.html.erb</p>
+
+<h1><%= @appointment.service.title %></h1>
+<p><%= @appointment.datetime %></p>
+
+<% if @marker %>
+  <div
+    id="map"
+    style="width: 500px;
+    height: 500px;"
+    data-markers="<%= @marker.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
+<% end %>

@@ -5,6 +5,16 @@ class UsersController < ApplicationController
       barbers_matching_name = User.joins(:services).where(sql_query, query: "%#{params[:query]}%")
       unless barbers_matching_name.empty?
         @users = barbers_matching_name.uniq
+        hosting_barbers = @users.select do |barber|
+          !barber.services.empty?
+        end
+        @markers = hosting_barbers.map do |barber|
+          {
+            lng: barber.host_service_longitude,
+            lat: barber.host_service_latitude,
+            infoWindow: render_to_string(partial: "infowindow", locals: { barber: barber })
+          }
+        end
         return
       end
       # at this stage, all barbers matching name, wherever they are located will appear in the search. If we want to filter out the ones that are too far from the user's location, we need to do something like:
@@ -18,6 +28,13 @@ class UsersController < ApplicationController
       commuting_barbers_matching_address = User.near(params[:query], :commute_area_radius, latitude: :commute_area_latitude, longitude: :commute_area_longitude)
       unless hosting_barbers_matching_address.empty? && commuting_barbers_matching_address.empty?
         @users = (hosting_barbers_matching_address + commuting_barbers_matching_address).uniq
+        @markers = hosting_barbers_matching_address.map do |barber|
+          {
+            lng: barber.host_service_longitude,
+            lat: barber.host_service_latitude,
+            infoWindow: render_to_string(partial: "infowindow", locals: { barber: barber })
+          }
+        end
         return
       end
       @users = []
@@ -28,6 +45,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if @user.host_service_address
+      @marker = {
+          lng: @user.host_service_longitude,
+          lat: @user.host_service_latitude
+      }
+    end
   end
 end
 
