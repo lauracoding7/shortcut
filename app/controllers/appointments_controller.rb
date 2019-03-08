@@ -4,6 +4,8 @@ class AppointmentsController < ApplicationController
 
   def show
     @appointment = Appointment.find(params[:id])
+    @messages = @appointment.messages
+    @message = Message.new
     @marker = {
       lng: @appointment.location_longitude,
       lat: @appointment.location_latitude,

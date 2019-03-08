@@ -13,10 +13,10 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.author = current_user
-    @message.receiver = @user
+    @message.receiver = @appointment.receiver_for(current_user)
     @message.appointment = Appointment.find(params[:appointment_id])
-    if @message.save
-       redirect_to appointment_messages_path(@appointment, @message)
+    if @message.save!
+       redirect_to appointment_path(@appointment)
     else
       render :new
     end

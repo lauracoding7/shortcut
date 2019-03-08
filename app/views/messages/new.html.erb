@@ -1,6 +1,0 @@
-<h1>Chat with <%= @appointment.barber.name %></h1>
-<%= simple_form_for [@appointment, @message] do |f| %>
-  <%= f.input :content %>
-  <%= f.submit "Send", class: "btn btn-primary" %>
-<% end %>
-
