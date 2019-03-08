@@ -1,6 +1,8 @@
-<h1><%= @user.name %></h1>
+<h1>Appointments#show</h1>
+<p>Find me in app/views/appointments/show.html.erb</p>
 
-# here we are going to show the services of our barber
+<h1><%= @appointment.service.title %></h1>
+<p><%= @appointment.datetime %></p>
 
 <% if @marker %>
   <div

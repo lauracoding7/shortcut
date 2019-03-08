@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.5.3'
 
+gem 'pg_search'
 gem 'simple_form'
 gem 'bootsnap', require: false
 gem 'devise'
@@ -9,6 +10,7 @@ gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.2'
 gem 'redis'
+gem "geocoder"
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
