@@ -35,7 +35,7 @@
 <% if current_page?(controller:"pages", action: "dashboard_upcoming") %>
 <!-- the appointments below will have to be cards -->
 <ul>
-  <% @appointments.each do |appt| %>
+  <% @appointments.each_with_index do |appt, i| %>
   <li>
     Appointment with <%= appt.barber.name %><br>
     <%= appt.service.title %><br>
@@ -45,16 +45,14 @@
     <% if appt.commute_price %><br>Commute price: <%= appt.commute_price %><% end %><br>
     <%= appt.state %><br>
     <a href="#">Pay</a>
-    <% i = 0 %>
     <div
-    id="map"
+    class="map"
     style="width: 200px;
     height: 200px;"
     data-markers="<%= @markers[i].to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
   </li>
-  <% i += 1 %>
   <% end %>
 </ul>
 <% end %>
@@ -63,7 +61,7 @@
 <% if current_page?(controller:"pages", action: "dashboard_previous") %>
 <!-- the appointments below will have to be cards -->
 <ul>
-  <% @appointments.each do |appt| %>
+  <% @appointments.each_with_index do |appt, i|| %>
   <li>
     Appointment with <%= appt.barber.name %><br>
     <%= appt.service.title %><br>
@@ -73,16 +71,14 @@
     <% if appt.commute_price %><br>Commute price: <%= appt.commute_price %><% end %><br>
     <%= appt.state %><br>
     <a href="#">Review <%= appt.barber.name %></a>
-    <% i = 0 %>
     <div
-    id="map"
+    class="map"
     style="width: 200px;
     height: 200px;"
     data-markers="<%= @markers[i].to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
   </li>
-  <% i += 1 %>
   <% end %>
 </ul>
 <% end %>
