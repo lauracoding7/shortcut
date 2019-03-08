@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2019_03_07_104441) do
   create_table "appointments", force: :cascade do |t|
     t.bigint "barber_id"
     t.bigint "client_id"
-
     t.string "location_address"
     t.float "location_latitude"
     t.float "location_longitude"
