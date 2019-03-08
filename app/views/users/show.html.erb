@@ -1,6 +1,14 @@
 <h1><%= @user.name %></h1>
 
-# here we are going to show the services of our barber
+<!-- these below will have to be service cards -->
+<p><%= @user.name %> offers:</p>
+<ul>
+  <% @user.services.each do |service| %>
+  <li>
+    <%= service.title %> for <%= service.price %> €
+  </li>
+  <% end %>
+</ul>
 
 <% if @marker %>
   <div
@@ -11,3 +19,15 @@
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div>
 <% end %>
+
+
+<ul>
+  <% unless @reviews.empty? %>
+  <% @reviews.each do |review| %>
+  <li>
+    <%= review.author.name %> - Rating: <%= review.rating %>/5<br>
+    <%= review.content %>
+  </li>
+  <% end %>
+  <% end %>
+</ul>

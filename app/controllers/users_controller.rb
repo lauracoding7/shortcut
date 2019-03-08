@@ -47,10 +47,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.host_service_address
       @marker = {
-          lng: @user.host_service_longitude,
-          lat: @user.host_service_latitude
+        lng: @user.host_service_longitude,
+        lat: @user.host_service_latitude
       }
     end
+    @reviews = Review.where(receiver: @user)
   end
 end
 
