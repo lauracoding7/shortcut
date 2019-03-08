@@ -1,0 +1,12 @@
+<ul>
+  <li>
+    <a href="<%= dashboard_path %>"<% if current_page?(controller:"pages", action: "dashboard") %> active<% end %>">Profil</a>
+  </li>
+  <li>
+    <a href="<%= dashboard_upcoming_path %>" <% if current_page?(controller:"pages", action: "dashboard_upcoming") %> active<% end %>">Upcoming appointments</a>
+  </li>
+  <li>
+    <a href="<%= dashboard_previous_path %>" <% if current_page?(controller:"pages", action: "dashboard_previous") %> active<% end %>">Previous appointments</a>
+  </li>
+</ul>
+
