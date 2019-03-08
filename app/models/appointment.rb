@@ -9,6 +9,14 @@ class Appointment < ApplicationRecord
 
   geocoded_by :location_address, latitude: :location_latitude, longitude: :location_longitude
   after_validation :geocode, if: :will_save_change_to_location_address?
+
+  def service_price
+    service.price
+  end
+
+  def commute_price
+    barber.commute_price
+  end
 end
 
 private
