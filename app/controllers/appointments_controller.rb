@@ -8,6 +8,7 @@ class AppointmentsController < ApplicationController
       lng: @appointment.location_longitude,
       lat: @appointment.location_latitude
     }
+    @message = Message.new
   end
 
   def new
