@@ -17,14 +17,6 @@ class Appointment < ApplicationRecord
   def commute_price
     barber.commute_price
   end
-
-  def receiver_for(user)
-    if user == barber
-      client
-    else
-      barber
-    end
-  end
 end
 
 private

@@ -34,6 +34,21 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def approve
+    Appointment.find(params[:id]).update(state: 'approved')
+    redirect_to appointment_path(Appointment.find(params[:id]))
+  end
+
+  def reject
+    Appointment.find(params[:id]).update(state: 'rejected')
+    redirect_to appointment_path(Appointment.find(params[:id]))
+  end
+
+  def pay
+    Appointment.find(params[:id]).update(state: 'paid')
+    redirect_to appointment_path(Appointment.find(params[:id]))
+  end
+
   private
 
   def set_barber

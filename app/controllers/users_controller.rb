@@ -54,6 +54,3 @@ class UsersController < ApplicationController
     @reviews = Review.where(receiver: @user)
   end
 end
-
-
-

@@ -7,6 +7,6 @@
 
 <p>Send a message to <%= appointment.barber.name ? appointment.barber.name : appointment.barber.email %></p>
 <%= simple_form_for [appointment, message] do |f| %>
-  <%= f.input_field :content, as: :text, placeholder: 'Type your message'%>
+  <%= f.input_field :content, placeholder: 'Type your message'%>
   <%= f.submit "Send", class: "btn btn-primary" %>
 <% end %>
