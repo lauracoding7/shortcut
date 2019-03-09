@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       resources :appointments, only: [:new, :create]
     end
   end
-  resources :appointments, only: [:index, :show] do
+  resources :appointments, only: [:show] do
     resources :messages, only: [:index, :new, :create]
   end
 end
