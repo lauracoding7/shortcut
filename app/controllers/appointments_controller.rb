@@ -15,16 +15,17 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = Appointment.new(datetime: appointment_params[:datetime])
+    fixed_appt_params = appointment_params
+    at_barber_host_location = fixed_appt_params.delete(:at_barber_host_location)
+    @appointment = Appointment.new(fixed_appt_params)
     @appointment.barber = @user
     @appointment.client = current_user
     @appointment.service = @service
-    if appointment_params[:at_barber_host_location]
+    if at_barber_host_location
       @appointment.location_address = @user.host_service_address
     else
       @appointment.location_address = appointment_params[:location_address]
     end
-    raise
     if @appointment.save
       redirect_to appointment_path(@appointment)
     else
