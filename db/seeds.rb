@@ -60,15 +60,13 @@ beard1.barber = ivan
 beard1.save!
 
 # create more haircuts and beard trims so that each user has at least a service except for Filo
-first_ui = User.first.id + 5 # the first 5 users I seeded manually above
-last_ui = User.last.id
 15.times do
   Service.create!(
     title: Faker::Music.band + ' haircut',
     description: Faker::Company.bs,
     duration: (2..6).to_a[Faker::Number.within(0..4)] * 10,
     price: (1..20).to_a[Faker::Number.within(0..19)] * 5,
-    barber: User.find(Faker::Number.unique.within(first_ui..last_ui))
+    barber: User.find(Faker::Number.unique.within(User.first.id + 5..User.last.id)) # the first 5 users I seeded manually above
   )
 end
 10.times do
@@ -77,7 +75,7 @@ end
     description: Faker::Company.bs,
     duration: (2..6).to_a[Faker::Number.within(0..4)] * 10,
     price: (1..20).to_a[Faker::Number.within(0..19)] * 5,
-    barber: User.find(Faker::Number.unique.within(first_ui..last_ui))
+    barber: User.find(Faker::Number.unique.within(User.first.id + 5..User.last.id)) # the first 5 users I seeded manually above
   )
 end
 10.times do
@@ -86,7 +84,7 @@ end
     description: Faker::Company.bs,
     duration: (2..6).to_a[Faker::Number.within(0..4)] * 10,
     price: (1..20).to_a[Faker::Number.within(0..19)] * 5,
-    barber: User.find(Faker::Number.within(first_ui..last_ui))
+    barber: User.find(Faker::Number.within(User.first.id + 5..User.last.id)) # the first 5 users I seeded manually above
   )
 end
 puts 'Done!'
@@ -140,6 +138,29 @@ filo_review = Review.new(content: 'Filo is a nice guy to have a chat with, his a
 filo_review.receiver = filo
 filo_review.author = fred
 filo_review.save!
+
+# Add automatic reviews for automatically seeded barbers (all but 5, which will remain without reviews)
+User.where(id: User.first.id + 1..User.last.id - 5).each do |user|
+  Review.create!(
+    content: Faker::Quote.most_interesting_man_in_the_world,
+    rating: Faker::Number.within(0..5),
+    barber_review: true,
+    receiver: user,
+    author: User.where.not(id: user.id)[Faker::Number.within(0..User.count - 2)]
+  )
+end
+# then I add more reviews randomly to users
+30.times do
+  receiver = User.find(Faker::Number.within(User.first.id + 1..User.last.id))
+  Review.create!(
+    content: Faker::Quote.most_interesting_man_in_the_world,
+    rating: Faker::Number.within(0..5),
+    barber_review: true,
+    receiver: receiver,
+    author: User.where.not(id: receiver.id)[Faker::Number.within(0..User.count - 2)]
+  )
+end
+
 puts 'Done!'
 
 puts 'Creating messages'
