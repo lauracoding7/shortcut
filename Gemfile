@@ -11,6 +11,7 @@ gem 'puma'
 gem 'rails', '5.2.2'
 gem 'redis'
 gem "geocoder"
+gem "faker"
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'

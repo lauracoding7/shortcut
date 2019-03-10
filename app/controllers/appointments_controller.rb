@@ -19,9 +19,9 @@ class AppointmentsController < ApplicationController
     fixed_appt_params = appointment_params
     at_barber_host_location = fixed_appt_params.delete(:at_barber_host_location)
     @appointment = Appointment.new(fixed_appt_params)
-    @appointment.barber = @user
     @appointment.client = current_user
     @appointment.service = @service
+    @appointment.barber = @service.barber
     if at_barber_host_location
       @appointment.location_address = @user.host_service_address
     else

@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Faker::Config.random = Random.new(1)
 
 puts 'Destroying existing db records'
 Message.destroy_all
@@ -24,6 +25,17 @@ isaac = User.create!(email: 'isaac@mail.com', password: 'secret', name: 'Isaac',
 fred = User.create!(email: 'fred@mail.com', password: 'secret', name: 'Fred', commute_area_address: 'Amsterdam mercatorplein', commute_area_radius: 10, commute_price: 5)
 
 tom = User.create!(email: 'tom@mail.com', password: 'secret', name: 'Tom', commute_area_address: 'Amsterdam Rokin', commute_area_radius: 5, commute_price: 7, host_service_address: 'Amsterdam, Ingogostraat 14')
+
+amsterdam_addresses = ['Van Diemenstraat 408 Amsterdam, Netherlands', 'Barentszstraat 171 Amsterdam, Netherlands', 'Gedempt Hamerkanaal 201 Amsterdam, Netherlands', 'Goudsbloemstraat 91 Amsterdam, Netherlands', 'Lindengracht 90 Amsterdam, Netherlands', 'Lindengracht 75 Amsterdam, Netherlands', 'Prinsenstraat 22 Amsterdam, Netherlands', 'De Ruijterkade 128 Amsterdam, Netherlands', 'Herengracht 90 Amsterdam, Netherlands', 'Lijnbaanssteeg 5-7 Amsterdam, Netherlands', 'Westermarkt 11 Amsterdam, Netherlands', 'Singel 210 Amsterdam, Netherlands', 'Nieuwezijds Voorburgwal 200 Amsterdam, Netherlands', 'Gasthuismolensteeg 5HS Amsterdam, Netherlands', 'Oudezijds Voorburgwal 177-179 Amsterdam, Netherlands', 'Peperstraat 10 Amsterdam, Netherlands', 'Marnixstraat 192B Amsterdam, Netherlands', 'Bellamyplein 51 Amsterdam, Netherlands', 'Funenkade 7 Amsterdam, Netherlands', 'Amstel 212 Amsterdam, Netherlands', 'Utrechtsestraat 6 Amsterdam, Netherlands', 'Leidsestraat 94 Amsterdam, Netherlands', 'Herengracht 542-556 Amsterdam, Netherlands', 'Utrechtsestraat 109-111 Amsterdam, Netherlands', 'Vijzelgracht 15 Amsterdam, Netherlands', 'Museumstraat 1 Amsterdam, Netherlands', 'Frans Halsstraat 28 Amsterdam, Netherlands', 'Gerard Doustraat 98 Amsterdam, Netherlands', 'Albert Cuypstraat 58-60 Amsterdam, Netherlands', 'Tweede van der Helststraat 3 Amsterdam, Netherlands']
+10.times do
+  User.create!(email: Faker::Internet.unique.email, password: 'secret', name: Faker::Name.name, host_service_address: amsterdam_addresses[Faker::Number.unique.within(0..29)])
+end
+10.times do
+  User.create!(email: Faker::Internet.unique.email, password: 'secret', name: Faker::Name.name, commute_area_address: amsterdam_addresses[Faker::Number.unique.within(0..29)], commute_area_radius: (1..10).to_a[Faker::Number.within(0..9)], commute_price: (1..10).to_a[Faker::Number.within(0..9)])
+end
+5.times do
+  User.create!(email: Faker::Internet.unique.email, password: 'secret', name: Faker::Name.name, commute_area_address: amsterdam_addresses[Faker::Number.unique.within(0..29)], commute_area_radius: (1..10).to_a[Faker::Number.within(0..9)], commute_price: (1..10).to_a[Faker::Number.within(0..9)], host_service_address: amsterdam_addresses[Faker::Number.unique.within(0..29)])
+end
 puts 'Done!'
 
 puts 'Creating services'
@@ -46,16 +58,45 @@ beard.save!
 beard1 = Service.new(title: 'Amazing beard trim', description: "It's an amazing beard trim.", duration: 50, price: 100)
 beard1.barber = ivan
 beard1.save!
+
+# create more haircuts and beard trims so that each user has at least a service except for Filo
+15.times do
+  Service.create!(
+    title: Faker::Music.band + ' haircut',
+    description: Faker::Company.bs,
+    duration: (2..6).to_a[Faker::Number.within(0..4)] * 10,
+    price: (1..20).to_a[Faker::Number.within(0..19)] * 5,
+    barber: User.find(Faker::Number.unique.within(User.first.id + 5..User.last.id)) # the first 5 users I seeded manually above
+  )
+end
+10.times do
+  Service.create!(
+    title: Faker::Music.band + ' beard trim',
+    description: Faker::Company.bs,
+    duration: (2..6).to_a[Faker::Number.within(0..4)] * 10,
+    price: (1..20).to_a[Faker::Number.within(0..19)] * 5,
+    barber: User.find(Faker::Number.unique.within(User.first.id + 5..User.last.id)) # the first 5 users I seeded manually above
+  )
+end
+10.times do
+  Service.create!(
+    title: Faker::Music.band + ' beard trim',
+    description: Faker::Company.bs,
+    duration: (2..6).to_a[Faker::Number.within(0..4)] * 10,
+    price: (1..20).to_a[Faker::Number.within(0..19)] * 5,
+    barber: User.find(Faker::Number.within(User.first.id + 5..User.last.id)) # the first 5 users I seeded manually above
+  )
+end
 puts 'Done!'
 
 puts 'Creating appointments'
-appt = Appointment.new(location_address: 'Ingogostraat 14D, Amsterdam', location_longitude: 4.9257856, location_latitude: 52.3552398, datetime: Time.new(2019, 3, 31, 19, 0, 0, "+01:00"))
+appt = Appointment.new(location_address: 'Ingogostraat 14D, Amsterdam', datetime: Time.new(2019, 3, 31, 19, 0, 0, "+01:00"))
 appt.service = haircut1
 appt.barber = appt.service.barber
 appt.client = filo
 appt.save!
 
-appt1 = Appointment.new(location_address: 'Amsterdam Transvaalstraat 17', location_latitude: 52.3554425, location_longitude: 4.9270905, datetime: Time.new(2019, 3, 7, 14, 0, 0, "+01:00"))
+appt1 = Appointment.new(location_address: 'Amsterdam Transvaalstraat 17', datetime: Time.new(2019, 3, 7, 14, 0, 0, "+01:00"))
 appt1.service = beard1
 appt1.barber = appt1.service.barber
 appt1.client = filo
@@ -97,6 +138,29 @@ filo_review = Review.new(content: 'Filo is a nice guy to have a chat with, his a
 filo_review.receiver = filo
 filo_review.author = fred
 filo_review.save!
+
+# Add automatic reviews for automatically seeded barbers (all but 5, which will remain without reviews)
+User.where(id: User.first.id + 1..User.last.id - 5).each do |user|
+  Review.create!(
+    content: Faker::Quote.most_interesting_man_in_the_world,
+    rating: Faker::Number.within(0..5),
+    barber_review: true,
+    receiver: user,
+    author: User.where.not(id: user.id)[Faker::Number.within(0..User.count - 2)]
+  )
+end
+# then I add more reviews randomly to users
+30.times do
+  receiver = User.find(Faker::Number.within(User.first.id + 1..User.last.id))
+  Review.create!(
+    content: Faker::Quote.most_interesting_man_in_the_world,
+    rating: Faker::Number.within(0..5),
+    barber_review: true,
+    receiver: receiver,
+    author: User.where.not(id: receiver.id)[Faker::Number.within(0..User.count - 2)]
+  )
+end
+
 puts 'Done!'
 
 puts 'Creating messages'
