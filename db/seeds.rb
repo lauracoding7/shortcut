@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Faker::Config.random = Random.new(1)
 
 puts 'Destroying existing db records'
 Message.destroy_all
@@ -25,7 +26,6 @@ fred = User.create!(email: 'fred@mail.com', password: 'secret', name: 'Fred', co
 
 tom = User.create!(email: 'tom@mail.com', password: 'secret', name: 'Tom', commute_area_address: 'Amsterdam Rokin', commute_area_radius: 5, commute_price: 7, host_service_address: 'Amsterdam, Ingogostraat 14')
 
-Faker::Config.random = Random.new(1)
 amsterdam_addresses = ['Van Diemenstraat 408 Amsterdam, Netherlands', 'Barentszstraat 171 Amsterdam, Netherlands', 'Gedempt Hamerkanaal 201 Amsterdam, Netherlands', 'Goudsbloemstraat 91 Amsterdam, Netherlands', 'Lindengracht 90 Amsterdam, Netherlands', 'Lindengracht 75 Amsterdam, Netherlands', 'Prinsenstraat 22 Amsterdam, Netherlands', 'De Ruijterkade 128 Amsterdam, Netherlands', 'Herengracht 90 Amsterdam, Netherlands', 'Lijnbaanssteeg 5-7 Amsterdam, Netherlands', 'Westermarkt 11 Amsterdam, Netherlands', 'Singel 210 Amsterdam, Netherlands', 'Nieuwezijds Voorburgwal 200 Amsterdam, Netherlands', 'Gasthuismolensteeg 5HS Amsterdam, Netherlands', 'Oudezijds Voorburgwal 177-179 Amsterdam, Netherlands', 'Peperstraat 10 Amsterdam, Netherlands', 'Marnixstraat 192B Amsterdam, Netherlands', 'Bellamyplein 51 Amsterdam, Netherlands', 'Funenkade 7 Amsterdam, Netherlands', 'Amstel 212 Amsterdam, Netherlands', 'Utrechtsestraat 6 Amsterdam, Netherlands', 'Leidsestraat 94 Amsterdam, Netherlands', 'Herengracht 542-556 Amsterdam, Netherlands', 'Utrechtsestraat 109-111 Amsterdam, Netherlands', 'Vijzelgracht 15 Amsterdam, Netherlands', 'Museumstraat 1 Amsterdam, Netherlands', 'Frans Halsstraat 28 Amsterdam, Netherlands', 'Gerard Doustraat 98 Amsterdam, Netherlands', 'Albert Cuypstraat 58-60 Amsterdam, Netherlands', 'Tweede van der Helststraat 3 Amsterdam, Netherlands']
 10.times do
   User.create!(email: Faker::Internet.unique.email, password: 'secret', name: Faker::Name.name, host_service_address: amsterdam_addresses[Faker::Number.unique.within(0..29)])
@@ -58,6 +58,29 @@ beard.save!
 beard1 = Service.new(title: 'Amazing beard trim', description: "It's an amazing beard trim.", duration: 50, price: 100)
 beard1.barber = ivan
 beard1.save!
+
+# create more haircuts and beard trims so that each user has at least a service except for Filo
+first_ui = User.first.id + 5 # the first 5 users I seeded manually above
+last_ui = User.last.id
+15.times do
+  Service.create!(
+    title: Faker::Music.band + ' haircut',
+    description: Faker::Company.bs,
+    duration: (2..6).to_a[Faker::Number.within(0..4)] * 10,
+    price: (1..20).to_a[Faker::Number.within(0..19)] * 5,
+    barber: User.find(Faker::Number.unique.within(first_ui..last_ui))
+  )
+end
+10.times do
+  Service.create!(
+    title: Faker::Music.band + ' beard trim',
+    description: Faker::Company.bs,
+    duration: (2..6).to_a[Faker::Number.within(0..4)] * 10,
+    price: (1..20).to_a[Faker::Number.within(0..19)] * 5,
+    barber: User.find(Faker::Number.unique.within(first_ui..last_ui))
+  )
+end
+
 puts 'Done!'
 
 puts 'Creating appointments'
