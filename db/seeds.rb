@@ -90,13 +90,13 @@ end
 puts 'Done!'
 
 puts 'Creating appointments'
-appt = Appointment.new(location_address: 'Ingogostraat 14D, Amsterdam', location_longitude: 4.9257856, location_latitude: 52.3552398, datetime: Time.new(2019, 3, 31, 19, 0, 0, "+01:00"))
+appt = Appointment.new(location_address: 'Ingogostraat 14D, Amsterdam', datetime: Time.new(2019, 3, 31, 19, 0, 0, "+01:00"))
 appt.service = haircut1
 appt.barber = appt.service.barber
 appt.client = filo
 appt.save!
 
-appt1 = Appointment.new(location_address: 'Amsterdam Transvaalstraat 17', location_latitude: 52.3554425, location_longitude: 4.9270905, datetime: Time.new(2019, 3, 7, 14, 0, 0, "+01:00"))
+appt1 = Appointment.new(location_address: 'Amsterdam Transvaalstraat 17', datetime: Time.new(2019, 3, 7, 14, 0, 0, "+01:00"))
 appt1.service = beard1
 appt1.barber = appt1.service.barber
 appt1.client = filo
