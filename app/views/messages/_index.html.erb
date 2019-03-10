@@ -1,12 +1,9 @@
 <h2>Messages regarding this appointment</h2>
-<ul>
+<ul id="messages">
   <% appointment.messages.each do |message| %>
-  <li><strong><%= message.content %></strong> -- <em>written by <%= message.author.name ? message.author.name : message.author.email %></em></li>
+  <%= render 'messages/show', message: message %>
   <% end %>
 </ul>
 
 <p>Send a message to <%= appointment.barber.name ? appointment.barber.name : appointment.barber.email %></p>
-<%= simple_form_for [appointment, message] do |f| %>
-  <%= f.input_field :content, placeholder: 'Type your message'%>
-  <%= f.submit "Send", class: "btn btn-primary" %>
-<% end %>
+<%= render 'messages/form', appointment: appointment, message: message %>
