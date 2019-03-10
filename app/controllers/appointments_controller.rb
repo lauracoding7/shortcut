@@ -1,4 +1,5 @@
 class AppointmentsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :new
   before_action :set_barber, only: [:new, :create]
   before_action :set_service, only: [:new, :create]
 
