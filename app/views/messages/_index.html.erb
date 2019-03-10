@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div class='container'>
+  <p>Chat with <%= @appointment.barber.name %></p>
   <ul class="no-bulletpoints">
   <% @messages.each do |message| %>
     <li class="sent-message"><i class="far fa-comment"></i> <%= message.content %></li>
@@ -7,7 +9,6 @@
 
   </ul>
 
-    <p>Chat with <%= @appointment.barber.name %></p>
   <%= simple_form_for [@appointment, @message] do |f| %>
     <%= f.input_field :content, as: :text, placeholder: '...'%>
     <%= f.submit "Send", class: "btn btn-primary" %>
