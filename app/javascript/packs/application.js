@@ -9,6 +9,10 @@
 
 console.log('Hello World from Webpacker')
 
+// mapbox
 import { initMapbox } from '../plugins/init_mapbox';
-
 initMapbox();
+
+// filter-buttons
+import { initFilterButtons } from '../components/filter-buttons';
+initFilterButtons();
