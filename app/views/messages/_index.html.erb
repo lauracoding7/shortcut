@@ -6,7 +6,4 @@
 </ul>
 
 <p>Send a message to <%= appointment.barber.name ? appointment.barber.name : appointment.barber.email %></p>
-<%= simple_form_for([appointment, message], remote: true) do |f| %>
-  <%= f.input_field :content, placeholder: 'Type your message'%>
-  <%= f.submit "Send", class: "btn btn-primary" %>
-<% end %>
+<%= render 'messages/form', appointment: appointment, message: message %>
