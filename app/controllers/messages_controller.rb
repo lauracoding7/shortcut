@@ -9,9 +9,15 @@ class MessagesController < ApplicationController
       user == @message.author
     }[0]
     if @message.save!
-      redirect_to appointment_path(@appointment)
+      respond_to do |format|
+        format.html { redirect_to appointment_path(@appointment) }
+        format.js
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render 'appointments/show' }
+        format.js
+      end
     end
   end
 
