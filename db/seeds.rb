@@ -80,7 +80,15 @@ end
     barber: User.find(Faker::Number.unique.within(first_ui..last_ui))
   )
 end
-
+10.times do
+  Service.create!(
+    title: Faker::Music.band + ' beard trim',
+    description: Faker::Company.bs,
+    duration: (2..6).to_a[Faker::Number.within(0..4)] * 10,
+    price: (1..20).to_a[Faker::Number.within(0..19)] * 5,
+    barber: User.find(Faker::Number.within(first_ui..last_ui))
+  )
+end
 puts 'Done!'
 
 puts 'Creating appointments'
