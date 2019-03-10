@@ -1,25 +1,14 @@
 class AppointmentsController < ApplicationController
   before_action :set_barber, only: [:new, :create]
-  before_action :find_service, only: [:new, :create]
+  before_action :set_service, only: [:new, :create]
 
   def show
     @appointment = Appointment.find(params[:id])
-    @messages = @appointment.messages
-    @message = Message.new
     @marker = {
       lng: @appointment.location_longitude,
-      lat: @appointment.location_latitude,
+      lat: @appointment.location_latitude
     }
-    if @appointment.state == 'pending'
-      show_pending
-    elsif @appointment.state == 'approved'
-      show_approved
-    elsif @appointment.state == 'rejected'
-      show_rejected
-    elsif @appointment.state == 'paid'
-      show_paid
-    end
-
+    @message = Message.new
   end
 
   def new
@@ -27,9 +16,17 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = Appointment.new(appointment_params)
-    @appointment.barber_id = @user.id
-    @appointment.client_id = current_user.id
+    fixed_appt_params = appointment_params
+    at_barber_host_location = fixed_appt_params.delete(:at_barber_host_location)
+    @appointment = Appointment.new(fixed_appt_params)
+    @appointment.barber = @user
+    @appointment.client = current_user
+    @appointment.service = @service
+    if at_barber_host_location
+      @appointment.location_address = @user.host_service_address
+    else
+      @appointment.location_address = appointment_params[:location_address]
+    end
     if @appointment.save
       redirect_to appointment_path(@appointment)
     else
@@ -37,38 +34,32 @@ class AppointmentsController < ApplicationController
     end
   end
 
-
-  def index
-    #this method will be needed for the dashboar and it will have to send to the view both @appointments and @markers, for the maps to work. An example of how to send multiple markers to the view can be found in the users controller, but the view will have to deal with this differently from the users view, because the markers will have to appear in different maps.
+  def approve
+    Appointment.find(params[:id]).update(state: 'approved')
+    redirect_to appointment_path(Appointment.find(params[:id]))
   end
 
-  def show_pending
-    render :show_pending
+  def reject
+    Appointment.find(params[:id]).update(state: 'rejected')
+    redirect_to appointment_path(Appointment.find(params[:id]))
   end
 
-  def show_approved
-    render :show_approved
+  def pay
+    Appointment.find(params[:id]).update(state: 'paid')
+    redirect_to appointment_path(Appointment.find(params[:id]))
   end
 
-  def show_rejected
-    render :show_rejected
+  private
+
+  def set_barber
+    @user = User.find(params[:user_id])
   end
 
-  def show_paid
-    render :show_paid
+  def set_service
+    @service = Service.find(params[:service_id])
   end
 
-private
-
-def set_barber
-  @user = User.find(params[:user_id])
-end
-
-def find_service
-  @service = Service.find(params[:service_id])
-end
-
-def appointment_params
-  params.require(:appointment).permit(:location_address, :datetime)
-end
+  def appointment_params
+    params.require(:appointment).permit(:location_address, :datetime, :at_barber_host_location)
+  end
 end

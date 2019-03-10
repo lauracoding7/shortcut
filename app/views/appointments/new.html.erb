@@ -1,7 +1,18 @@
 <h1>New Appointment</h1>
 
 <%= simple_form_for [@user, @service, @appointment] do |f| %>
-<%= hidden_field_tag :location_address, @user.commute_area_address%>
+  <% if @user.host_service_address && !@user.commute_area_address %>
+  <input name="appointment[at_barber_host_location]" type="hidden" value="on">
+  <p>This barber only receives clients at the address: <%= @user.host_service_address %></p>
+  <% elsif @user.host_service_address %>
+  <input name="appointment[at_barber_host_location]" id="at_barber_host_location" type="checkbox">
+  <label for="at_barber_host_location">Make an appointment at the barber's location?</label>
+  <% else %>
+  <p>This barber only commutes to a location you make available. Please insert your location below.</p>
+  <% end %>
+  <% if @user.commute_area_address %>
+  <%= f.input :location_address %>
+  <% end %>
   <%= f.input :datetime %>
   <%= f.submit "Submit", class: "btn btn-danger" %>
 <% end %>

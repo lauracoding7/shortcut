@@ -3,7 +3,7 @@ class Appointment < ApplicationRecord
   belongs_to :barber, class_name: "User"
   belongs_to :client, class_name: "User"
   has_many :messages
-  validates :datetime, :location_address, :location_longitude, :location_latitude, presence: true
+  validates :datetime, :location_address, presence: true
   validates :state, inclusion: { in: %w(pending approved rejected paid), message: "%{value} is not a valid state" }
   validate :barber_cannot_be_same_as_client
 
@@ -16,14 +16,6 @@ class Appointment < ApplicationRecord
 
   def commute_price
     barber.commute_price
-  end
-
-  def receiver_for(user)
-    if user == barber
-      client
-    else
-      barber
-    end
   end
 end
 

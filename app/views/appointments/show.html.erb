@@ -1,5 +1,7 @@
 <h1><%= @appointment.service.title %></h1>
 <p><%= @appointment.datetime %></p>
+<p><%= @appointment.location_address %></p>
+<p><%= @appointment.state %></p>
 
 <% if @marker %>
   <div
@@ -11,4 +13,4 @@
   ></div>
 <% end %>
 
-
+<%= render partial: "messages/index", locals: {appointment: @appointment, message: @message} %>
