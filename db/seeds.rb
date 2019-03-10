@@ -24,6 +24,18 @@ isaac = User.create!(email: 'isaac@mail.com', password: 'secret', name: 'Isaac',
 fred = User.create!(email: 'fred@mail.com', password: 'secret', name: 'Fred', commute_area_address: 'Amsterdam mercatorplein', commute_area_radius: 10, commute_price: 5)
 
 tom = User.create!(email: 'tom@mail.com', password: 'secret', name: 'Tom', commute_area_address: 'Amsterdam Rokin', commute_area_radius: 5, commute_price: 7, host_service_address: 'Amsterdam, Ingogostraat 14')
+
+Faker::Config.random = Random.new(1)
+amsterdam_addresses = ['Van Diemenstraat 408 Amsterdam, Netherlands', 'Barentszstraat 171 Amsterdam, Netherlands', 'Gedempt Hamerkanaal 201 Amsterdam, Netherlands', 'Goudsbloemstraat 91 Amsterdam, Netherlands', 'Lindengracht 90 Amsterdam, Netherlands', 'Lindengracht 75 Amsterdam, Netherlands', 'Prinsenstraat 22 Amsterdam, Netherlands', 'De Ruijterkade 128 Amsterdam, Netherlands', 'Herengracht 90 Amsterdam, Netherlands', 'Lijnbaanssteeg 5-7 Amsterdam, Netherlands', 'Westermarkt 11 Amsterdam, Netherlands', 'Singel 210 Amsterdam, Netherlands', 'Nieuwezijds Voorburgwal 200 Amsterdam, Netherlands', 'Gasthuismolensteeg 5HS Amsterdam, Netherlands', 'Oudezijds Voorburgwal 177-179 Amsterdam, Netherlands', 'Peperstraat 10 Amsterdam, Netherlands', 'Marnixstraat 192B Amsterdam, Netherlands', 'Bellamyplein 51 Amsterdam, Netherlands', 'Funenkade 7 Amsterdam, Netherlands', 'Amstel 212 Amsterdam, Netherlands', 'Utrechtsestraat 6 Amsterdam, Netherlands', 'Leidsestraat 94 Amsterdam, Netherlands', 'Herengracht 542-556 Amsterdam, Netherlands', 'Utrechtsestraat 109-111 Amsterdam, Netherlands', 'Vijzelgracht 15 Amsterdam, Netherlands', 'Museumstraat 1 Amsterdam, Netherlands', 'Frans Halsstraat 28 Amsterdam, Netherlands', 'Gerard Doustraat 98 Amsterdam, Netherlands', 'Albert Cuypstraat 58-60 Amsterdam, Netherlands', 'Tweede van der Helststraat 3 Amsterdam, Netherlands']
+10.times do
+  User.create!(email: Faker::Internet.unique.email, password: 'secret', name: Faker::Name.name, host_service_address: amsterdam_addresses[Faker::Number.unique.within(0..29)])
+end
+10.times do
+  User.create!(email: Faker::Internet.unique.email, password: 'secret', name: Faker::Name.name, commute_area_address: amsterdam_addresses[Faker::Number.unique.within(0..29)], commute_area_radius: (1..10).to_a[Faker::Number.within(0..9)], commute_price: (1..10).to_a[Faker::Number.within(0..9)])
+end
+5.times do
+  User.create!(email: Faker::Internet.unique.email, password: 'secret', name: Faker::Name.name, commute_area_address: amsterdam_addresses[Faker::Number.unique.within(0..29)], commute_area_radius: (1..10).to_a[Faker::Number.within(0..9)], commute_price: (1..10).to_a[Faker::Number.within(0..9)], host_service_address: amsterdam_addresses[Faker::Number.unique.within(0..29)])
+end
 puts 'Done!'
 
 puts 'Creating services'
