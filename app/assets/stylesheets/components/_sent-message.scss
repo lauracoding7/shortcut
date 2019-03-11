@@ -15,6 +15,7 @@
   .message-details {
     opacity: 0.7;
     margin-top: 15px;
+    width: 100%;
   }
   img {
     position: absolute;
@@ -23,28 +24,67 @@
   }
 }
 
-#message_content.string.required {
-  width: 700px;
-  height: 60px;
-  padding: 20px 10px;
-  border-radius: 4px;
+.sent-message.insert-message {
+  box-shadow: 1px 1px 1px $white-text;
 }
 
-#new_message.simple_form.new_message {
-  margin: 40px;
+#new_message {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  .btn-message {
+    font-size: 15px;
+    background: transparent;
+    color: $white-text;
+    padding: 1px;
+    height: 22px;
+    font-style: italic;
+    font-weight: normal;
+    border: none;
+    width: 100%;
+    text-align: left;
+    &:hover {
+      background-color: $white-text;
+      color: $black;
+    }
+  }
 }
 
-// this should be styled as the form
-.btn-message {
-  height: 60px;
-  padding: 0px;
-  width: 200px;
-  background-color: #6C0E23;
-  color: white;
-  text-align: center;
-  transition: all 0.5s;
-  cursor: pointer;
-  display: inline-block;
-  border-radius: 4px;
-  border-color: #6C0E23;
+#message_content {
+  width: 100%;
+  font-size: 15px;
+  border: none;
 }
+
+.row.top-border {
+  border-top: 0.8px solid $white-text;
+  margin-top: 15px;
+}
+
+
+// #message_content.string.required {
+//   width: 700px;
+//   height: 60px;
+//   padding: 20px 10px;
+//   border-radius: 4px;
+// }
+
+// #new_message.simple_form.new_message {
+//   margin: 40px;
+// }
+
+// // this should be styled as the form
+// .btn-message {
+//   height: 60px;
+//   padding: 0px;
+//   width: 200px;
+//   background-color: #6C0E23;
+//   color: white;
+//   text-align: center;
+//   transition: all 0.5s;
+//   cursor: pointer;
+//   display: inline-block;
+//   border-radius: 4px;
+//   border-color: #6C0E23;
+// }
