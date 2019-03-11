@@ -1,15 +1,19 @@
-<div class="container">
-    <h2 class="text-center">Messages regarding this appointment</h2>
-      <ul id="messages" class="no-bulletpoints">
+<h2 class="text-center">Messages regarding this appointment</h2>
+<!-- <ul id="messages" class="no-bulletpoints">
 
-        <% appointment.messages.each do |message| %>
-          <li><%= render 'messages/show', message: message %></li>
-        <% end %>
+  <%# appointment.messages.each do |message| %>
+  <li><%#= render 'messages/show', message: message %></li>
+  <%# end %>
 
-      </ul>
+</ul> -->
 
-    <div class="text-center">
-      <h2>Send a message to <%= appointment.barber.name ? appointment.barber.name : appointment.barber.email %></h2>
-      <%= render 'messages/form', appointment: appointment, message: message %>
-    </div>
+<div id="messages">
+  <% appointment.messages.each do |message| %>
+  <%= render 'messages/show', message: message %>
+  <% end %>
+</div>
+
+<div class="text-center">
+  <h2>Send a message to <%= appointment.barber.name ? appointment.barber.name : appointment.barber.email %></h2>
+  <%= render 'messages/form', appointment: appointment, message: message %>
 </div>
