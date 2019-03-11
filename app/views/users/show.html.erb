@@ -10,6 +10,10 @@
   <% end %>
 </ul>
 
+<% @user.services.each do |service| %>
+<%= render partial: "service-card", locals: {service: service} %>
+<% end %>
+
 <% if @marker %>
   <div
     id="map"
