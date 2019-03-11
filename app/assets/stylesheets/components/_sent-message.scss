@@ -3,34 +3,51 @@
   padding-left: 0px;
 }
 
+h2 {
+  margin-top: 50px;
+}
+
 .card-message {
-  display: flex;
+  display: inline-block;
   align-items: center;
   background: #020A00;
   color: white;
-  margin: 30px 20px;
   position: relative;
-  font-size: 25px;
-  border: 1px solid white;
-  box-shadow: 1px 1px 1px white;
-  padding: 15px 10px;
-  justify-content: space-between;
-  flex: 1;
+  font-size: 22px;
+  border: 0.8px solid white;
+  box-shadow: 0.6px 0.6px 0.6px white;
+  padding: 15px;
+  border-radius: 4px;
+  margin-top: 30px;
+
 }
 
-.card-message em {
-  font-size: 15px;
-  margin-left: 10px;
-  padding-left: 0px;
-  width: 300px;
+.em {
+  margin-top: 18px;
+  font-size: 22px;
 }
 
 #message_content.string.required {
   width: 700px;
   height: 60px;
   padding: 20px 10px;
+  border-radius: 4px;
 }
 
 #new_message.simple_form.new_message {
   margin: 40px;
+}
+
+.btn-message {
+  height: 60px;
+  padding: 0px;
+  width: 200px;
+  background-color: #6C0E23;
+  color: white;
+  text-align: center;
+  transition: all 0.5s;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 4px;
+  border-color: #6C0E23;
 }

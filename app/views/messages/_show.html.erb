@@ -1,7 +1,9 @@
-<ul><strong>
-  <li class="card-message"><%= message.content %></strong>
+<div class="card-message">
+  <%= message.content %>
+</div>
+<div class="em">
+<em>written by <%= message.author.name ? message.author.name : message.author.email %>, <%= Time.now.strftime("%B %e at %I:%M %p")%></em>
+</div>
 
 
-  <em>written by <%= message.author.name ? message.author.name : message.author.email %>, <%= Time.now.strftime("%B %e at %I:%M %p")%></em></li>
-</ul>
 
