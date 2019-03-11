@@ -19,7 +19,7 @@
 
   <div class="barber-card-stars">
     <% if user.average_rating == 'n.a.' %>
-    <span>No ratings available for this barber.</span>
+    <p class="no-rating">No ratings available for this barber.</p>
     <% else %>
     <span class="fa fa-star<% if user.average_rating >= 1 %> checked<% end %>"></span>
     <span class="fa fa-star<% if user.average_rating >= 2 %> checked<% end %>"></span>
