@@ -35,3 +35,28 @@
 .service-card .service-card-infos {
   padding: 16px;
 }
+
+.checked {
+  color: orange;
+}
+
+.barber-card-stars {
+  display: flex;
+  position: absolute;
+  top: 0px;
+  right:0px;
+  margin: 10px;
+}
+
+.service-card {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(255,255,255,0.4);
+  display: flex;
+  align-items: center;
+  width: 600px;
+  position: relative;
+  border-radius: 4px;
+  border: 1px solid #6C0E23;
+}
