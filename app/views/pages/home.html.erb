@@ -1,4 +1,5 @@
-<div class="banner" id="about">
+
+<div class="banner" id="about" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_url("cover.png") %>');">
   <div class="search-container">
     <%= form_tag users_path, method: :get, id: 'search_form' do %>
     <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Type a location or a barber name" %>
@@ -18,10 +19,14 @@
 
 
 <div class="cards">
+
   <div class="cards-category"  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1521490214993-bfb6f7dc096d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80) "><a href="#about">Find</a>
+
+  <div class="cards-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+    Breakfast
   </div>
 
-      <p class="centered-p" >By using our website, you'll be able to discover if barbers are available around your area, just type in your address or the name of a barber you know</p>
+      <p class="centered-p" >ShortCut is an application enabeling you to find freelance barbers near you outside working hours for more flexibility</p>
 
 
   <div class="cards-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1521490792331-7aa6f8b9e412?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80)">
