@@ -1,6 +1,6 @@
-.btn {
+.shortcut-btn {
   width: 200px;
-  background-color: #6C0E23;
+  background-color: $bordeaux;
   color: white;
   text-align: center;
   transition: all 0.5s;
@@ -10,19 +10,19 @@
   padding: 10px;
 }
 
-.btn:hover{
+.shortcut-btn:hover{
   text-decoration: none;
   color: white;
 }
 
-.btn span {
+.shortcut-btn span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
 
-.btn span:after {
+.shortcut-btn span:after {
   content: '\00bb';
   position: absolute;
   opacity: 0;
@@ -31,15 +31,16 @@
   transition: 0.5s;
 }
 
-.btn:hover span {
+.shortcut-btn:hover span {
   padding-right: 25px;
 }
 
-.btn:hover span:after {
+.shortcut-btn:hover span:after {
   opacity: 1;
   right: 0;
 }
 
-.btn:disabled {
+.shortcut-btn:disabled {
   background-color: #6B3B46;
+  cursor: not-allowed;
 }

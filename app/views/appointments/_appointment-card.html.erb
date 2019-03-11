@@ -1,0 +1,43 @@
+<div class="appointment-card">
+  <div class="left-content">
+    <h2>This appointment is: <%= @appointment.state %></h2>
+    <div class="appointment-list">
+      <ul>
+        <li class="title-item">Service: </li>
+        <li class="title-item">Date: </li>
+        <li class="title-item">Time: </li>
+        <li class="title-item">Address: </li>
+        <li class="title-item">Price: </li>
+      </ul>
+      <ul>
+        <li><%= @appointment.service.title %></li>
+        <li><%= @appointment.datetime.to_date %></li>
+        <li><%= @appointment.datetime.to_time %></li>
+        <li>Ingogostraat 14D, Amsterdam 1012 HZ</li><li><%#= @appointment.service.price + @appointment.barber.commute_price %> <br>-service Price: <%= @appointment.service.price %> <br> -commute price: <%= @appointment.barber.commute_price %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="right-content">
+  <% if marker %>
+  <div
+  class="map"
+  style="width: 100%; flex: 1;"
+  data-markers="<%= marker.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
+  <% end %>
+
+  <% if @appointment.state == "paid" %>
+  <% elsif @appointment.state == "rejected" %>
+  <% elsif @appointment.state == "approved"  %>
+  <button class="pay-button shortcut-btn">PAY</button>
+  <%= button_tag 'PAY', class: 'btn pay-button shortcut-btn' %>
+
+  <% else %>
+  <button class="pay-button btn disabled">PAY</button>
+  <%= link_to button_tag('PAY'), '#', class: 'shortcut-btn', style: 'disabled: true'%>
+  <% end  %>
+</div>
+</div>
+
+

@@ -4,15 +4,7 @@
   <p><%= @appointment.location_address %></p>
   <p><%= @appointment.state %></p>
 
-  <% if @marker %>
-  <div
-  id="map"
-  style="width: 500px;
-  height: 500px;"
-  data-markers="<%= @marker.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  ></div>
-  <% end %>
+  <%= render 'appointment-card', appointment: @appointment, marker: @marker %>
 
   <%= render partial: "messages/index", locals: {appointment: @appointment, message: @message} %>
 </div>

@@ -1,14 +1,14 @@
 .service-card {
   overflow: hidden;
   min-height: 120px;
-  background: white;
+  background: $white-text;
   box-shadow: 0 0 15px rgba(255,255,255,0.4);
   display: flex;
   align-items: center;
   width: 100%;
   position: relative;
   border-radius: 4px;
-  border: 1px solid #6C0E23;
+  border: 1px solid $bordeaux;
   color: black;
 }
 
