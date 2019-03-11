@@ -1,14 +1,7 @@
-<div class="row top-border">
-  <div class="col-xs-offset-2 col-xs-8">
-    <div class="sent-message insert-message">
-      <%= simple_form_for([appointment, message], remote: true) do |f| %>
+<%= simple_form_for([appointment, message], remote: true) do |f| %>
 
-      <%= f.input_field :content, placeholder: "Send a message to #{appointment.barber.name ? appointment.barber.name : appointment.barber.email}"%>
-      <div class="message-details">
-        <%= f.submit "Send", class:"btn-message" %>
-      </div>
-      <% end %>
-      <%= image_tag current_user.avatar_url , class: 'avatar' %>
-    </div>
-  </div>
+<%= f.input_field :content, placeholder: "Send a message to #{appointment.barber.name ? appointment.barber.name : appointment.barber.email}"%>
+<div class="message-details">
+  <%= f.submit "Send", class:"btn-message" %>
 </div>
+<% end %>
