@@ -1,0 +1,34 @@
+<div class="appointment-container">
+  <div class="left-content">
+  <h2>This appointment is: <%= @appointment.state %></h2>
+  <div class="appointment-list">
+  <ul>
+    <li class="title-item">Service: </li>
+    <li class="title-item">Date: </li>
+    <li class="title-item">Time: </li>
+    <li class="title-item">Address: </li>
+    <li class="title-item">Price: </li>
+  </ul>
+      <ul>
+   <li><%= @appointment.service.title %></li>
+   <li><%= @appointment.datetime.to_date %></li>
+   <li><%= @appointment.datetime.to_time %></li>
+   <li>Ingogostraat 14D, Amsterdam 1012 HZ</li><li><%= @appointment.service.price + @appointment.barber.commute_price %> <br>-service Price: <%= @appointment.service.price %> <br> -commute price: <%= @appointment.barber.commute_price %></li>
+   </ul>
+  </div>
+  </div>
+  <div class="right-content">
+    <div class="appointment-map">MAP HERE
+    </div>
+    <% if @appointment.state == "paid" %>
+
+    <% elsif @appointment.state == "rejected" %>
+    <% elsif @appointment.state == "approved"  %>
+      <button class="pay-button btn">PAY</button>
+    <% else %>
+    <button class="pay-button btn disabled">PAY</button>
+    <% end  %>
+  </div>
+</div>
+
+
