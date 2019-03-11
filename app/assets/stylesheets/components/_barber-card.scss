@@ -44,10 +44,17 @@
   color: orange;
 }
 
-.card-stars {
+.barber-card-stars {
   display: flex;
   position: absolute;
   top: 0px;
   right:0px;
   margin: 10px;
+  p.no-rating {
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 0;
+    margin-top: 8px;
+    color: black;
+  }
 }
