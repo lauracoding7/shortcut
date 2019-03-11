@@ -61,7 +61,7 @@
 <% if current_page?(controller:"pages", action: "dashboard_previous") %>
 <!-- the appointments below will have to be cards -->
 <ul>
-  <% @appointments.each_with_index do |appt, i|| %>
+  <% @appointments.each_with_index do |appt, i| %>
   <li>
     Appointment with <%= appt.barber.name %><br>
     <%= appt.service.title %><br>
@@ -70,7 +70,8 @@
     Service price: € <%= appt.service_price %>
     <% if appt.commute_price %><br>Commute price: <%= appt.commute_price %><% end %><br>
     <%= appt.state %><br>
-    <a href="#">Review <%= appt.barber.name %></a>
+    <%= link_to "Review #{appt.barber.name}", new_user_review_path(appt.barber) %>
+    <!-- <a href="#">Review <%#= appt.barber.name %></a> -->
     <div
     class="map"
     style="width: 200px;

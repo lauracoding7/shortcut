@@ -1,8 +1,7 @@
-<h1>Appointments#show</h1>
-<p>Find me in app/views/appointments/show.html.erb</p>
-
 <h1><%= @appointment.service.title %></h1>
 <p><%= @appointment.datetime %></p>
+<p><%= @appointment.location_address %></p>
+<p><%= @appointment.state %></p>
 
 <% if @marker %>
   <div
@@ -13,3 +12,5 @@
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div>
 <% end %>
+
+<%= render partial: "messages/index", locals: {appointment: @appointment, message: @message} %>

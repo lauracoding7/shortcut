@@ -1,0 +1,37 @@
+.service-card {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(255,255,255,0.4);
+  display: flex;
+  align-items: center;
+  width: 600px;
+  position: relative;
+  border-radius: 4px;
+  border: 1px solid #6C0E23;
+}
+
+.service-card img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.service-card h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  color: black;
+}
+
+.service-card p {
+  font-size: 12px;
+  line-height: 1.4;
+  margin-bottom: 0;
+  margin-top: 8px;
+  color: black;
+}
+
+.service-card .service-card-infos {
+  padding: 16px;
+}

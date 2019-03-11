@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     if params[:query].present?
       sql_query = "users.name @@ :query"
@@ -6,7 +8,7 @@ class UsersController < ApplicationController
       unless barbers_matching_name.empty?
         @users = barbers_matching_name.uniq
         hosting_barbers = @users.select do |barber|
-          !barber.services.empty?
+          barber.host_service_address
         end
         @markers = hosting_barbers.map do |barber|
           {
@@ -21,8 +23,6 @@ class UsersController < ApplicationController
       # hosting_barbers_matching_name = barbers_matching_name.near(params[:query], 10, latitude: :host_service_latitude, longitude: :host_service_longitude)
       # commuting_barbers_matching_name = barbers_matching_name.near(params[:query], :commute_area_radius, latitude: :commute_area_latitude, longitude: :commute_area_longitude)
       # @users = (hosting_barbers + commuting_barbers).uniq
-
-      searched_location = Geocoder.search(params[:query]).first
 
       hosting_barbers_matching_address = User.near(params[:query], 10, latitude: :host_service_latitude, longitude: :host_service_longitude)
       commuting_barbers_matching_address = User.near(params[:query], :commute_area_radius, latitude: :commute_area_latitude, longitude: :commute_area_longitude)
@@ -47,12 +47,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.host_service_address
       @marker = {
-          lng: @user.host_service_longitude,
-          lat: @user.host_service_latitude
+        lng: @user.host_service_longitude,
+        lat: @user.host_service_latitude
       }
     end
+    @reviews = Review.where(receiver: @user)
   end
 end
-
-
-
