@@ -1,14 +1,25 @@
-.sent-message {
-  padding: 10px 10px;
-  margin-bottom: 20px;
-  background: #020A00;
-  color: white;
-  position: relative;
-  font-size: 18px;
-  padding: 10px;
-}
-
 .no-bulletpoints {
   list-style-type: none;
+}
+
+.card-message {
+  display: flex;
+  align-items: center;
+  background: #020A00;
+  color: white;
+  margin-bottom: 20px;
+  position: relative;
+  font-size: 18px;
+  border: 1px solid white;
+  box-shadow: 1px 1px 1px white;
+  padding: 15px 10px;
+  justify-content: space-between;
+}
+
+.card-message em {
+  font-size: 12px;
+  margin-left: 10px;
   padding-left: 0px;
 }
+
+
