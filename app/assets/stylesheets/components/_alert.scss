@@ -1,11 +1,14 @@
 /* -------------------------------------
  * Your CSS code for flash notices and alerts
 * ------------------------------------- */
+$alert_height: 60px; // Use this var to set height
 
 .alert {
   margin: 0;
   text-align: center;
   color: white;
+  width: 100%;
+  height: $alert_height;
 }
 .alert-info {
   background: $green;
