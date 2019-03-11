@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_11_102238) do
+ActiveRecord::Schema.define(version: 2019_03_11_103048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 2019_03_11_102238) do
     t.index ["barber_id"], name: "index_appointments_on_barber_id"
     t.index ["client_id"], name: "index_appointments_on_client_id"
     t.index ["service_id"], name: "index_appointments_on_service_id"
+  end
+
+  create_table "image_urls", force: :cascade do |t|
+    t.string "url"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_image_urls_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -100,6 +108,7 @@ ActiveRecord::Schema.define(version: 2019_03_11_102238) do
   add_foreign_key "appointments", "services"
   add_foreign_key "appointments", "users", column: "barber_id"
   add_foreign_key "appointments", "users", column: "client_id"
+  add_foreign_key "image_urls", "users"
   add_foreign_key "messages", "appointments"
   add_foreign_key "messages", "users", column: "author_id"
   add_foreign_key "messages", "users", column: "receiver_id"
