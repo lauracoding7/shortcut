@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Messages regarding this appointment</h2>
+  <h2 class="text-center">Messages regarding this appointment</h2>
     <ul id="messages" class="no-bulletpoints">
      <li>
       <% appointment.messages.each do |message| %>
@@ -8,6 +8,10 @@
      </li>
     </ul>
 
-  <p>Send a message to <%= appointment.barber.name ? appointment.barber.name : appointment.barber.email %></p>
-  <%= render 'messages/form', appointment: appointment, message: message %>
-</div>
+  <div class="message-form text-center">
+    <h2>Send a message to <%= appointment.barber.name ? appointment.barber.name : appointment.barber.email %></h2>
+    <div>
+
+    <%= render 'messages/form', appointment: appointment, message: message %>
+    </div>
+  </div>
