@@ -10,11 +10,24 @@ class User < ApplicationRecord
   has_many :appointments
   has_many :messages
   has_many :reviews
+  has_many :image_urls
 
   geocoded_by :host_service_address, latitude: :host_service_latitude, longitude: :host_service_longitude
   geocoded_by :commute_area_address, latitude: :commute_area_latitude, longitude: :commute_area_longitude
 
   after_validation :geocode_endpoints
+
+  def average_rating
+    sum_of_ratings = 0
+    Review.where(receiver: self).each do |review|
+      sum_of_ratings += review.rating
+    end
+    if Review.where(receiver: self).count > 0
+      (sum_of_ratings.to_f / Review.where(receiver: self).count).round
+    else
+      'n.a.'
+    end
+  end
 
   private
 
