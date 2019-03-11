@@ -1,8 +1,4 @@
-.hidden {
-  display: none;
-}
-
-.barber-card {
+.service-card {
   overflow: hidden;
   height: 120px;
   background: white;
@@ -15,20 +11,20 @@
   border: 1px solid #6C0E23;
 }
 
-.barber-card img {
+.service-card img {
   height: 100%;
   width: 120px;
   object-fit: cover;
 }
 
-.barber-card h2 {
+.service-card h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
   color: black;
 }
 
-.barber-card p {
+.service-card p {
   font-size: 12px;
   line-height: 1.4;
   margin-bottom: 0;
@@ -36,18 +32,6 @@
   color: black;
 }
 
-.barber-card .barber-card-infos {
+.service-card .service-card-infos {
   padding: 16px;
-}
-
-.checked {
-  color: orange;
-}
-
-.card-stars {
-  display: flex;
-  position: absolute;
-  top: 0px;
-  right:0px;
-  margin: 10px;
 }
