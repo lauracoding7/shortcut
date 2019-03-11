@@ -16,25 +16,25 @@ User.destroy_all
 puts 'Done!'
 
 puts 'Creating users'
-filo = User.create!(email: 'fitog4@hotmail.it', password: 'secret', name: 'Filo')
+filo = User.create!(email: 'fitog4@hotmail.it', password: 'secret', name: 'Filo', avatar_url: 'pictures/img1.jpg')
 
-ivan = User.create!(email: 'ivan@mail.com', password: 'secret', name: 'Ivan', host_service_address: 'Amsterdam Transvaalstraat 17')
+ivan = User.create!(email: 'ivan@mail.com', password: 'secret', name: 'Ivan', host_service_address: 'Amsterdam Transvaalstraat 17', avatar_url: 'pictures/img2.jpg')
 
-isaac = User.create!(email: 'isaac@mail.com', password: 'secret', name: 'Isaac', host_service_address: 'Rotterdam Centraal, Stationshal, 3013 AL Rotterdam, Netherlands')
+isaac = User.create!(email: 'isaac@mail.com', password: 'secret', name: 'Isaac', host_service_address: 'Rotterdam Centraal, Stationshal, 3013 AL Rotterdam, Netherlands', avatar_url: 'pictures/img3.jpg')
 
-fred = User.create!(email: 'fred@mail.com', password: 'secret', name: 'Fred', commute_area_address: 'Amsterdam mercatorplein', commute_area_radius: 10, commute_price: 5)
+fred = User.create!(email: 'fred@mail.com', password: 'secret', name: 'Fred', commute_area_address: 'Amsterdam mercatorplein', commute_area_radius: 10, commute_price: 5, avatar_url: 'pictures/img4.jpg')
 
-tom = User.create!(email: 'tom@mail.com', password: 'secret', name: 'Tom', commute_area_address: 'Amsterdam Rokin', commute_area_radius: 5, commute_price: 7, host_service_address: 'Amsterdam, Ingogostraat 14')
+tom = User.create!(email: 'tom@mail.com', password: 'secret', name: 'Tom', commute_area_address: 'Amsterdam Rokin', commute_area_radius: 5, commute_price: 7, host_service_address: 'Amsterdam, Ingogostraat 14', avatar_url: 'pictures/img5.jpg')
 
 amsterdam_addresses = ['Van Diemenstraat 408 Amsterdam, Netherlands', 'Barentszstraat 171 Amsterdam, Netherlands', 'Gedempt Hamerkanaal 201 Amsterdam, Netherlands', 'Goudsbloemstraat 91 Amsterdam, Netherlands', 'Lindengracht 90 Amsterdam, Netherlands', 'Lindengracht 75 Amsterdam, Netherlands', 'Prinsenstraat 22 Amsterdam, Netherlands', 'De Ruijterkade 128 Amsterdam, Netherlands', 'Herengracht 90 Amsterdam, Netherlands', 'Lijnbaanssteeg 5-7 Amsterdam, Netherlands', 'Westermarkt 11 Amsterdam, Netherlands', 'Singel 210 Amsterdam, Netherlands', 'Nieuwezijds Voorburgwal 200 Amsterdam, Netherlands', 'Gasthuismolensteeg 5HS Amsterdam, Netherlands', 'Oudezijds Voorburgwal 177-179 Amsterdam, Netherlands', 'Peperstraat 10 Amsterdam, Netherlands', 'Marnixstraat 192B Amsterdam, Netherlands', 'Bellamyplein 51 Amsterdam, Netherlands', 'Funenkade 7 Amsterdam, Netherlands', 'Amstel 212 Amsterdam, Netherlands', 'Utrechtsestraat 6 Amsterdam, Netherlands', 'Leidsestraat 94 Amsterdam, Netherlands', 'Herengracht 542-556 Amsterdam, Netherlands', 'Utrechtsestraat 109-111 Amsterdam, Netherlands', 'Vijzelgracht 15 Amsterdam, Netherlands', 'Museumstraat 1 Amsterdam, Netherlands', 'Frans Halsstraat 28 Amsterdam, Netherlands', 'Gerard Doustraat 98 Amsterdam, Netherlands', 'Albert Cuypstraat 58-60 Amsterdam, Netherlands', 'Tweede van der Helststraat 3 Amsterdam, Netherlands']
-10.times do
-  User.create!(email: Faker::Internet.unique.email, password: 'secret', name: Faker::Name.name, host_service_address: amsterdam_addresses[Faker::Number.unique.within(0..29)])
+10.times do |i|
+  User.create!(email: Faker::Internet.unique.email, password: 'secret', name: Faker::Name.name, host_service_address: amsterdam_addresses[Faker::Number.unique.within(0..29)], avatar_url: "pictures/img#{i + 6}.jpg")
 end
-10.times do
-  User.create!(email: Faker::Internet.unique.email, password: 'secret', name: Faker::Name.name, commute_area_address: amsterdam_addresses[Faker::Number.unique.within(0..29)], commute_area_radius: (1..10).to_a[Faker::Number.within(0..9)], commute_price: (1..10).to_a[Faker::Number.within(0..9)])
+10.times do |i|
+  User.create!(email: Faker::Internet.unique.email, password: 'secret', name: Faker::Name.name, commute_area_address: amsterdam_addresses[Faker::Number.unique.within(0..29)], commute_area_radius: (1..10).to_a[Faker::Number.within(0..9)], commute_price: (1..10).to_a[Faker::Number.within(0..9)], avatar_url: "pictures/img#{i + 16}.jpg")
 end
-5.times do
-  User.create!(email: Faker::Internet.unique.email, password: 'secret', name: Faker::Name.name, commute_area_address: amsterdam_addresses[Faker::Number.unique.within(0..29)], commute_area_radius: (1..10).to_a[Faker::Number.within(0..9)], commute_price: (1..10).to_a[Faker::Number.within(0..9)], host_service_address: amsterdam_addresses[Faker::Number.unique.within(0..29)])
+5.times do |i|
+  User.create!(email: Faker::Internet.unique.email, password: 'secret', name: Faker::Name.name, commute_area_address: amsterdam_addresses[Faker::Number.unique.within(0..29)], commute_area_radius: (1..10).to_a[Faker::Number.within(0..9)], commute_price: (1..10).to_a[Faker::Number.within(0..9)], host_service_address: amsterdam_addresses[Faker::Number.unique.within(0..29)], avatar_url: "pictures/img#{i + 26}.jpg")
 end
 puts 'Done!'
 
