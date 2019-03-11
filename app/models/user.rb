@@ -17,6 +17,18 @@ class User < ApplicationRecord
 
   after_validation :geocode_endpoints
 
+  def average_rating
+    sum_of_ratings = 0
+    Review.where(receiver: self).each do |review|
+      sum_of_ratings += review.rating
+    end
+    if Review.where(receiver: self).count > 0
+      (sum_of_ratings.to_f / Review.where(receiver: self).count).round
+    else
+      'n.a.'
+    end
+  end
+
   private
 
   def geocode_endpoints

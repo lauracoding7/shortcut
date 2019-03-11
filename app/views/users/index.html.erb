@@ -2,7 +2,9 @@
 <div class="btn btn-primary active" id="view_hosting_barbers">View barbers that provide their service at their own location next to you</div>
 
 <% @users.each do |user| %>
-<p class="barber-search-result<%= ' commuting-barber' if user.commute_area_address %><%= ' hosting-barber' if user.host_service_address %>"><%= link_to user.name, user_path(user) %></p>
+<div class="barber-search-result<%= ' commuting-barber' if user.commute_area_address %><%= ' hosting-barber' if user.host_service_address %>">
+  <%= render partial: "barber-card", locals: {user: user} %>
+</div>
 <% end %>
 
 <% unless @markers.empty? %>
