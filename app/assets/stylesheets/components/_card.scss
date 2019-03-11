@@ -1,4 +1,4 @@
-.card-product {
+.barber-card {
   overflow: hidden;
   height: 120px;
   background: white;
@@ -11,20 +11,20 @@
   border: 1px solid #6C0E23;
 }
 
-.card-product img {
+.barber-card img {
   height: 100%;
   width: 120px;
   object-fit: cover;
 }
 
-.card-product h2 {
+.barber-card h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
   color: black;
 }
 
-.card-product p {
+.barber-card p {
   font-size: 12px;
   line-height: 1.4;
   margin-bottom: 0;
@@ -32,7 +32,7 @@
   color: black;
 }
 
-.card-product .card-product-infos {
+.barber-card .barber-card-infos {
   padding: 16px;
 }
 
@@ -40,7 +40,7 @@
   color: orange;
 }
 
-.card-stars {
+.barber-card-stars {
   display: flex;
   position: absolute;
   top: 0px;
@@ -60,3 +60,45 @@
   border-radius: 4px;
   border: 1px solid #6C0E23;
 }
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
