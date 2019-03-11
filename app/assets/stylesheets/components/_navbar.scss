@@ -1,7 +1,8 @@
+$black: #051400;
 /* Main navbar */
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
+  background: $black;
   transition: all 0.3s ease;
   height: 70px;
   padding: 0px 30px;
@@ -12,7 +13,13 @@
 
 /* Logo */
 .navbar-wagon-brand img {
-  height: 50px;
+  height: 90px;
+  position: center;
+}
+
+.navbar-left{
+  width: 500px;
+  align-items: center;
 }
 
 /* User Avatar */
@@ -22,17 +29,23 @@
   border-radius: 50%;
 }
 
+
 /* Right section */
 .navbar-wagon-right {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 500px;
 }
 
 /* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
   padding: 0 20px;
+}
+
+.nav-icon-left {
+  float: left;
 }
 
 /* Navbar link */
