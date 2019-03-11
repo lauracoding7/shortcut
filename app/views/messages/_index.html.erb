@@ -1,11 +1,9 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <h2>Messages regarding this appointment</h2>
 <ul id="messages" class="no-bulletpoints">
   <% appointment.messages.each do |message| %>
   <%= render 'messages/show', message: message %>
   <% end %>
-</div>
+</ul>
 
 <p>Send a message to <%= appointment.barber.name ? appointment.barber.name : appointment.barber.email %></p>
 <%= render 'messages/form', appointment: appointment, message: message %>
