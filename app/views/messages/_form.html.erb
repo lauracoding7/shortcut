@@ -1,4 +1,7 @@
 <%= simple_form_for([appointment, message], remote: true) do |f| %>
-  <%= f.input_field :content, placeholder: 'Type your message'%>
-  <%= f.submit "Send", class: "btn btn-primary" %>
+
+<%= f.input_field :content, placeholder: "Send a message to #{appointment.barber.name ? appointment.barber.name : appointment.barber.email}"%>
+<div class="message-details">
+  <%= f.submit "Send", class:"btn-message" %>
+</div>
 <% end %>

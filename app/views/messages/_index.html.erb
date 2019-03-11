@@ -1,10 +1,17 @@
-<h2>Messages regarding this appointment</h2>
-<ul id="messages" class="no-bulletpoints">
+<p class="text-center">You can exchange messages with your <% if current_user == appointment.client %>barber
+<% else %>client<% end %> below. Make sure everything is arranged!</p>
+
+<div id="messages">
   <% appointment.messages.each do |message| %>
   <%= render 'messages/show', message: message %>
   <% end %>
-</ul>
+</div>
 
-<p>Send a message to <%= appointment.barber.name ? appointment.barber.name : appointment.barber.email %></p>
-<%= render 'messages/form', appointment: appointment, message: message %>
-
+<div class="row top-border">
+  <div class="col-xs-offset-2 col-xs-8">
+    <div class="sent-message insert-message">
+      <%= render 'messages/form', appointment: appointment, message: message %>
+      <%= image_tag current_user.avatar_url , class: 'avatar' %>
+    </div>
+  </div>
+</div>

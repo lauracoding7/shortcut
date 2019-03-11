@@ -1,0 +1,25 @@
+.received-message {
+  margin: 15px 0 0 80px;
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  background: $white-text;
+  border: 0.8px solid $white-text;
+  padding: 15px;
+  border-radius: 4px;
+  p {
+    font-size: 15px;
+    width: 100%;
+    margin: 0;
+    color: #333333;
+  }
+  .message-details {
+    opacity: 0.7;
+    margin-top: 15px;
+  }
+  img {
+    position: absolute;
+    left: -80px;
+    top: 0;
+  }
+}
