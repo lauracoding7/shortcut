@@ -12,6 +12,7 @@ Message.destroy_all
 Review.destroy_all
 Appointment.destroy_all
 Service.destroy_all
+ImageUrl.destroy_all
 User.destroy_all
 puts 'Done!'
 
@@ -35,6 +36,15 @@ end
 end
 5.times do |i|
   User.create!(email: Faker::Internet.unique.email, password: 'secret', name: Faker::Name.name, commute_area_address: amsterdam_addresses[Faker::Number.unique.within(0..29)], commute_area_radius: (1..10).to_a[Faker::Number.within(0..9)], commute_price: (1..10).to_a[Faker::Number.within(0..9)], host_service_address: amsterdam_addresses[Faker::Number.unique.within(0..29)], avatar_url: "pictures/img#{i + 26}.jpg")
+end
+puts 'Done!'
+
+puts 'Creating image urls'
+# this way there is the possibility that a barber has the same image multiple times, but it is unlikely
+User.all.each do |user|
+  10.times do |i|
+    ImageUrl.create!(user: user, url: "pictures/haircut#{Faker::Number.within(1..51) + i}.jpg")
+  end
 end
 puts 'Done!'
 
