@@ -1,9 +1,13 @@
 <div class="row">
   <div class="col-xs-offset-2 col-xs-8">
+    <% if message.author == current_user %>
     <div class="sent-message">
+    <% else %>
+    <div class="received-message">
+    <% end %>
       <p><%= message.content %></p>
-      <p class="message-details"><em>written by <%= message.author.name ? message.author.name : message.author.email %>, <%= Time.now.strftime("%B %e at %I:%M %p")%></em></p>
-      <!-- here it is not the right time -->
+      <p class="message-details"><em>from <%= message.author.name ? message.author.name : message.author.email %>, <%= message.created_at.strftime("%B %e at %I:%M %p")%></em></p>
+      <%= image_tag message.author.avatar_url, class: 'avatar' %>
     </div>
   </div>
 </div>
