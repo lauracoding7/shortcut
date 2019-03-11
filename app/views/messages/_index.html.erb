@@ -1,5 +1,5 @@
 <h2>Messages regarding this appointment</h2>
-<ul id="messages">
+<ul id="messages" class="no-bulletpoints">
   <% appointment.messages.each do |message| %>
   <%= render 'messages/show', message: message %>
   <% end %>
@@ -7,3 +7,4 @@
 
 <p>Send a message to <%= appointment.barber.name ? appointment.barber.name : appointment.barber.email %></p>
 <%= render 'messages/form', appointment: appointment, message: message %>
+
