@@ -1,17 +1,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class='container'>
-  <h2>Messages regarding this appointment</h2>
-  <ul class="no-bulletpoints">
-    <% appointment.messages.each do |message| %>
-    <li class="sent-message"><i class="far fa-comment"></i> <strong><%= message.content %></strong> -- <em>written by <%= message.author.name ? message.author.name : message.author.email %></em></li>
-    <% end %>
-  </ul>
-
-  <p>Send a message to <%= appointment.barber.name ? appointment.barber.name : appointment.barber.email %></p>
-  <%= simple_form_for [appointment, message] do |f| %>
-    <%= f.input_field :content, placeholder: 'Type your message'%>
-    <%= f.submit "Send", class: "btn btn-primary" %>
+<h2>Messages regarding this appointment</h2>
+<ul id="messages" class="no-bulletpoints">
+  <% appointment.messages.each do |message| %>
+  <%= render 'messages/show', message: message %>
   <% end %>
 </div>
+
+<p>Send a message to <%= appointment.barber.name ? appointment.barber.name : appointment.barber.email %></p>
+<%= render 'messages/form', appointment: appointment, message: message %>
 
