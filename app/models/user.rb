@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :appointments
   has_many :messages
   has_many :reviews
+  has_many :image_urls
 
   geocoded_by :host_service_address, latitude: :host_service_latitude, longitude: :host_service_longitude
   geocoded_by :commute_area_address, latitude: :commute_area_latitude, longitude: :commute_area_longitude
