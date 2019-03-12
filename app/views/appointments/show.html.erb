@@ -1,10 +1,4 @@
 <div class="container">
-  <h1><%= @appointment.service.title %></h1>
-  <p><%= @appointment.datetime %></p>
-  <p><%= @appointment.location_address %></p>
-  <p><%= @appointment.state %></p>
-
   <%= render 'appointment-card', appointment: @appointment, marker: @marker %>
-
   <%= render partial: "messages/index", locals: {appointment: @appointment, message: @message} %>
 </div>

@@ -1,5 +1,6 @@
-<p class="text-center">You can exchange messages with your <% if current_user == appointment.client %>barber
-<% else %>client<% end %> below. Make sure everything is arranged!</p>
+<div class="message-section-header">
+  You can exchange messages with your <% if current_user == appointment.client %>barber<% else %>client<% end %> below. Make sure everything is arranged!
+</div>
 
 <div id="messages">
   <% appointment.messages.each do |message| %>
