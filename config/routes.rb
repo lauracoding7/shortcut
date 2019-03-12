@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'dashboard_previous', to: 'pages#dashboard_previous', as: 'dashboard_previous'
   devise_for :users
   resources :users, only: [:index, :show] do
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: [:index, :new, :create]
     get 'reviews/new_client_rev', to: 'reviews#new_client_review', as: 'new_client_review' # to be used if we get to create the barber dashboard for the button to rate clients
     resources :services, only: [] do
       resources :appointments, only: [:new, :create]

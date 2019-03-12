@@ -1,6 +1,15 @@
 <h1><%= @user.name %></h1>
 
-<!-- these below will have to be service cards -->
+<ul class="list-inline tabs-underlined">
+  <li>
+    <a href="<%= user_path(@user) %>" class="tab-underlined<% if controller_name == 'users' %> active<% end %>">Profile</a>
+  </li>
+  <li>
+    <a href="<%= user_reviews_path(@user) %>" class="tab-underlined<% if controller_name == 'reviews' %> active<% end %>">All reviews</a>
+  </li>
+</ul>
+
+<% if controller_name == 'users' %>
 <p><%= @user.name %> offers:</p>
 
 <% @user.services.each do |service| %>
@@ -17,10 +26,17 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
 <% end %>
 
+<!-- these should end up in a caroussel which shows one review at a time -->
 <% unless @reviews.empty? %>
 <div class="review-cards">
   <% @reviews.each do |review| %>
   <%= render partial: "reviews/review-card", locals: {review: review} %>
   <% end %>
 </div>
+<% end %>
+<% end %>
+
+
+<% if controller_name == 'reviews' %>
+<%= render partial: "reviews/index" %>
 <% end %>

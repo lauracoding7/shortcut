@@ -1,0 +1,7 @@
+<% if @reviews.empty? %>
+No reviews were made yet for this user.
+<% else %>
+<% @reviews.each do |review| %>
+<%= render partial: "review-card", locals: {review: review} %>
+<% end %>
+<% end %>

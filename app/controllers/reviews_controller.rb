@@ -1,6 +1,11 @@
 class ReviewsController < ApplicationController
   before_action :set_user
 
+  def index
+    @reviews = Review.where(receiver: @user)
+    render 'users/show'
+  end
+
   def new
     @review = Review.new(barber_review: true)
     @review.receiver = @user
