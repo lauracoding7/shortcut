@@ -17,18 +17,6 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
 <% end %>
 
-
-<ul>
-  <% unless @reviews.empty? %>
-  <% @reviews.each do |review| %>
-  <li>
-    <%= review.author.name %> - Rating: <%= review.rating %>/5<br>
-    <%= review.content %>
-  </li>
-  <% end %>
-  <% end %>
-</ul>
-
 <% unless @reviews.empty? %>
 <div class="review-cards">
   <% @reviews.each do |review| %>
