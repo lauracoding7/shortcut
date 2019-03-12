@@ -1,0 +1,111 @@
+<div class="appointment-card">
+  <div class="left-content">
+    <div class="title-and-icon">
+      <div class="state-icon">
+        <img src="<%= image_url("state-icon-#{appointment.state}.png") %>">
+      </div>
+      <div class="card-title">
+        <% if appointment.state != 'missed' %>
+        <h2>This appointment is: <strong><%= appointment.state %></strong>.</h2>
+        <% else %>
+        <h2>Oh no, you <strong>missed</strong> this appointment!</h2>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="appointment-info">
+      <div class="info-row">
+        <div class="info-label">
+          Service:
+        </div>
+        <div class="info">
+          <%= appointment.service.title %>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">
+          Barber:
+        </div>
+        <div class="info">
+          <%= appointment.barber.name %>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">
+          Date & time:
+        </div>
+        <div class="info">
+          <%= appointment.datetime.strftime("%B %e at %I:%M %p") %>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">
+          Address:
+        </div>
+        <div class="info">
+          <%= appointment.location_address %>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">
+          Price:
+        </div>
+        <div class="info">
+          <% if appointment.location_address == appointment.barber.host_service_address %>
+          € <%= appointment.service.price %>.00
+          <% else %>
+          <div class="price-sum">
+            Service price: € <%= appointment.service.price %>.00<br>
+            Commute price: € <%= appointment.barber.commute_price %>.00
+          </div>
+          <div class="price-total">
+            Total: € <%= appointment.service.price + appointment.barber.commute_price %>.00
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="right-content">
+    <% if marker %>
+    <div
+    class="map"
+    style="width: 100%; flex: 1;"
+    data-markers="<%= marker.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
+    <% end %>
+
+    <!-- All of this will then be conditional on this being an upcoming appointment -->
+    <% if appointment.datetime >= Time.now %>
+      <% if appointment.state == "paid" %>
+      <% elsif appointment.state == "rejected" %>
+        <div class="pay-button-container">
+          <%= link_to 'PAY', '#', class: 'shortcut-btn disabled' %>
+        </div>
+      <% elsif appointment.state == "approved"  %>
+        <div class="pay-button-container">
+          <%= link_to 'PAY', pay_appointment_path(appointment), class: 'shortcut-btn' %>
+        </div>
+      <% elsif appointment.state == "pending"  %>
+        <div class="pay-button-container">
+          <%= link_to 'PAY', '#', class: 'shortcut-btn disabled' %>
+        </div>
+      <% end %>
+    <% else %>
+      <% if appointment.state == "paid" %>
+        <div class="pay-button-container">
+          <%= link_to "Review #{appointment.barber.name}", new_user_review_path(appointment.barber), class: 'shortcut-btn' %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
