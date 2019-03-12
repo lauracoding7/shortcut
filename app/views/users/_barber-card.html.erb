@@ -21,17 +21,21 @@
 
     <div class="barber-card-infos">
       <h2><%= link_to user.name, user_path(user) %></h2>
+
       <div class="services-offered-info">
-        Services offered: <%= user.services.map { |service| service.title }.join(', ') %>.
+        Offers: <%= user.services.map { |service| service.title }.join(', ') %>.
       </div>
 
       <div class="location-info">
         <% if user.commute_area_address && user.host_service_address %>
-        Receives customers at <%= user.host_service_address %>. <br> Is willing to commute to your location for € <%= user.commute_price %>.
+        <ul class="location-list">
+          <li>Receives customers at <%= user.host_service_address %>.</li>
+          <li>Commute to your location for € <%= user.commute_price %>.</li>
+        </ul>
         <% elsif user.host_service_address %>
         Receives customers at <%= user.host_service_address %>.
         <% else %>
-        Is willing to commute to your location for € <%= user.commute_price %>.
+        Commute to your location for € <%= user.commute_price %>.
         <% end %>
       </div>
     </div>
