@@ -1,46 +1,83 @@
+.barbers-index {
+  display: flex;
+}
+
+.barbers-left {
+  flex: 1;
+}
+
+.barbers-right {
+  width: 600px;
+  position: relative;
+  #map{
+    height: 100vh;
+    position: sticky;
+    top: 0px;
+    width: 600px;
+  }
+}
+
+.barber-buttons {
+  display: flex;
+  justify-content: center;
+}
+
 .hidden {
   display: none;
 }
 
 .barber-card {
-  overflow: hidden;
-  height: 120px;
-  background: white;
-  box-shadow: 0 0 15px rgba(255,255,255,0.4);
-  display: flex;
-  align-items: center;
-  width: 500px;
   position: relative;
-  border-radius: 4px;
-  border: 1px solid;
-  width: 100%;
-  margin: 20px;
-  margin-left: 0px;
+  display: flex;
+  height: 130px;
+  margin: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  background: white;
+  overflow: hidden;
+  background: white;
+  border-radius: 3px;
+  border: 0.5px solid;
 }
 
 .barber-card img {
+  position: absolute;
   height: 100%;
-  width: 120px;
+  width: 130px;
   object-fit: cover;
 }
 
 .barber-card h2 {
-  font-size: 16px;
+  position: absolute;
+  font-size: 18px;
+  top: 0px;
+  left: 140px;
   font-weight: bold;
-  margin: 0;
-  color: black;
+}
+.barber-name {
+  height: 50px;
 }
 
 .barber-card p {
-  font-size: 12px;
-  line-height: 1.4;
-  margin-bottom: 0;
-  margin-top: 8px;
+  position: absolute;
+  bottom: -5px;
+  left: 140px;
+  font-size: 10px;
+  color: black;
+  padding-right: 5px;
+}
+
+#service {
+  position: absolute;
+  top: 45px;
+  left: 140px;
+  font-size: 10px;
   color: black;
 }
 
 .barber-card .barber-card-infos {
-  padding: 16px;
+
 }
 
 .checked {
@@ -50,9 +87,12 @@
 .barber-card-stars {
   display: flex;
   position: absolute;
+  font-size: 12px;
+  letter-spacing: 5px;
   top: 0px;
   right:0px;
-  margin: 10px;
+  margin: 5px;
+
   p.no-rating {
     font-size: 12px;
     line-height: 1.4;

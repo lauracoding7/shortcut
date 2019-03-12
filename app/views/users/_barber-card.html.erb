@@ -2,11 +2,8 @@
   <!-- the image below will be the barber avatar -->
   <img src="<%= image_url(user.avatar_url) %>">
   <div class="barber-card-infos">
-    <h2><%= link_to user.name, user_path(user) %></h2>
-    <p>Services offered:
-      <% user.services.each do |service| %>
-      <%= service.title %>
-      <% end %>
+    <h2 class="barber-name"><%= link_to user.name, user_path(user) %></h2>
+    <p id='service'><strong>Services offered: </strong><%= user.services.map { |service| service.title }.join(", ") %>
     </p>
     <% if user.commute_area_address && user.host_service_address %>
     <p>Receives customers at <%= user.host_service_address %> and is willing to commute to your location for € <%= user.commute_price %>.</p>

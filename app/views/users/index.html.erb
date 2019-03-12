@@ -1,24 +1,30 @@
+  <div class="barbers-index">
+
+  <div class="barbers-left">
   <div class="row">
+    <div class="barber-buttons">
     <div class="btn btn-danger active" id="view_commuting_barbers">View barbers that are willing to commute to your location</div>
-    <div class="btn btn-primary active" id="view_hosting_barbers">View barbers that provide their service at their own location next to you</div>
+     <div class="col-xs-6 btn btn-primary active" id="view_hosting_barbers">View barbers that provide their service at their own location next to you</div>
+    </div>
   </div>
-
-  <% @users.each do |user| %>
-  <div class="col-xs-6 barber-search-result<%= ' commuting-barber' if user.commute_area_address %><%= ' hosting-barber' if user.host_service_address %>">
-    <%= render partial: "barber-card", locals: {user: user} %>
-  </div>
-
+<div class="row">
+    <% @users.each do |user| %>
+    <div class="col-xs-6 barber-search-result<%= ' commuting-barber' if user.commute_area_address %><%= ' hosting-barber' if user.host_service_address %>">
+      <%= render partial: "barber-card", locals: {user: user} %>
+    </div>
   <% end %>
-
+  </div>
+  </div>
+  <div class="barbers-right">
   <% if @markers %>
   <% unless @markers.empty? %>
   <div
   id="map"
-  style="width: 500px;
-  height: 500px;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div>
   <% end %>
   <% end %>
+  </div>
+  </div>
 
