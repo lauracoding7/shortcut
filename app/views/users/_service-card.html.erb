@@ -7,7 +7,7 @@
   <img src="<%= image_url('shortcut_logo_black.png') %>">
   <% end %>
   <div class="service-card-infos">
-    <h2><%= service.title %></h2>
+    <h2><%= link_to service.title, new_user_service_appointment_path(user, service) %></h2>
     <p><%= service.description.capitalize %></p>
   </div>
 
