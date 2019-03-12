@@ -17,6 +17,7 @@ h1 {
   color : $white-text;
   font-family: Open Sans;
   font-weight: 100;
+  font-size: 100px;
 }
 
 h2 {
@@ -33,7 +34,7 @@ p {
 }
 
 a {
-  color: $bordeaux;
+  color: $white-text;
 }
 
 a:hover {
@@ -49,6 +50,7 @@ a:hover {
   opacity: 0.3;
   text-align: center;
   margin: 60px;
+  font-size: 22px;
 }
 
 #icons {
