@@ -4,7 +4,6 @@
 
 .barber-card {
   overflow: hidden;
-  min-height: 120px;
   background: $white-text;
   box-shadow: 0 0 15px rgba(255,255,255,0.4);
   display: flex;
@@ -15,38 +14,44 @@
   border: 1px solid $bordeaux;
   color: $black;
   font-size: $card-text-font-size;
-  img {
-    height: 100%;
+  margin: 15px 0 15px 0;
+  .img-container {
+    height: 150px;
     width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      max-height: 150px;
+      max-width: 120px;
+    }
   }
-  h2 {
-    font-size: $card-header-font-size;
-    margin: 0;
-    color: $black;
-  }
-}
-
-
-
-.barber-card .barber-card-infos {
-  padding: 16px;
-}
-
-.checked {
-  color: orange;
-}
-
-.barber-card-stars {
-  display: flex;
-  position: absolute;
-  top: 0px;
-  right:0px;
-  margin: 10px;
-  p.no-rating {
-    font-size: 12px;
-    line-height: 1.4;
-    margin-bottom: 0;
-    margin-top: 8px;
-    color: black;
+  .card-not-image {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    min-height: 150px;
+    .barber-card-stars {
+      height: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      .checked {
+        color: orange;
+      }
+    }
+    .barber-card-infos {
+      margin-left: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      h2 {
+        font-size: $card-header-font-size;
+        margin: 0;
+        color: $black;
+      }
+    }
   }
 }

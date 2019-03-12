@@ -1,31 +1,41 @@
 <div class="barber-card">
   <!-- the image below will be the barber avatar -->
-  <img src="<%= image_url(user.avatar_url) %>">
-  <div class="barber-card-infos">
-    <h2><%= link_to user.name, user_path(user) %></h2>
-    Services offered:
-      <% user.services.each do |service| %>
-      <%= service.title %>
-      <% end %>
-
-    <% if user.commute_area_address && user.host_service_address %>
-    Receives customers at <%= user.host_service_address %> and is willing to commute to your location for € <%= user.commute_price %>.
-    <% elsif user.host_service_address %>
-    Receives customers at <%= user.host_service_address %>.
-    <% else %>
-    Is willing to commute to your location for € <%= user.commute_price %>.
-    <% end %>
+  <div class="img-container">
+    <img src="<%= image_url(user.avatar_url) %>">
   </div>
 
-  <div class="barber-card-stars">
-    <% if user.average_rating == 'n.a.' %>
-    <p class="no-rating">No ratings available for this barber.</p>
-    <% else %>
-    <span class="fa fa-star<% if user.average_rating >= 1 %> checked<% end %>"></span>
-    <span class="fa fa-star<% if user.average_rating >= 2 %> checked<% end %>"></span>
-    <span class="fa fa-star<% if user.average_rating >= 3 %> checked<% end %>"></span>
-    <span class="fa fa-star<% if user.average_rating >= 4 %> checked<% end %>"></span>
-    <span class="fa fa-star<% if user.average_rating >= 5 %> checked<% end %>"></span>
-    <% end %>
+  <div class="card-not-image">
+    <div class="barber-card-stars">
+      <div >
+        <% if user.average_rating == 'n.a.' %>
+        <em>No ratings available for this barber.</em>
+        <% else %>
+        <span class="fa fa-star<% if user.average_rating >= 1 %> checked<% end %>"></span>
+        <span class="fa fa-star<% if user.average_rating >= 2 %> checked<% end %>"></span>
+        <span class="fa fa-star<% if user.average_rating >= 3 %> checked<% end %>"></span>
+        <span class="fa fa-star<% if user.average_rating >= 4 %> checked<% end %>"></span>
+        <span class="fa fa-star<% if user.average_rating >= 5 %> checked<% end %>"></span>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="barber-card-infos">
+      <h2><%= link_to user.name, user_path(user) %></h2>
+      <div class="services-offered-info">
+        Services offered: <%= user.services.map { |service| service.title }.join(', ') %>.
+      </div>
+
+      <div class="location-info">
+        <% if user.commute_area_address && user.host_service_address %>
+        Receives customers at <%= user.host_service_address %>. <br> Is willing to commute to your location for € <%= user.commute_price %>.
+        <% elsif user.host_service_address %>
+        Receives customers at <%= user.host_service_address %>.
+        <% else %>
+        Is willing to commute to your location for € <%= user.commute_price %>.
+        <% end %>
+      </div>
+    </div>
+
   </div>
+
 </div>
