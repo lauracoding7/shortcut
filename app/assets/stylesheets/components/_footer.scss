@@ -1,6 +1,62 @@
 $footer_height: 70px; // Use this var to set height
+$black: #020A00;
 
 .footer {
-width: 100%;
-height: $footer_height;
+  background: $black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 50px;
+  color: rgba(0,0,0,0.3);
+  width: 100%;
+  height: $footer_height;
+  // position: relative;
+  // bottom: -100px;
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+.footer-links a {
+  color: white;
+  opacity: 1;
+  text-decoration: none;
+  font-size: 24px;
+  font-family: Open Sans;
+  // padding: 0px 0px;
+}
+.footer-links a:hover {
+  opacity: 1;
+  color: #6C0E23;
+}
+.footer .fa-heart {
+  color: white;
+}
+
+.footer .fa-coffee {
+  color: white;
+}
+.footer .fa-heart:hover {
+  color: #6C0E23;
+}
+
+.footer .fa-coffee:hover {
+  color: #6C0E23;
+}
+
+.global-wrapper{
+  height: 100vh;
+}
+
+.footer {
+  color: white;
+}
+
+.footer-copyright{
+  height: 70px;
+}
+
+i {
+  margin-right: 10px;
+  margin-left: 10px;
 }
