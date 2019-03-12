@@ -15,30 +15,31 @@ body {
 
 h1 {
   color : $white-text;
-  font-family: Open Sans;
+  font-family: Avenir;
   font-weight: 100;
   font-size: 100px;
 }
 
 h2 {
   color : $white-text;
-  font-family: Open Sans;
+  font-family: Avenir;
   font-weight: 100;
 
 }
 p {
   color : $white-text;
-  font-family: Open Sans;
+  font-family: Avenir;
   font-weight: 100;
-
 }
 
 a {
   color: $white-text;
+  font-family: Avenir;
 }
 
 a:hover {
   text-decoration: none;
+  color: $white-text;
 }
 
 .centered {

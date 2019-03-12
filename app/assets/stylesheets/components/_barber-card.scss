@@ -16,6 +16,12 @@
   font-size: calc(#{$card-text-font-size} - 1px);
   margin: 15px 0 15px 0;
   height: 245px;
+  a {
+    color: $black;
+    &:hover {
+      color: $black;
+    }
+  }
   .img-container {
     height: 150px;
     width: 120px;
@@ -52,7 +58,6 @@
       h2 {
         font-size: calc(#{$card-header-font-size} - 2px);
         margin: 0;
-        color: $black;
       }
       .services-offered-info {
         margin-top: 10px;

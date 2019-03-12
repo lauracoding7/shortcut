@@ -10,6 +10,12 @@
   padding: 15px;
   font-size: $card-text-font-size;
   margin: 15px 0 15px 0;
+  a {
+    color: $black;
+    &:hover {
+      color: $black;
+    }
+  }
   .left-content {
     width: 65%;
     padding: 0;
