@@ -1,16 +1,18 @@
-<h1><%= @appointment.service.title %></h1>
-<p><%= @appointment.datetime %></p>
-<p><%= @appointment.location_address %></p>
-<p><%= @appointment.state %></p>
+<div class="container">
+  <h1><%= @appointment.service.title %></h1>
+  <p><%= @appointment.datetime %></p>
+  <p><%= @appointment.location_address %></p>
+  <p><%= @appointment.state %></p>
 
-<% if @marker %>
+  <% if @marker %>
   <div
-    id="map"
-    style="width: 500px;
-    height: 500px;"
-    data-markers="<%= @marker.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  id="map"
+  style="width: 500px;
+  height: 500px;"
+  data-markers="<%= @marker.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div>
-<% end %>
+  <% end %>
 
-<%= render partial: "messages/index", locals: {appointment: @appointment, message: @message} %>
+  <%= render partial: "messages/index", locals: {appointment: @appointment, message: @message} %>
+</div>
