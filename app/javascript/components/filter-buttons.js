@@ -23,7 +23,7 @@ const initFilterButtons = () => {
         }
       })
       event.currentTarget.classList.toggle('active');
-      document.querySelector('#map').classList.toggle('hidden');
+      document.querySelector('.barbers-right').classList.toggle('hidden');
     })
   }
 }

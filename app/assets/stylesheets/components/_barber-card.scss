@@ -67,7 +67,7 @@
   }
 }
 
-$map-width: 600px;
+$map-width: 500px;
 
 .barbers-index {
   display: flex;
@@ -83,6 +83,6 @@ $map-width: 600px;
     height: 100vh;
     position: sticky;
     top: 0px;
-    width: 600px;
+    width: $map-width;
   }
 }
