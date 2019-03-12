@@ -97,7 +97,7 @@
       }
     }
     .appointment-info {
-      padding-top: 15px;
+      padding: 15px 15px 0 0;
       flex: 1;
       display: flex;
       flex-wrap: wrap;
@@ -111,6 +111,9 @@
         }
         .info {
           flex: 1;
+          .price-sum {
+            border-bottom: 1px solid $black;
+          }
         }
       }
     }

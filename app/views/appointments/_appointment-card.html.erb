@@ -46,8 +46,8 @@
           € <%= appointment.service.price %>.00
           <% else %>
           <div class="price-sum">
-            Service price: € <%= appointment.service.price %>.00
-            Commute price: € <%= appointment.service.price %>.00
+            Service price: € <%= appointment.service.price %>.00<br>
+            Commute price: € <%= appointment.barber.commute_price %>.00
           </div>
           <div class="price-total">
             Total: € <%= appointment.service.price + appointment.barber.commute_price %>.00
