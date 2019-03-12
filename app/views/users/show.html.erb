@@ -8,23 +8,19 @@
 <% end %>
 
 <% if @marker %>
-  <div
-    id="map"
-    style="width: 500px;
-    height: 500px;"
-    data-markers="<%= @marker.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  ></div>
+<div
+id="map"
+style="width: 500px;
+height: 500px;"
+data-markers="<%= @marker.to_json %>"
+data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>
 <% end %>
 
-
-<ul>
-  <% unless @reviews.empty? %>
+<% unless @reviews.empty? %>
+<div class="review-cards">
   <% @reviews.each do |review| %>
-  <li>
-    <%= review.author.name %> - Rating: <%= review.rating %>/5<br>
-    <%= review.content %>
-  </li>
+  <%= render partial: "reviews/review-card", locals: {review: review} %>
   <% end %>
-  <% end %>
-</ul>
+</div>
+<% end %>
