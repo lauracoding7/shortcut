@@ -2,6 +2,7 @@ require 'time'
 
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
+  before_action :update_missed_appointments
 
   def home
   end
@@ -36,5 +37,13 @@ class PagesController < ApplicationController
       }
     end
     render :dashboard
+  end
+
+  private
+
+  def update_missed_appointments
+    Appointment.where(client: current_user).where.not(state: 'paid').select { |appointment| appointment.datetime < Time.now }.each do |appt|
+      appt.update(state: 'missed')
+    end
   end
 end

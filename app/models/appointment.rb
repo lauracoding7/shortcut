@@ -4,7 +4,7 @@ class Appointment < ApplicationRecord
   belongs_to :client, class_name: "User"
   has_many :messages
   validates :datetime, :location_address, presence: true
-  validates :state, inclusion: { in: %w(pending approved rejected paid), message: "%{value} is not a valid state" }
+  validates :state, inclusion: { in: %w(pending approved rejected paid missed), message: "%{value} is not a valid state" }
   validate :barber_cannot_be_same_as_client
 
   geocoded_by :location_address, latitude: :location_latitude, longitude: :location_longitude
