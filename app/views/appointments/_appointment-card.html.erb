@@ -79,20 +79,32 @@
     <% end %>
 
     <!-- All of this will then be conditional on this being an upcoming appointment -->
-    <% if appointment.state == "paid" %>
-    <% elsif appointment.state == "rejected" %>
-    <div class="pay-button-container">
-      <%= link_to 'PAY', '#', class: 'shortcut-btn disabled' %>
-    </div>
-    <% elsif appointment.state == "approved"  %>
-    <div class="pay-button-container">
-      <%= link_to 'PAY', pay_appointment_path(appointment), class: 'shortcut-btn' %>
-    </div>
+    <% if appointment.datetime >= Time.now %>
+      <% if appointment.state == "paid" %>
+      <% elsif appointment.state == "rejected" %>
+        <div class="pay-button-container">
+          <%= link_to 'PAY', '#', class: 'shortcut-btn disabled' %>
+        </div>
+      <% elsif appointment.state == "approved"  %>
+        <div class="pay-button-container">
+          <%= link_to 'PAY', pay_appointment_path(appointment), class: 'shortcut-btn' %>
+        </div>
+      <% else %>
+        <div class="pay-button-container">
+          <%= link_to 'PAY', '#', class: 'shortcut-btn disabled' %>
+        </div>
+      <% end %>
     <% else %>
-    <div class="pay-button-container">
-      <%= link_to 'PAY', '#', class: 'shortcut-btn disabled' %>
-    </div>
-    <% end  %>
+      <% if appointment.state == "paid" %>
+        <div class="pay-button-container">
+          <%= link_to "Review #{appointment.barber.name}", new_user_review_path(appointment.barber), class: 'shortcut-btn' %>
+        </div>
+      <% else %>
+        <div class="pay-button-container">
+          <%= link_to 'You missed this appointment!', '#', class: 'shortcut-btn disabled' %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
 
