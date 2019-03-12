@@ -1,9 +1,4 @@
-<div class="navbar-wagon">
-  <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png", height: 50 %>
-  <% end %>
-
+<div>
   <!-- I added a temporary sign out button because I needed it -->
   <%= link_to "Sign out", destroy_user_session_path,
       method: :delete,
