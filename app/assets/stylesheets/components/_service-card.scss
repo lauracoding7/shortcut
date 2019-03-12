@@ -6,38 +6,27 @@
   display: flex;
   align-items: center;
   width: 100%;
-  position: relative;
   border-radius: 4px;
   border: 1px solid $bordeaux;
-  color: black;
-}
-
-.service-card img {
-  height: 100%;
-  width: 120px;
-  object-fit: cover;
-}
-
-.service-card h2 {
-  font-size: $card-header-font-size;
-  font-weight: bold;
-  margin: 0;
-  color: black;
-}
-
-.service-card p {
-  font-size: 12px;
-  line-height: 1.4;
-  margin-bottom: 0;
-  margin-top: 8px;
-  color: black;
-}
-
-.service-card .service-card-infos {
-  padding: 16px;
-  flex: 1;
-}
-
-.service-card .service-quant-info {
-  width: 130px;
+  color: $black;
+  font-size: $card-text-font-size;
+  img {
+    height: 100%;
+    width: 120px;
+  }
+  h2 {
+    color: $black;
+    font-size: $card-header-font-size;
+    margin: 0;
+  }
+  .service-card-infos {
+    padding-left: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .service-quant-info {
+    width: 130px;
+  }
 }
