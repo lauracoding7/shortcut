@@ -1,22 +1,18 @@
 <div class="service-card">
   <div class="service-card-no-form">
     <% if /[hH]aircut/.match?(service.title) %>
-    <img src="<%= image_url('man-haircut-512.png') %>">
+    <img src="<%= image_url('haircut_pink.png') %>">
     <% elsif /[bB]eard/.match?(service.title) %>
-    <img src="<%= image_url('barber-hairdressing-hairstylist-009-512.png') %>">
+    <img src="<%= image_url('beard_pink.png') %>">
     <% else %>
     <img src="<%= image_url('shortcut_logo_black.png') %>">
     <% end %>
     <div class="service-card-infos">
       <h2><%= service.title %></h2>
-      <%= service.description.capitalize %>
+      <%= service.duration %> mins
     </div>
 
     <div class="service-quant-info">
-      <div class="service-duration">
-        <%= service.duration %> mins
-      </div>
-
       <div class="service-price">
         <strong>€ <%= service.price %>.00</strong>
       </div>
