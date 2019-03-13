@@ -1,42 +1,61 @@
-<h1><%= @user.name %></h1>
+<div class="container">
+  <h1><%= @user.name %></h1>
 
-<ul class="list-inline tabs-underlined">
-  <li>
-    <a href="<%= user_path(@user) %>" class="tab-underlined<% if controller_name == 'users' %> active<% end %>">Profile</a>
-  </li>
-  <li>
-    <a href="<%= user_reviews_path(@user) %>" class="tab-underlined<% if controller_name == 'reviews' %> active<% end %>">All reviews</a>
-  </li>
-</ul>
+  <ul class="list-inline tabs-underlined">
+    <li>
+      <a href="<%= user_path(@user) %>" class="tab-underlined<% if controller_name == 'users' %> active<% end %>">Profile</a>
+    </li>
+    <li>
+      <a href="<%= user_reviews_path(@user) %>" class="tab-underlined<% if controller_name == 'reviews' %> active<% end %>">All reviews</a>
+    </li>
+  </ul>
 
-<% if controller_name == 'users' %>
-<p><%= @user.name %> offers:</p>
+  <% if controller_name == 'users' %>
+  <p><%= @user.name %> offers:</p>
 
-<% @user.services.each do |service| %>
-<%= render partial: "service-card", locals: {user: @user, service: service} %>
-<% end %>
+  <% @user.services.each do |service| %>
+  <%= render partial: "service-card", locals: {user: @user, service: service} %>
+  <% end %>
 
-<% if @marker %>
-<div
-id="map"
-style="width: 500px;
-height: 500px;"
-data-markers="<%= @marker.to_json %>"
-data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
-<% end %>
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner" role="listbox">
+      <% @user.image_urls.each_with_index do |url_obj, i| %>
+      <div class="item<% if i == 0 %> active<% end %>" style="background-image: url('<%= image_url(url_obj.url) %>');">
+      </div>
+      <% end %>
+    </div>
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 
-<!-- these should end up in a caroussel which shows one review at a time -->
-<% unless @reviews.empty? %>
-<div class="review-cards">
-  <% @reviews.each do |review| %>
-  <%= render partial: "reviews/review-card", locals: {review: review} %>
+  <% if @marker %>
+  <div
+  id="map"
+  style="width: 500px;
+  height: 500px;"
+  data-markers="<%= @marker.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
+  <% end %>
+
+  <!-- these should end up in a caroussel which shows one review at a time -->
+  <% unless @reviews.empty? %>
+  <div class="review-cards">
+    <% @reviews.each do |review| %>
+    <%= render partial: "reviews/review-card", locals: {review: review} %>
+    <% end %>
+  </div>
+  <% end %>
+  <% end %>
+
+
+  <% if controller_name == 'reviews' %>
+  <%= render partial: "reviews/index" %>
   <% end %>
 </div>
-<% end %>
-<% end %>
-
-
-<% if controller_name == 'reviews' %>
-<%= render partial: "reviews/index" %>
-<% end %>
