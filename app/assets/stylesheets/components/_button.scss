@@ -22,31 +22,3 @@
   background-color: $transparent-pink;
   cursor: not-allowed;
 }
-
-// what is this stuff?
-// .shortcut-btn span {
-//   cursor: pointer;
-//   display: inline-block;
-//   position: relative;
-//   transition: 0.5s;
-// }
-
-// .shortcut-btn span:after {
-//   content: '\00bb';
-//   position: absolute;
-//   opacity: 0;
-//   top: 0;
-//   right: -20px;
-//   transition: 0.5s;
-// }
-
-// .shortcut-btn:hover span {
-//   padding-right: 25px;
-// }
-
-// .shortcut-btn:hover span:after {
-//   opacity: 1;
-//   right: 0;
-// }
-// down to here --------
-
