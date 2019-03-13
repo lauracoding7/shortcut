@@ -1,47 +1,53 @@
-<div class="container">
-  <h1><%= @user.name %>'s dashboard</h1>
+<div class="whole-db-page-content">
+  <div class="lhs-panel">
+    <ul class="list-inline tabs-underlined">
+      <li>
+        <a href="<%= dashboard_path %>" class="tab-underlined<% if current_page?(controller:"pages", action: "dashboard") %> active<% end %>">Profile</a>
+      </li>
+      <li>
+        <a href="<%= dashboard_upcoming_path %>" class="tab-underlined<% if current_page?(controller:"pages", action: "dashboard_upcoming") %> active<% end %>">Upcoming appointments</a>
+      </li>
+      <li>
+        <a href="<%= dashboard_previous_path %>" class="tab-underlined<% if current_page?(controller:"pages", action: "dashboard_previous") %> active<% end %>">Previous appointments</a>
+      </li>
+    </ul>
+  </div>
 
 
-  <ul class="list-inline tabs-underlined">
-    <li>
-      <a href="<%= dashboard_path %>" class="tab-underlined<% if current_page?(controller:"pages", action: "dashboard") %> active<% end %>">Profile</a>
-    </li>
-    <li>
-      <a href="<%= dashboard_upcoming_path %>" class="tab-underlined<% if current_page?(controller:"pages", action: "dashboard_upcoming") %> active<% end %>">Upcoming appointments</a>
-    </li>
-    <li>
-      <a href="<%= dashboard_previous_path %>" class="tab-underlined<% if current_page?(controller:"pages", action: "dashboard_previous") %> active<% end %>">Previous appointments</a>
-    </li>
-  </ul>
+  <div class="rhs-panel">
+    <h1><%= @user.name %>'s dashboard</h1>
 
-  <% if current_page?(controller:"pages", action: "dashboard") %>
-  <!-- since we are not making it possible to edit or create user profiles, for now we are gonna hardcode the dashboard profile page, so I am just making a quick check that we are landing there with the right user... -->
-  <% if @user.name == 'Filo' %>
-  <img src="https://i2.wp.com/www.ahfirstaid.org/wp-content/uploads/2014/07/avatar-placeholder.png" alt="Avatar pic">
-  <h2>Hi guys, I am Filo.</h2>
-  <p>Social media links...</p>
-  <p>Some hardcoded description</p>
-  <p>A caroussel of pics</p>
-  <p>Reviews:</p>
-  <!-- the reviews below will have to be cards -->
-  <ul>
-    <% @reviews.each do |review| %>
-    <li>Author: <%= review.author.name %> - Rating: <%= review.rating %>/5<br><%= review.content %></li>
+    <% if current_page?(controller:"pages", action: "dashboard") %>
+    <!-- since we are not making it possible to edit or create user profiles, for now we are gonna hardcode the dashboard profile page, so I am just making a quick check that we are landing there with the right user... -->
+    <% if @user.name == 'Filo' %>
+    <img src="https://i2.wp.com/www.ahfirstaid.org/wp-content/uploads/2014/07/avatar-placeholder.png" alt="Avatar pic">
+    <h2>Hi guys, I am Filo.</h2>
+    <p>Social media links...</p>
+    <p>Some hardcoded description</p>
+    <p>A caroussel of pics</p>
+
+    <% unless @reviews.empty? %>
+    <p>Reviews:</p>
+    <div class="review-cards">
+      <% @reviews.each do |review| %>
+      <%= render partial: "reviews/review-card", locals: {review: review} %>
+      <% end %>
+    </div>
     <% end %>
-  </ul>
-  <% end %>
-  <% end %>
+    <% end %>
+    <% end %>
 
 
-  <% if current_page?(controller:"pages", action: "dashboard_upcoming") %>
-  <% @appointments.each_with_index do |appt, i| %>
-  <%= render 'appointments/appointment-card', appointment: appt, marker: @markers[i] %>
-  <% end %>
-  <% end %>
+    <% if current_page?(controller:"pages", action: "dashboard_upcoming") %>
+    <% @appointments.each_with_index do |appt, i| %>
+    <%= render 'appointments/appointment-card', appointment: appt, marker: @markers[i] %>
+    <% end %>
+    <% end %>
 
-  <% if current_page?(controller:"pages", action: "dashboard_previous") %>
-  <% @appointments.each_with_index do |appt, i| %>
-  <%= render 'appointments/appointment-card', appointment: appt, marker: @markers[i] %>
-  <% end %>
-  <% end %>
+    <% if current_page?(controller:"pages", action: "dashboard_previous") %>
+    <% @appointments.each_with_index do |appt, i| %>
+    <%= render 'appointments/appointment-card', appointment: appt, marker: @markers[i] %>
+    <% end %>
+    <% end %>
+  </div>
 </div>
