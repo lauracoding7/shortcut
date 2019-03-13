@@ -15,29 +15,31 @@ body {
 
 h1 {
   color : $white-text;
-  font-family: Open Sans;
+  font-family: Avenir;
   font-weight: 100;
+  font-size: 100px;
 }
 
 h2 {
   color : $white-text;
-  font-family: Open Sans;
+  font-family: Avenir;
   font-weight: 100;
 
 }
 p {
   color : $white-text;
-  font-family: Open Sans;
+  font-family: Avenir;
   font-weight: 100;
-
 }
 
 a {
-  color: #6C0E23;
+  color: $white-text;
+  font-family: Avenir;
 }
 
 a:hover {
   text-decoration: none;
+  color: $white-text;
 }
 
 .centered {
@@ -49,11 +51,12 @@ a:hover {
   opacity: 0.3;
   text-align: center;
   margin: 60px;
+  font-size: 22px;
 }
 
-.fas {
+#icons {
   font-size: 200px;
-  color: #6C0E23;
+  color: $bordeaux;
   margin: 0 100px;
 }
 

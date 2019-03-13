@@ -1,45 +1,52 @@
-.btn {
-  width: 200px;
-  background-color: #6C0E23;
-  color: white;
-  text-align: center;
+.shortcut-btn {
+  width: 100%; // I think it's nice to have buttons of different sizes across the application, by just sizing their parent element
+  height: 100%; // I think it's nice to have buttons of different sizes across the application, by just sizing their parent element
+  background-color: $bordeaux;
   transition: all 0.5s;
   cursor: pointer;
   display: inline-block;
   border-radius: 4px;
   padding: 10px;
-}
-
-.btn:hover{
   text-decoration: none;
-  color: white;
+  color: $white-text;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.btn span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
+.shortcut-btn:hover{
+  color: $white-text;
 }
 
-.btn span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
+.shortcut-btn.disabled {
+  background-color: $transparent-bordeaux;
+  cursor: not-allowed;
 }
 
-.btn:hover span {
-  padding-right: 25px;
-}
+// what is this stuff?
+// .shortcut-btn span {
+//   cursor: pointer;
+//   display: inline-block;
+//   position: relative;
+//   transition: 0.5s;
+// }
 
-.btn:hover span:after {
-  opacity: 1;
-  right: 0;
-}
+// .shortcut-btn span:after {
+//   content: '\00bb';
+//   position: absolute;
+//   opacity: 0;
+//   top: 0;
+//   right: -20px;
+//   transition: 0.5s;
+// }
 
-.btn:disabled {
-  background-color: #6B3B46;
-}
+// .shortcut-btn:hover span {
+//   padding-right: 25px;
+// }
+
+// .shortcut-btn:hover span:after {
+//   opacity: 1;
+//   right: 0;
+// }
+// down to here --------
+

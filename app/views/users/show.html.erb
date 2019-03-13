@@ -12,32 +12,27 @@
     </div>
 
 
-    <% if @marker %>
-    <div
-    id="map"
-    style="width: 500px;
-    height: 255px;
-    box-shadow: 0 0 15px rgba(255,255,255,0.4);
-    "
-    data-markers="<%= @marker.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-    ></div>
-    <% end %>
-  </div>
+<% if @marker %>
+<div
+id="map"
+style="width: 500px;
+height: 500px;"
+data-markers="<%= @marker.to_json %>"
+data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>
+<% end %>
 
-
-  <ul class="reviews-list">
-    <% unless @reviews.empty? %>
-    <% @reviews.each do |review| %>
-    <li>
-     <div class="reviews">
-      <strong>  <%= review.author.name %> </strong>- Rating: <%= review.rating %>/5<br>
-      <%= review.content %>
-    </div>
-  </li>
+<!-- these should end up in a caroussel which shows one review at a time -->
+<% unless @reviews.empty? %>
+<div class="review-cards">
+  <% @reviews.each do |review| %>
+  <%= render partial: "reviews/review-card", locals: {review: review} %>
   <% end %>
-  <% end %>
-</ul>
 </div>
-</div>
+<% end %>
+<% end %>
 
+
+<% if controller_name == 'reviews' %>
+<%= render partial: "reviews/index" %>
+<% end %>
