@@ -1,7 +1,7 @@
 .shortcut-btn {
   width: 100%; // I think it's nice to have buttons of different sizes across the application, by just sizing their parent element
   height: 100%; // I think it's nice to have buttons of different sizes across the application, by just sizing their parent element
-  background-color: $bordeaux;
+  background-color: $pink;
   transition: all 0.5s;
   cursor: pointer;
   display: inline-block;
@@ -19,7 +19,7 @@
 }
 
 .shortcut-btn.disabled {
-  background-color: $transparent-bordeaux;
+  background-color: $transparent-pink;
   cursor: not-allowed;
 }
 
