@@ -1,8 +1,11 @@
 <div class="banner" style="background-image: linear-gradient(rgba(22,26,38,0.6),rgba(22,26,38,0.6)), url('<%= image_url("cover.png") %>');">
-  <div class="search-container">
+  <div>
+
     <%= form_tag users_path, method: :get, id: 'search_form' do %>
-    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Type a location or a barber name" %>
-    <%= button_tag 'Search', class: 'btn btn-blue', id: 'search_button' %>
+<span class="fas fa-map-marker-alt"></span>
+    <%= text_field_tag :query, params[:query], class: "form-control icon", placeholder:" City or Barber" %>
+
+    <%= button_tag 'Search', class: 'shortcut-btn', id: 'search_button' %>
     <% end %>
   </div>
 </div>
