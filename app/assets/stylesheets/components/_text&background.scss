@@ -3,6 +3,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  color: $black;
 }
 
 .page-content {
@@ -27,7 +28,7 @@ h2 {
 
 }
 p {
-  color : $grey;
+  color : $black;
   font-family: Avenir;
   font-weight: 100;
 }
