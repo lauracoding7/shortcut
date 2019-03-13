@@ -1,20 +1,29 @@
 <div class="barbers-index">
   <div class="barbers-left">
+    <h1><% if @searched_all_barbers %>All b<% else %>B<% end %>arbers<% if @searched_for_city %> in <%= @searched_for_city %><% elsif @searched_for_name %> called <%= @searched_for_name %><% end %></h1>
     <div class="row">
       <div class="col-xs-12">
-        View barbers that are willing to commute to your location?
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input hidden" id="checkbox-to-view-commuting-barbers" checked="">
-          <span class="custom-control-indicator"></span>
-        </label>
+        <div class="radio-button-block">
+          <div class="radio-button-label">
+            Commuting barbers
+          </div>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input hidden" id="checkbox-to-view-commuting-barbers" checked="">
+            <span class="custom-control-indicator"></span>
+          </label>
+        </div>
       </div>
 
       <div class="col-xs-12">
-        View barbers that provide their service at their own location next to you?
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input hidden" id="checkbox-to-view-hosting-barbers" checked>
-          <span class="custom-control-indicator"></span>
-        </label>
+        <div class="radio-button-block">
+          <div class="radio-button-label">
+            Hosting barbers
+          </div>
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input hidden" id="checkbox-to-view-hosting-barbers" checked>
+            <span class="custom-control-indicator"></span>
+          </label>
+        </div>
       </div>
 
       <% @users.each do |user| %>
