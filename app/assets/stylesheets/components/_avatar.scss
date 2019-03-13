@@ -2,12 +2,16 @@
   width: 40px;
   border-radius: 50%;
   height: 40px;
-  box-shadow: 1px 1px 1px $black;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
 
 .avatar{
   width: 70px;
   border-radius: 50%;
   height: 70px;
-  box-shadow: 1px 1px 1px $black;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.avatar-barber-card {
+  height: 100px;
 }

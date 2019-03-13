@@ -1,45 +1,43 @@
 <div class="barber-card">
   <!-- the image below will be the barber avatar -->
-  <div class="img-container">
-    <img src="<%= image_url(user.avatar_url) %>" class="avatar">
-  </div>
-
-  <div class="card-not-image">
-    <div class="barber-card-stars">
-      <div >
-        <% if user.average_rating == 'n.a.' %>
-        <em>No ratings available for this barber.</em>
-        <% else %>
-        <span class="fa fa-star<% if user.average_rating >= 1 %> checked<% end %>"></span>
-        <span class="fa fa-star<% if user.average_rating >= 2 %> checked<% end %>"></span>
-        <span class="fa fa-star<% if user.average_rating >= 3 %> checked<% end %>"></span>
-        <span class="fa fa-star<% if user.average_rating >= 4 %> checked<% end %>"></span>
-        <span class="fa fa-star<% if user.average_rating >= 5 %> checked<% end %>"></span>
-        <% end %>
-      </div>
+  <div class="upper-card">
+    <div class="img-container">
+      <img src="<%= image_url(user.avatar_url) %>" class="avatar avatar-barber-card">
     </div>
 
     <div class="barber-card-infos">
-      <h2><%= link_to user.name, user_path(user) %></h2>
-
-      <div class="services-offered-info">
-        Offers: <%= user.services.map { |service| service.title }.join(', ') %>.
+      <div class="barber-name">
+        <h2><%= link_to user.name, user_path(user) %></h2>
       </div>
-
-      <div class="location-info">
-        <% if user.commute_area_address && user.host_service_address %>
-        <ul class="location-list">
-          <li>Receives customers at <%= user.host_service_address %>.</li>
-          <li>Commute to your location for € <%= user.commute_price %>.</li>
-        </ul>
-        <% elsif user.host_service_address %>
-        Receives customers at <%= user.host_service_address %>.
-        <% else %>
-        Commute to your location for € <%= user.commute_price %>.
-        <% end %>
+      <div class="barber-card-stars">
+        <div>
+          <% if user.average_rating == 'n.a.' %>
+          <em>No ratings available for this barber.</em>
+          <% else %>
+          <span class="fa fa-star<% if user.average_rating >= 1 %> checked<% end %>"></span>
+          <span class="fa fa-star<% if user.average_rating >= 2 %> checked<% end %>"></span>
+          <span class="fa fa-star<% if user.average_rating >= 3 %> checked<% end %>"></span>
+          <span class="fa fa-star<% if user.average_rating >= 4 %> checked<% end %>"></span>
+          <span class="fa fa-star<% if user.average_rating >= 5 %> checked<% end %>"></span>
+          <% end %>
+        </div>
+        <p>(<%= Review.where(receiver: user).count %>)</p>
       </div>
     </div>
-
   </div>
 
+  <div class="service-icons">
+    <p>Services</p>
+    <% if user.services.any? { |service| /[hH]aircut/.match?(service.title) } %>
+    <img src="<%= image_url('haircutt.png') %>">
+    <% end %>
+    <% if user.services.any? { |service| /[bB]eard/.match?(service.title) } %>
+    <img src="<%= image_url('beardd.png') %>">
+    <% end %>
+  </div>
 </div>
+
+
+
+
+
