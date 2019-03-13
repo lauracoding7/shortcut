@@ -48,4 +48,10 @@
   }
 // to here <----------
 
+.radio-button-block {
+  display: flex;
+  .radio-button-label {
+    width: 162px;
+  }
+}
 

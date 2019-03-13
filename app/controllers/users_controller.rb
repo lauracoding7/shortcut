@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    @searched_for_name = false
+    @searched_for_city = false
+    @searched_all_barbers = false
     if params[:query].present?
       sql_query = "users.name @@ :query"
       barbers_matching_name = User.joins(:services).where(sql_query, query: "%#{params[:query]}%")
@@ -17,6 +20,7 @@ class UsersController < ApplicationController
             infoWindow: render_to_string(partial: "infowindow", locals: { barber: barber })
           }
         end
+        @searched_for_name = params[:query]
         return
       end
       # at this stage, all barbers matching name, wherever they are located will appear in the search. If we want to filter out the ones that are too far from the user's location, we need to do something like:
@@ -35,11 +39,13 @@ class UsersController < ApplicationController
             infoWindow: render_to_string(partial: "infowindow", locals: { barber: barber })
           }
         end
+        @searched_for_city = Geocoder.search(params[:query]).first.city
         return
       end
       @users = []
     else
       @users = User.joins(:services)
+      @searched_all_barbers = true
     end
   end
 
