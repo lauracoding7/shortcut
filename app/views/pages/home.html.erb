@@ -1,9 +1,10 @@
 <div class="banner" style="background-image: linear-gradient(rgba(22,26,38,0.6),rgba(22,26,38,0.6)), url('<%= image_url("cover.png") %>');">
   <div>
+    <h1>Good barbers are all around you</h1>
 
     <%= form_tag users_path, method: :get, id: 'search_form' do %>
-<span class="fas fa-map-marker-alt"></span>
-    <%= text_field_tag :query, params[:query], class: "form-control icon", placeholder:" City or Barber" %>
+    <span class="fas fa-map-marker-alt"></span>
+    <%= text_field_tag :query, params[:query], class: "form-control icon", placeholder:" City or barber" %>
 
     <%= button_tag 'Search', class: 'shortcut-btn', id: 'search_button' %>
     <% end %>
@@ -11,12 +12,26 @@
 </div>
 
 <div class="wrapper">
-  <h1 class="centered">Great barbers are all around you</h1>
-  <p class="centered-p" >By using our website, you'll be able to discover if barbers are available around your area, just type in your address or the name of a barber you know</p>
-  <div class="icons">
-    <i class="fas fa-map-marker-alt" id="icons"></i>
-    <i class="fas fa-user" id="icons"></i>
+  <h2 class="centered">How it works</h2>
+  <div class="row">
+    <div class="col-xs-4 how-it-works-box">
+      <div class="pink-circle"><span>1</span></div>
+      <p>Find all great barbers in any city</p>
+      <img class="img" src="magnifier.png" alt="magnifier" height="100" width="100">
+
+    </div>
+    <div class="col-xs-4 how-it-works-box">
+      <div class="pink-circle"><span>2</span></div>
+      <p>Select your favorite barber</p>
+      <img class="img" src="https://files.slack.com/files-pri/T02NE0241-FGXTCG43F/8876a264-b5a9-47c3-8e96-0d5a8a744911.png" alt="heart" height="100" width="100">
+    </div>
+    <div class="col-xs-4 how-it-works-box">
+      <div class="pink-circle"><span>3</span></div>
+      <p>Book online and meet your barber</p>
+       <img class="img" src="booking.png" alt="booking" height="100" width="100">
+    </div>
   </div>
+
 </div>
 
 
