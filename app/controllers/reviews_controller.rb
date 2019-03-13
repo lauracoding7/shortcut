@@ -1,10 +1,10 @@
 class ReviewsController < ApplicationController
   before_action :set_user
 
-  # def index
-  #   @reviews = Review.where(receiver: @user)
-  # end
-  # I think we don't need a reviews#index, but for now I leave it here. However, I did get rid of the route, to keep things clean. We can add it back later if needed - Filippo
+  def index
+    @reviews = Review.where(receiver: @user)
+    render 'users/show'
+  end
 
   def new
     @review = Review.new(barber_review: true)

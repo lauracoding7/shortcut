@@ -1,0 +1,29 @@
+<div class="review-card">
+  <div class="author-info">
+    <%= image_tag review.author.avatar_url , class: 'avatar' %>
+    <div class="author_details">
+      <%= review.author.name ? review.author.name : review.author.email %> <br>
+      <strong>Amsterdam, Netherlands</strong>
+    </div>
+  </div>
+
+  <div class="review-info">
+    <div class="review-card-stars">
+      <div>
+        <span class="fa fa-star<% if review.rating >= 1 %> checked<% end %>"></span>
+        <span class="fa fa-star<% if review.rating >= 2 %> checked<% end %>"></span>
+        <span class="fa fa-star<% if review.rating >= 3 %> checked<% end %>"></span>
+        <span class="fa fa-star<% if review.rating >= 4 %> checked<% end %>"></span>
+        <span class="fa fa-star<% if review.rating >= 5 %> checked<% end %>"></span>
+      </div>
+    </div>
+
+    <div class="review-date">
+      <em>Reviewed on <%= review.created_at.strftime("%B %e at %I:%M %p")%></em>
+    </div>
+
+    <div class="review-content">
+      <%= review.content %>
+    </div>
+  </div>
+</div>
