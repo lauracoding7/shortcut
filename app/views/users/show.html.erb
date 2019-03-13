@@ -1,20 +1,16 @@
-<h1><%= @user.name %></h1>
+<div class="container">
+  <div class="card">
+  <h1 class="centered"><%= @user.name %></h1>
 
-<ul class="list-inline tabs-underlined">
-  <li>
-    <a href="<%= user_path(@user) %>" class="tab-underlined<% if controller_name == 'users' %> active<% end %>">Profile</a>
-  </li>
-  <li>
-    <a href="<%= user_reviews_path(@user) %>" class="tab-underlined<% if controller_name == 'reviews' %> active<% end %>">All reviews</a>
-  </li>
-</ul>
+  <!-- these below will have to be service cards -->
+  <p class="centered-p"><%= @user.name %> offers:</p>
+  <div class="content">
+    <div>
+      <% @user.services.each do |service| %>
+      <%= render partial: "service-card", locals: {user: @user, service: service} %>
+      <% end %>
+    </div>
 
-<% if controller_name == 'users' %>
-<p><%= @user.name %> offers:</p>
-
-<% @user.services.each do |service| %>
-<%= render partial: "service-card", locals: {user: @user, service: service} %>
-<% end %>
 
 <% if @marker %>
 <div
