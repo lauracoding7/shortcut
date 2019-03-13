@@ -23,6 +23,22 @@
   cursor: not-allowed;
 }
 
+.form-button {
+  background-color: $pink;
+  transition: all 0.5s;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 4px;
+  padding: 20px;
+  width: 140px;
+  text-decoration: none;
+  color: $white-text;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
 // what is this stuff?
 // .shortcut-btn span {
 //   cursor: pointer;

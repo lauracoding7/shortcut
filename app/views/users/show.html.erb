@@ -10,7 +10,7 @@
 </ul>
 
 <% if controller_name == 'users' %>
-<p><%= @user.name %> offers:</p>
+<h2><%= @user.name %> Signature Cuts:</h2>
 
 <% @user.services.each do |service| %>
 <%= render partial: "service-card", locals: {user: @user, service: service} %>
