@@ -1,73 +1,74 @@
 .barber-card {
   display: flex;
   flex-direction: column;
-  margin: 30px;
+  margin: 15px 0 15px 0;
   background: $white-text;
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
   border-radius: 4px;
   color: $black;
   border: 1px solid $pink;
   height: 250px;
-
+  overflow: hidden;
   a {
     color: $black;
     &:hover {
       color: $black;
     }
   }
-  .checked {
-   color: $pink;
- }
-
-
- .upper-card {
-  display: flex;
-
-}
-
-.img-container {
-  padding: 20px;
-}
-
-.barber-card-infos {
-  padding: 20px;
-}
-
-.barber-name {
-  align-items: center;
-  font-size: calc(#{$card-header-font-size} - 5px);
-  h2 {
-    font-size: 25px;
-    font-weight: 500;
+  .upper-card {
+    flex: 1;
+    display: flex;
+    padding: $std-padding;
+    .img-container {
+      width: 33%;
+      display: flex;
+      justify-content: center;
+    }
+    .barber-card-infos {
+      flex: 1;
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      margin-left: $std-margin;
+      .barber-name {
+        flex: 1;
+        h2 {
+          margin: 0;
+          font-size: calc(#{$card-header-font-size} - 2px);
+          font-weight: 500;
+        }
+      }
+      .barber-card-stars {
+        display: flex;
+        .checked {
+          color: $pink;
+        }
+        p {
+          margin-left: 10px;
+          margin-bottom: 0;
+        }
+      }
+    }
   }
-}
 
-.service-icons {
-
-  background: $pink;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 70px;
-  padding: 0 60px 0 60px;
-  margin-top: 58px;
-  img {
-    max-height: 40px;
-    max-width: 40px;
+  .service-icons {
+    background: $pink;
+    display: flex;
+    align-items: center;
+    height: 70px;
+    padding: 0 $std-padding 0 $std-padding;
+    p {
+      width: 33%;
+      color: white;
+      margin: 0;
+      text-align: center;
+    }
+    img {
+      margin: 0 $std-margin 0 $std-margin;
+      max-height: 40px;
+      max-width: 40px;
+    }
   }
-  p {
-    color: white;
-    margin: 0;
-
-  }
-}
-
-.barber-card-stars {
-  display: flex;
-  p {
-    margin-left: 10px;
-  }
-}
 }
 
 
@@ -78,8 +79,8 @@ $map-width: 500px;
 }
 .barbers-left {
   flex: 1;
+  margin-left: $std-margin;
 }
-
 .barbers-right {
   width: $map-width;
   position: relative;

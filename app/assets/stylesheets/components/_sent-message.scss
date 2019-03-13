@@ -32,7 +32,7 @@
 }
 
 .sent-message.insert-message {
-  box-shadow: 1px 1px 1px $black;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
 
 #new_message {
@@ -41,7 +41,7 @@
   display: flex;
   flex-wrap: wrap;
   #message_content {
-    box-shadow: 1px 1px 1px $black;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
     color: $black;
   }
   .btn-message {

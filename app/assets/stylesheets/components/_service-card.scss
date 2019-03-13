@@ -1,10 +1,11 @@
 .service-card {
+  display: flex;
   flex-direction: column;
   border: 1px solid $pink;
   color: $black;
   border-radius: 4px;
   background: $white-text;
-  box-shadow: 0 0 15px rgba(255,255,255,0.4);
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
   overflow: hidden;
   font-size: $card-text-font-size;
   margin: 15px 0 15px 0;

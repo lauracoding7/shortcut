@@ -1,31 +1,27 @@
 <div class="barbers-index">
   <div class="barbers-left">
     <h1><% if @searched_all_barbers %>All b<% else %>B<% end %>arbers<% if @searched_for_city %> in <%= @searched_for_city %><% elsif @searched_for_name %> called <%= @searched_for_name %><% end %></h1>
+    <div class="radio-buttons">
+      <div class="radio-button-block">
+        <div class="radio-button-label">
+          Barbers that don't provide service at their own location
+        </div>
+        <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input hidden" id="checkbox-to-view-commuting-barbers" checked="">
+          <span class="custom-control-indicator"></span>
+        </label>
+      </div>
+      <div class="radio-button-block">
+        <div class="radio-button-label">
+          Barbers that don't commute to your location
+        </div>
+        <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input hidden" id="checkbox-to-view-hosting-barbers" checked>
+          <span class="custom-control-indicator"></span>
+        </label>
+      </div>
+    </div>
     <div class="row">
-      <div class="col-xs-12">
-        <div class="radio-button-block">
-          <div class="radio-button-label">
-            Commuting barbers
-          </div>
-          <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input hidden" id="checkbox-to-view-commuting-barbers" checked="">
-            <span class="custom-control-indicator"></span>
-          </label>
-        </div>
-      </div>
-
-      <div class="col-xs-12">
-        <div class="radio-button-block">
-          <div class="radio-button-label">
-            Hosting barbers
-          </div>
-          <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input hidden" id="checkbox-to-view-hosting-barbers" checked>
-            <span class="custom-control-indicator"></span>
-          </label>
-        </div>
-      </div>
-
       <% @users.each do |user| %>
       <div class="col-xs-12 col-sm-6 barber-search-result<%= ' commuting-barber' if user.commute_area_address %><%= ' hosting-barber' if user.host_service_address %>">
         <%= render partial: "barber-card", locals: {user: user} %>
@@ -44,5 +40,16 @@
     ></div>
     <% end %>
     <% end %>
+  </div>
+</div>
+
+<div class="become-a-barber-banner">
+  <div class="barber-banner-item">
+    <h3>Are you a Barber?</h3>
+    <p>Looking for a way to share your passion with the world?</p>
+    <p >Register as a Barber and start finding clients on ShortCut now!</p>
+  </div>
+  <div class="button-container">
+    <button class="shortcut-btn">Register as a Barber</button>
   </div>
 </div>

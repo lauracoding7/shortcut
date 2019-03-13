@@ -2,46 +2,39 @@
   <!-- the image below will be the barber avatar -->
   <div class="upper-card">
     <div class="img-container">
-      <img src="<%= image_url(user.avatar_url) %>" class="avatar-barber-card">
+      <img src="<%= image_url(user.avatar_url) %>" class="avatar avatar-barber-card">
     </div>
-
-
 
     <div class="barber-card-infos">
       <div class="barber-name">
-       <h2><%= link_to user.name, user_path(user) %></h2>
-     </div>
-     <div class="barber-card-stars">
-      <div >
-        <% if user.average_rating == 'n.a.' %>
-        <em>No ratings available for this barber.</em>
-        <% else %>
-        <span class="fa fa-star<% if user.average_rating >= 1 %> checked<% end %>"></span>
-        <span class="fa fa-star<% if user.average_rating >= 2 %> checked<% end %>"></span>
-        <span class="fa fa-star<% if user.average_rating >= 3 %> checked<% end %>"></span>
-        <span class="fa fa-star<% if user.average_rating >= 4 %> checked<% end %>"></span>
-        <span class="fa fa-star<% if user.average_rating >= 5 %> checked<% end %>"></span>
-        <% end %>
+        <h2><%= link_to user.name, user_path(user) %></h2>
       </div>
-       <p>(<%= rand(60..300) %>)</p>
+      <div class="barber-card-stars">
+        <div>
+          <% if user.average_rating == 'n.a.' %>
+          <em>No ratings available for this barber.</em>
+          <% else %>
+          <span class="fa fa-star<% if user.average_rating >= 1 %> checked<% end %>"></span>
+          <span class="fa fa-star<% if user.average_rating >= 2 %> checked<% end %>"></span>
+          <span class="fa fa-star<% if user.average_rating >= 3 %> checked<% end %>"></span>
+          <span class="fa fa-star<% if user.average_rating >= 4 %> checked<% end %>"></span>
+          <span class="fa fa-star<% if user.average_rating >= 5 %> checked<% end %>"></span>
+          <% end %>
+        </div>
+        <p>(<%= Review.where(receiver: user).count %>)</p>
+      </div>
     </div>
-</div>
-</div>
+  </div>
 
-<div class="service-icons">
-  <p>Services</p>
-  <% user.services.each do |service| %>
-
-
-  <% if /[hH]aircut/.match?(service.title) %>
-  <img src="<%= image_url('haircutt.png') %>">
-  <% elsif /[bB]eard/.match?(service.title) %>
-  <img src="<%= image_url('beardd.png') %>">
-  <% else %>
-  <img src="<%= image_url('shortcut_logo_black.png') %>">
-  <% end %>
-  <% end %>
-</div>
+  <div class="service-icons">
+    <p>Services</p>
+    <% if user.services.any? { |service| /[hH]aircut/.match?(service.title) } %>
+    <img src="<%= image_url('haircutt.png') %>">
+    <% end %>
+    <% if user.services.any? { |service| /[bB]eard/.match?(service.title) } %>
+    <img src="<%= image_url('beardd.png') %>">
+    <% end %>
+  </div>
 </div>
 
 
