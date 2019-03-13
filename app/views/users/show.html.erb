@@ -17,17 +17,13 @@
   <%= render partial: "service-card", locals: {user: @user, service: service} %>
   <% end %>
 
-  <!-- carousel -->
-
   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-
     <div class="carousel-inner" role="listbox">
-      <div class="item active" style="background-image: url('<%= image_url("pictures/haircut1") %>');">
+      <% @user.image_urls.each_with_index do |url_obj, i| %>
+      <div class="item<% if i == 0 %> active<% end %>" style="background-image: url('<%= image_url(url_obj.url) %>');">
       </div>
-      <div class="item" style="background-image: url('<%= image_url("pictures/haircut2") %>');">
-      </div>
+      <% end %>
     </div>
-
     <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
@@ -37,8 +33,6 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-
-  <!-- end carousel -->
 
   <% if @marker %>
   <div
