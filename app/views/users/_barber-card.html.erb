@@ -1,19 +1,17 @@
 <div class="barber-card">
   <!-- the image below will be the barber avatar -->
-<div class="upper-card">
-  <div class="img-container">
-    <img src="<%= image_url(user.avatar_url) %>" class="avatar">
-  </div>
+  <div class="upper-card">
+    <div class="img-container">
+      <img src="<%= image_url(user.avatar_url) %>" class="avatar">
+    </div>
 
 
 
-
-
-  <div class="barber-card-infos">
-    <div class="barber-name">
-   <h2><%= link_to user.name, user_path(user) %></h2>
-   </div>
-   <div class="barber-card-stars">
+    <div class="barber-card-infos">
+      <div class="barber-name">
+       <h2><%= link_to user.name, user_path(user) %></h2>
+     </div>
+     <div class="barber-card-stars">
       <div >
         <% if user.average_rating == 'n.a.' %>
         <em>No ratings available for this barber.</em>
@@ -25,33 +23,25 @@
         <span class="fa fa-star<% if user.average_rating >= 5 %> checked<% end %>"></span>
         <% end %>
       </div>
+       <p>(<%= rand(60..300) %>)</p>
     </div>
-    <div class="rating">
-      rand(60-300)
-    </div>
-    </div>
+</div>
+</div>
+
+<div class="service-icons">
+  <p>Services</p>
+  <% user.services.each do |service| %>
 
 
-
-
-
-
-    <div class="service-icons">
-      <div>
-        <% user.services.each do |service| %>
-
-
-        <% if /[hH]aircut/.match?(service.title) %>
-        <img src="<%= image_url('haircutt.png') %>">
-        <% elsif /[bB]eard/.match?(service.title) %>
-        <img src="<%= image_url('beardd.png') %>">
-        <% else %>
-        <img src="<%= image_url('shortcut_logo_black.png') %>">
-        <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
+  <% if /[hH]aircut/.match?(service.title) %>
+  <img src="<%= image_url('haircutt.png') %>">
+  <% elsif /[bB]eard/.match?(service.title) %>
+  <img src="<%= image_url('beardd.png') %>">
+  <% else %>
+  <img src="<%= image_url('shortcut_logo_black.png') %>">
+  <% end %>
+  <% end %>
+</div>
 </div>
 
 
