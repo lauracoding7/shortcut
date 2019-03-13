@@ -1,12 +1,11 @@
 .review-card {
   overflow: hidden;
   min-height: 120px;
-  background: $white-text;
+  background: $light-gray;
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
   display: flex;
   width: 100%;
   border-radius: 4px;
-  border: 1px solid $pink;
   color: $black;
   font-size: $card-text-font-size;
   margin: 15px 0 15px 0;
@@ -34,17 +33,18 @@
       width: 100%;
       display: flex;
       .checked {
-        color: orange;
+        color: $pink;
       }
     }
     .review-date {
-
+      margin-top: 5px;
     }
     .review-content {
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+      font-weight: 500;
     }
   }
 }
