@@ -7,7 +7,6 @@
   position: absolute;
   bottom: 180px;
   left: 520px;
-
   #query {
     flex: 1;
     height: 45px;
@@ -19,22 +18,19 @@
     z-index: 2;
     display: block;
     color: $grey;
-
 }
 .icon {
   padding-left: 28px;
 }
 
-
 #search_button {
     height: 45px;
     width: 100px;
     border-radius: 0px 4px 4px 0px;
-
     border: none !important;
-
     border-color: $pink;
   }
+
 }
 
 #search_button:hover {

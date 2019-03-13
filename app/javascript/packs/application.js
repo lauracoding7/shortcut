@@ -16,3 +16,7 @@ initMapbox();
 // filter-buttons
 import { initFilterButtons } from '../components/filter-buttons';
 initFilterButtons();
+
+// appointment form on service card (no need to call the method here, because I exported it to window - the global JS scope - in the .js file itself, so that it can be handled by the eventlistener that was created as an html attribute in the view)
+import '../components/service-appointment-form';
+
