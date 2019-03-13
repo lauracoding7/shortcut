@@ -1,62 +1,64 @@
-$footer_height: 70px; // Use this var to set height
-$black: #020A00;
+$footer-height: 80px;
 
 .footer {
-  background: $black;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 0px 50px;
-  color: rgba(0,0,0,0.3);
+  align-items: center;
   width: 100%;
-  height: $footer_height;
-  // position: relative;
-  // bottom: -100px;
+  height: $footer-height;
+  background-color: $white;
+  color: $grey;
+  padding: 0px 50px;
+  border: 1px solid $grey;
+  i {
+    margin-right: 8px;
+    margin-left: 8px;
+  }
 }
+
 .footer-links {
   display: flex;
   align-items: center;
+  margin-left: 50px;
+}
+
+.footer-links a:hover {
+  color: $pink;
 }
 .footer-links a {
-  color: white;
+  color: $grey;
   opacity: 1;
   text-decoration: none;
-  font-size: 24px;
-  font-family: Open Sans;
-  // padding: 0px 0px;
+  font-size: $footer-link-font-size;
 }
-.footer-links a:hover {
-  opacity: 1;
-  color: #6C0E23;
+
+.footer-heart {
+  color: $grey;
+  margin-right: 80px;
+  margin-bottom: 0px;
+  font-family: Avenir;
+  font-size: $card-text-font-size;
 }
+
 .footer .fa-heart {
-  color: white;
+  color: $grey;
+  opacity: 1;
 }
 
 .footer .fa-coffee {
-  color: white;
+  color: $grey;
+  opacity: 1;
 }
 .footer .fa-heart:hover {
-  color: #6C0E23;
+  color: $pink;
 }
 
 .footer .fa-coffee:hover {
-  color: #6C0E23;
+  color: $pink;
 }
 
-.global-wrapper{
+.global-wrapper {
   height: 100vh;
 }
 
-.footer {
-  color: white;
-}
 
-.footer-copyright{
-  height: 70px;
-}
-
-i {
-  margin-right: 10px;
-  margin-left: 10px;
-}

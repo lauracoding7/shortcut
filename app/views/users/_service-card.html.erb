@@ -1,23 +1,32 @@
 <div class="service-card">
-  <% if /[hH]aircut/.match?(service.title) %>
-  <img src="<%= image_url('man-haircut-512.png') %>">
-  <% elsif /[bB]eard/.match?(service.title) %>
-  <img src="<%= image_url('barber-hairdressing-hairstylist-009-512.png') %>">
-  <% else %>
-  <img src="<%= image_url('shortcut_logo_black.png') %>">
-  <% end %>
-  <div class="service-card-infos">
-    <h2><%= link_to service.title, new_user_service_appointment_path(user, service) %></h2>
-    <%= service.description.capitalize %>
+  <div class="service-card-no-form">
+    <% if /[hH]aircut/.match?(service.title) %>
+    <img src="<%= image_url('man-haircut-512.png') %>">
+    <% elsif /[bB]eard/.match?(service.title) %>
+    <img src="<%= image_url('barber-hairdressing-hairstylist-009-512.png') %>">
+    <% else %>
+    <img src="<%= image_url('shortcut_logo_black.png') %>">
+    <% end %>
+    <div class="service-card-infos">
+      <h2><%= service.title %></h2>
+      <%= service.description.capitalize %>
+    </div>
+
+
+    <div class="service-quant-info">
+      <div class="service-duration">
+        <%= service.duration %> mins
+      </div>
+
+      <div class="service-price">
+        <strong>€ <%= service.price %>.00</strong>
+      </div>
+    </div>
+
+    <button class="form-button" onclick="toggleHiddenAppmtForm('.new-appmt-form.service-id-<%= service.id %>', this)">Book</button>
   </div>
 
-  <div class="service-quant-info">
-    <div class="service-duration">
-      <%= service.duration %> mins
-    </div>
-
-    <div class="service-price">
-      <strong>€ <%= service.price %>.00</strong>
-    </div>
+  <div class="new-appmt-form service-id-<%= service.id %> hidden">
+    <%= render partial: "appointments/new", locals: {user: user, service: service, appointment: Appointment.new} %>
   </div>
 </div>

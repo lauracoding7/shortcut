@@ -1,0 +1,8 @@
+.simple_form.new_review#new_review {
+  label {
+    color: $grey
+  }
+  select, .review-content {
+    color: $black;
+  }
+}

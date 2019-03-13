@@ -3,15 +3,15 @@
   display: flex;
   position: relative;
   flex-wrap: wrap;
-  background: $white-text;
-  border: 0.8px solid $white-text;
+  background: $black;
+  border: 0.8px solid $pink;
   padding: 15px;
   border-radius: 4px;
   p {
     font-size: 15px;
     width: 100%;
     margin: 0;
-    color: #333333;
+    color: $white-text;
   }
   .message-details {
     opacity: 0.7;
