@@ -12,10 +12,6 @@ class AppointmentsController < ApplicationController
     @message = Message.new
   end
 
-  def new
-    @appointment = Appointment.new
-  end
-
   def create
     fixed_appt_params = appointment_params
     at_barber_host_location = fixed_appt_params.delete(:at_barber_host_location)

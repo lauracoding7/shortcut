@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index, :new, :create]
     get 'reviews/new_client_rev', to: 'reviews#new_client_review', as: 'new_client_review' # to be used if we get to create the barber dashboard for the button to rate clients
     resources :services, only: [] do
-      resources :appointments, only: [:new, :create]
+      resources :appointments, only: [:create]
     end
   end
   resources :appointments, only: [:show] do
