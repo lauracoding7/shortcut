@@ -1,5 +1,5 @@
 body {
-  background-color: #020A00;
+  background-color: $white;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -14,32 +14,32 @@ body {
 }
 
 h1 {
-  color : $white-text;
+  color : $black;
   font-family: Avenir;
   font-weight: 100;
   font-size: 100px;
 }
 
 h2 {
-  color : $white-text;
+  color : $black;
   font-family: Avenir;
   font-weight: 100;
 
 }
 p {
-  color : $white-text;
+  color : $grey;
   font-family: Avenir;
   font-weight: 100;
 }
 
 a {
-  color: $white-text;
+  color: $grey;
   font-family: Avenir;
 }
 
 a:hover {
   text-decoration: none;
-  color: $white-text;
+  color: $pink;
 }
 
 .centered {
@@ -56,7 +56,7 @@ a:hover {
 
 #icons {
   font-size: 200px;
-  color: $bordeaux;
+  color: $pink;
   margin: 0 100px;
 }
 
