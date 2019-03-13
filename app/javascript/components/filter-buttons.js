@@ -1,6 +1,6 @@
 const initFilterButtons = () => {
-  const buttonCommuters = document.querySelector('#view_commuting_barbers');
-  const buttonHosters = document.querySelector('#view_hosting_barbers');
+  const buttonCommuters = document.querySelector('#checkbox-to-view-commuting-barbers');
+  const buttonHosters = document.querySelector('#checkbox-to-view-hosting-barbers');
 
   if (buttonCommuters && buttonHosters) {
     const searchResults = document.querySelectorAll('.barber-search-result');
@@ -22,7 +22,6 @@ const initFilterButtons = () => {
           barber.classList.toggle('hidden');
         }
       })
-      event.currentTarget.classList.toggle('active');
       document.querySelector('.barbers-right').classList.toggle('hidden');
       document.querySelector('.barbers-index').classList.toggle('container');
     })
