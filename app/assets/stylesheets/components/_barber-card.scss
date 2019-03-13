@@ -18,72 +18,80 @@
       color: $black;
     }
   }
-  .img-container {
-    height: 150px;
-    width: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img {
-      max-height: 150px;
-      max-width: 120px;
-    }
-  }
-  .card-not-image {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    height: 100%;
-    .barber-card-stars {
-      height: 20px;
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
-      .checked {
-        color: orange;
-      }
-    }
-    .barber-card-infos {
-      margin-left: 20px;
-      margin-top: 10px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      h2 {
-        font-size: calc(#{$card-header-font-size} - 2px);
-        margin: 0;
-      }
-      .services-offered-info {
-        margin-top: 10px;
-      }
-      .location-info {
-        margin-top: 10px;
-        .location-list {
-          margin-left: -20px;
-        }
-      }
-    }
-  }
 }
 
-$map-width: 500px;
 
-.barbers-index {
-  display: flex;
-}
-.barbers-left {
-  flex: 1;
-}
 
-.barbers-right {
-  width: $map-width;
-  position: relative;
-  .map {
-    height: 100vh;
-    position: sticky;
-    top: 0px;
-    width: $map-width;
-  }
-}
+
+
+
+
+//   .img-container {
+//     height: 150px;
+//     width: 120px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     img {
+//       max-height: 150px;
+//       max-width: 120px;
+//     }
+//   }
+//   .card-not-image {
+//     flex: 1;
+//     display: flex;
+//     flex-direction: column;
+//     padding: 15px;
+//     height: 100%;
+//     .barber-card-stars {
+//       height: 20px;
+//       width: 100%;
+//       display: flex;
+//       justify-content: flex-end;
+//       .checked {
+//         color: orange;
+//       }
+//     }
+//     .barber-card-infos {
+//       margin-left: 20px;
+//       margin-top: 10px;
+//       flex: 1;
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: flex-start;
+//       h2 {
+//         font-size: calc(#{$card-header-font-size} - 2px);
+//         margin: 0;
+//       }
+//       .services-offered-info {
+//         margin-top: 10px;
+//       }
+//       .location-info {
+//         margin-top: 10px;
+//         .location-list {
+//           margin-left: -20px;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// $map-width: 500px;
+
+// .barbers-index {
+//   display: flex;
+// }
+// .barbers-left {
+//   flex: 1;
+// }
+
+// .barbers-right {
+//   width: $map-width;
+//   position: relative;
+//   .map {
+//     height: 100vh;
+//     position: sticky;
+//     top: 0px;
+//     width: $map-width;
+//   }
+// }
