@@ -22,7 +22,6 @@ const initFilterButtons = () => {
           barber.classList.toggle('hidden');
         }
       })
-      // event.currentTarget.classList.toggle('active');
       document.querySelector('.barbers-right').classList.toggle('hidden');
       document.querySelector('.barbers-index').classList.toggle('container');
     })
