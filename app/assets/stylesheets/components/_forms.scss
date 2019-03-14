@@ -34,13 +34,11 @@
   margin-left: auto;
   margin-right: auto;
   background-color: transparent !important;
-  position: absolute;
-  bottom: 180px;
-  left: 540px;
+  position: relative;
   #query {
     flex: 1;
     height: 45px;
-    position: relative
+    color: $black;
   } .fas.fa-map-marker-alt {
     position: absolute;
     left: 25px;
