@@ -114,6 +114,7 @@
   <% end %>
 
   <% unless @reviews.empty? %>
+  <h2><br>Reviews</h2>
   <div class="review-cards">
     <% @reviews.each do |review| %>
     <%= render partial: "reviews/review-card", locals: {review: review} %>
