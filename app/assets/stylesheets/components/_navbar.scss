@@ -17,7 +17,7 @@ $navbar_height: 90px; // Use this var to set height
   opacity: 0.7;
 }
 
-.sign-in {
+.sign-out {
   color: white;
   margin-left: 150px;
   font-size: 16px;
@@ -27,9 +27,12 @@ $navbar_height: 90px; // Use this var to set height
   padding: 6px 20px;
 }
 
-.sign-in:hover {
+.sign-out:hover {
   color: $white-text;
   opacity: 0.7;
+  a {
+    color: $white-text;
+  }
 }
 
 .navbar-profile {
