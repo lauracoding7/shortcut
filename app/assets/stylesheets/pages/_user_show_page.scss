@@ -1,0 +1,95 @@
+.banner.barber-page-banner {
+  height: 300px;
+  color: $white;
+  .flexbox-down {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    .flexbox-right {
+      width: 100%;
+      margin-bottom: $std-margin;
+      display: flex;
+      justify-content: flex-end;
+
+      .service-icons-barber-show-page {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        .text-services {
+          margin: 0 $std-margin 0 0;
+        }
+        img {
+          margin: 0 $std-margin 0 $std-margin;
+          max-height: 40px;
+          max-width: 40px;
+        }
+      }
+
+      .barber-show-page-stars {
+        display: flex;
+        align-items: center;
+        .checked {
+          color: $pink;
+        }
+        .review-count {
+          margin: 0 0 0 10px;
+        }
+      }
+    }
+  }
+}
+
+.barber-profile-pane {
+  width: 100%;
+  display: flex;
+  margin: $std-margin 0 $std-margin 0;
+  .barber-profile-description {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: $std-margin;
+    .barber-profile-name {
+      h1 {
+        margin: 0;
+      }
+    }
+    .barber-profile-modes {
+      opacity: 0.8;
+      margin-top: $std-margin;
+      .barber-profile-mode-icon {
+        display: inline-block;
+        margin: 0 10px 0 0;
+        text-align: center;
+        width: 23px;
+      }
+    }
+    .barber-profile-bio {
+      opacity: 0.8;
+      margin-top: $std-margin;
+    }
+  }
+}
+
+.carousel-and-map-pane {
+  width: 100%;
+  display: flex;
+  margin: $std-margin 0 $std-margin 0;
+  justify-content: center;
+  .pane-container {
+    width: 380px;
+    overflow: hidden;
+    background: $light-gray;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    border-radius: 4px;
+    font-size: $card-text-font-size;
+    padding: 15px;
+    margin: 0 $std-margin 0 $std-margin;
+    .container-title {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  }
+}
+
