@@ -1,5 +1,9 @@
-<div class="whole-db-page-content">
-  <div class="lhs-panel">
+<div class="banner barber-page-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_url("cover.png") %>');">
+
+</div>
+
+<div class="container">
+  <div class="dashboard-tabs">
     <ul class="list-inline tabs-underlined">
       <li>
         <a href="<%= dashboard_path %>" class="tab-underlined<% if current_page?(controller:"pages", action: "dashboard") %> active<% end %>">Profile</a>
@@ -13,41 +17,69 @@
     </ul>
   </div>
 
+  <% if current_page?(controller:"pages", action: "dashboard") %>
+  <!-- below the profile pane says barber just because I recycled the code and classes from the barber show page. Here we are talking about a client -->
+  <div class="barber-profile-pane">
+    <%= image_tag @user.avatar_url , class: 'avatar profile-avatar' %>
+    <div class="barber-profile-description">
+      <div class="barber-profile-name">
+        <h1><%= @user.name %></h1>
+      </div>
 
-  <div class="rhs-panel">
-    <h1><%= @user.name %>'s dashboard</h1>
-
-    <% if current_page?(controller:"pages", action: "dashboard") %>
-    <!-- since we are not making it possible to edit or create user profiles, for now we are gonna hardcode the dashboard profile page, so I am just making a quick check that we are landing there with the right user... -->
-    <% if @user.name == 'Filo' %>
-    <img src="https://i2.wp.com/www.ahfirstaid.org/wp-content/uploads/2014/07/avatar-placeholder.png" alt="Avatar pic">
-    <h2>Hi guys, I am Filo.</h2>
-    <p>Social media links...</p>
-    <p>Some hardcoded description</p>
-    <p>A caroussel of pics</p>
-
-    <% unless @reviews.empty? %>
-    <p>Reviews:</p>
-    <div class="review-cards">
-      <% @reviews.each do |review| %>
-      <%= render partial: "reviews/review-card", locals: {review: review} %>
-      <% end %>
+      <div class="barber-profile-bio">
+        <h2>Hey guys, I am <%= @user.name %></h2>
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.
+      </div>
     </div>
-    <% end %>
-    <% end %>
-    <% end %>
+  </div>
 
 
-    <% if current_page?(controller:"pages", action: "dashboard_upcoming") %>
-    <% @appointments.each_with_index do |appt, i| %>
-    <%= render 'appointments/appointment-card', appointment: appt, marker: @markers[i] %>
-    <% end %>
-    <% end %>
+  <div class="carousel-and-map-pane">
+    <div class="pane-container">
+      <div class="container-title">
+        <em>My favorite haircuts</em>
+      </div>
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+          <% @user.image_urls.each_with_index do |url_obj, i| %>
+          <div class="item<% if i == 0 %> active<% end %>" style="background-image: url('<%= image_url(url_obj.url) %>');">
+          </div>
+          <% end %>
+        </div>
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
-    <% if current_page?(controller:"pages", action: "dashboard_previous") %>
-    <% @appointments.each_with_index do |appt, i| %>
-    <%= render 'appointments/appointment-card', appointment: appt, marker: @markers[i] %>
-    <% end %>
+  <% unless @reviews.empty? %>
+  <h2><br>Reviews</h2>
+  <div class="review-cards">
+    <% @reviews.each do |review| %>
+    <%= render partial: "reviews/review-card", locals: {review: review} %>
     <% end %>
   </div>
+  <% end %>
+  <% end %>
+
+
+  <% if current_page?(controller:"pages", action: "dashboard_upcoming") %>
+  <h2>Your upcoming appointments</h2>
+  <% @appointments.each_with_index do |appt, i| %>
+  <%= render 'appointments/appointment-card', appointment: appt, marker: @markers[i] %>
+  <% end %>
+  <% end %>
+
+  <% if current_page?(controller:"pages", action: "dashboard_previous") %>
+  <h2>Your previous appointments</h2>
+  <% @appointments.each_with_index do |appt, i| %>
+  <%= render 'appointments/appointment-card', appointment: appt, marker: @markers[i] %>
+  <% end %>
+  <% end %>
 </div>
