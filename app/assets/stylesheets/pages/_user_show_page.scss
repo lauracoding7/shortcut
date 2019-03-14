@@ -57,6 +57,7 @@
     }
     .barber-profile-modes {
       opacity: 0.8;
+      margin-top: $std-margin;
       .barber-profile-mode-icon {
         display: inline-block;
         margin: 0 10px 0 0;
@@ -67,6 +68,27 @@
     .barber-profile-bio {
       opacity: 0.8;
       margin-top: $std-margin;
+    }
+  }
+}
+
+.carousel-and-map-pane {
+  width: 100%;
+  display: flex;
+  margin: $std-margin 0 $std-margin 0;
+  justify-content: center;
+  .pane-container {
+    width: 380px;
+    overflow: hidden;
+    background: $light-gray;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    border-radius: 4px;
+    font-size: $card-text-font-size;
+    padding: 15px;
+    margin: 0 $std-margin 0 $std-margin;
+    .container-title {
+      text-align: center;
+      margin-bottom: 10px;
     }
   }
 }

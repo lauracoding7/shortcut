@@ -45,7 +45,9 @@
         <% if @user.host_service_address %>
         <div class="barber-profile-mode-icon"><i class="fas fa-map-marker-alt"></i></div> Received customers at <%= @user.host_service_address %>
         <% end %>
+        <% if @user.host_service_address && @user.commute_area_address %>
         <br>
+        <% end %>
         <% if @user.commute_area_address %>
         <div class="barber-profile-mode-icon"><i class="fas fa-bicycle"></i></div> Commutes to your address for € <%= @user.commute_price %>.00
         <% end %>
@@ -57,43 +59,58 @@
   </div>
 
 
+  <div class="carousel-and-map-pane">
 
+    <div class="pane-container">
+      <div class="container-title">
+        <em><%= @user.name %>'s masterpieces</em>
+      </div>
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+          <% @user.image_urls.each_with_index do |url_obj, i| %>
+          <div class="item<% if i == 0 %> active<% end %>" style="background-image: url('<%= image_url(url_obj.url) %>');">
+          </div>
+          <% end %>
+        </div>
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+
+    <% if @marker %>
+    <div class="pane-container">
+      <div class="container-title">
+        <em><%= @user.name %> receives clients here</em>
+      </div>
+
+      <div
+      id="map"
+      style="width: 350px;
+      height: 380px;"
+      data-markers="<%= @marker.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
+    </div>
+    <% end %>
   </div>
+
+
+
+
+
 
 
 
 
   <h2>Signature Cuts:</h2>
-
   <% @user.services.each do |service| %>
   <%= render partial: "service-card", locals: {user: @user, service: service} %>
-  <% end %>
-
-  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner" role="listbox">
-      <% @user.image_urls.each_with_index do |url_obj, i| %>
-      <div class="item<% if i == 0 %> active<% end %>" style="background-image: url('<%= image_url(url_obj.url) %>');">
-      </div>
-      <% end %>
-    </div>
-    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-
-  <% if @marker %>
-  <div
-  id="map"
-  style="width: 500px;
-  height: 500px;"
-  data-markers="<%= @marker.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  ></div>
   <% end %>
 
   <% unless @reviews.empty? %>
