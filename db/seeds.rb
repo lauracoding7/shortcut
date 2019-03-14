@@ -17,6 +17,9 @@ User.destroy_all
 puts 'Done!'
 
 puts 'Creating users'
+
+killian = User.create!(email: 'killian@gmail.com', password: 'secret', name: 'Killian', avatar_url: 'pictures/killian.jpg')
+
 filo = User.create!(email: 'fitog4@hotmail.it', password: 'secret', name: 'Filo', avatar_url: 'pictures/img1.jpg')
 
 ivan = User.create!(email: 'ivan@mail.com', password: 'secret', name: 'Ivan', host_service_address: 'Amsterdam Transvaalstraat 17', avatar_url: 'pictures/img2.jpg')
