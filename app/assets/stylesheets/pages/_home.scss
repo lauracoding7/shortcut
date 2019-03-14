@@ -1,26 +1,100 @@
 // Specific CSS for your home-page
-.home-page-cards-category {
+.how-it-works-box {
+  height: 250px;
+  width: 250px;
+  background-color: $white;
+  border: 1px solid $pink;
+  display: flex;
+  position: relative;
+}
+
+.how-it-works-box p {
+  position: absolute;
+  left: 15px;
+  top: 60px;
+  color: $black;
+  padding-left: 20px;
+  padding-right: 20px;
+  letter-spacing: 2px;
+  text-align:center;
+}
+
+.img {
+  position: absolute;
+  align-self: center;
+  opacity: 1;
+  left: 75px;
+  bottom: 15px;
+  } img:hover {
+  opacity: 0.7;
+}
+
+.row {
+  margin-top: 90px;
+  margin-bottom: 90px;
+  display: flex;
+  justify-content: space-between;
+  }
+
+.pink-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: $pink;
+  color: $white;
+  position: absolute;
+  top: -40px;
+  left: 85px;
+}
+
+.pink-circle span {
+  position: absolute;
+  left: 27px;
+  top: 8px;
+  font-size: 45px;
+  font-weight: 600;
+}
+
+.centered {
+  text-align: center;
+}
+
+.pic-and-description .row {
+  margin: 0;
+}
+
+.home-page-pics {
   background-size: cover;
   background-position: center;
-  height: 280px;
+  height: 350px;
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.right {
+  margin-right: 100px;
+}
+
+.left {
+  margin-left: 100px;
+}
+.pic-and-description p {
+  align-self: center;
+  letter-spacing: 1px;
+}
+
+.text-box {
+  height: 100%;
+  background-color: $white;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(255,255,255,0.2);
-  border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin: 15px;
+  padding: 80px;
 }
 
-
-.home-page-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-  margin: 50px;
+.text-box p {
+  align-self: center;
+  color: $black;
 }
 
 // Smallest device

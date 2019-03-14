@@ -6,26 +6,26 @@
   background-color: transparent !important;
   position: absolute;
   bottom: 180px;
-  left: 520px;
+  left: 540px;
   #query {
     flex: 1;
     height: 45px;
     position: relative
   } .fas.fa-map-marker-alt {
     position: absolute;
-    left: 10px;
+    left: 25px;
     top: 11px;
     z-index: 2;
     display: block;
     color: $grey;
 }
 .icon {
-  padding-left: 30px;
+  padding-left: 50px;
 }
 
 #search_button {
     height: 45px;
-    width: 100px;
+    width: 120px;
     border-radius: 0px 4px 4px 0px;
     border: none !important;
     border-color: $pink;
