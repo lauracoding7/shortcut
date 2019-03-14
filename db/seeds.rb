@@ -25,7 +25,7 @@ ivan = User.create!(email: 'ivan@mail.com', password: 'secret', name: 'Ivan', ho
 
 isaac = User.create!(email: 'isaac@mail.com', password: 'secret', name: 'Isaac', host_service_address: 'Rotterdam Centraal, Stationshal, 3013 AL Rotterdam, Netherlands', avatar_url: 'pictures/men/img3.jpg')
 
-fred = User.create!(email: 'fred@mail.com', password: 'secret', name: 'Fred', commute_area_address: 'Amsterdam mercatorplein', commute_area_radius: 10, commute_price: 5, avatar_url: 'pictures/men/img4.jpg')
+fred = User.create!(email: 'fred@mail.com', password: 'secret', name: 'Kum Konopelski', commute_area_address: 'Amsterdam mercatorplein', commute_area_radius: 10, commute_price: 5, avatar_url: 'pictures/men/img4.jpg')
 
 tom = User.create!(email: 'tom@mail.com', password: 'secret', name: 'Tom', commute_area_address: 'Amsterdam Rokin', commute_area_radius: 5, commute_price: 7, host_service_address: 'Amsterdam, Ingogostraat 14', avatar_url: 'pictures/men/img5.jpg')
 
