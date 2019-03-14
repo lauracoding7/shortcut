@@ -14,7 +14,6 @@
           <% end %>
         </div>
 
-
         <div class="barber-show-page-stars">
           <div>
             <% if @user.average_rating == 'n.a.' %>
@@ -36,9 +35,35 @@
 
 
 <div class="container">
-  <h1><%= @user.name %></h1>
+  <div class="barber-profile-pane">
+    <%= image_tag @user.avatar_url , class: 'avatar profile-avatar' %>
+    <div class="barber-profile-description">
+      <div class="barber-profile-name">
+        <h1><%= @user.name %></h1>
+      </div>
+      <div class="barber-profile-modes">
+        <% if @user.host_service_address %>
+        <div class="barber-profile-mode-icon"><i class="fas fa-map-marker-alt"></i></div> Received customers at <%= @user.host_service_address %>
+        <% end %>
+        <br>
+        <% if @user.commute_area_address %>
+        <div class="barber-profile-mode-icon"><i class="fas fa-bicycle"></i></div> Commutes to your address for € <%= @user.commute_price %>.00
+        <% end %>
+      </div>
+      <div class="barber-profile-bio">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.
+      </div>
+    </div>
+  </div>
 
-  <h2><%= @user.name %> Signature Cuts:</h2>
+
+
+  </div>
+
+
+
+
+  <h2>Signature Cuts:</h2>
 
   <% @user.services.each do |service| %>
   <%= render partial: "service-card", locals: {user: @user, service: service} %>

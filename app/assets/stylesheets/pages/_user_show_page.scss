@@ -41,3 +41,33 @@
   }
 }
 
+.barber-profile-pane {
+  width: 100%;
+  display: flex;
+  margin: $std-margin 0 $std-margin 0;
+  .barber-profile-description {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: $std-margin;
+    .barber-profile-name {
+      h1 {
+        margin: 0;
+      }
+    }
+    .barber-profile-modes {
+      opacity: 0.8;
+      .barber-profile-mode-icon {
+        display: inline-block;
+        margin: 0 10px 0 0;
+        text-align: center;
+        width: 23px;
+      }
+    }
+    .barber-profile-bio {
+      opacity: 0.8;
+      margin-top: $std-margin;
+    }
+  }
+}
+
