@@ -1,0 +1,43 @@
+.banner.barber-page-banner {
+  height: 300px;
+  color: $white;
+  .flexbox-down {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    .flexbox-right {
+      width: 100%;
+      margin-bottom: $std-margin;
+      display: flex;
+      justify-content: flex-end;
+
+      .service-icons-barber-show-page {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        .text-services {
+          margin: 0 $std-margin 0 0;
+        }
+        img {
+          margin: 0 $std-margin 0 $std-margin;
+          max-height: 40px;
+          max-width: 40px;
+        }
+      }
+
+      .barber-show-page-stars {
+        display: flex;
+        align-items: center;
+        .checked {
+          color: $pink;
+        }
+        .review-count {
+          margin: 0 0 0 10px;
+        }
+      }
+    }
+  }
+}
+

@@ -1,16 +1,43 @@
+<div class="banner barber-page-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_url("cover.png") %>');">
+  <div class="container">
+    <div class="flexbox-down">
+      <div class="flexbox-right">
+        <div class="service-icons-barber-show-page">
+          <div class="text-services">
+            Services
+          </div>
+          <% if @user.services.any? { |service| /[hH]aircut/.match?(service.title) } %>
+          <img src="<%= image_url('haircutt.png') %>">
+          <% end %>
+          <% if @user.services.any? { |service| /[bB]eard/.match?(service.title) } %>
+          <img src="<%= image_url('beardd.png') %>">
+          <% end %>
+        </div>
+
+
+        <div class="barber-show-page-stars">
+          <div>
+            <% if @user.average_rating == 'n.a.' %>
+            <em>No ratings available for this barber.</em>
+            <% else %>
+            <span class="fa fa-star<% if @user.average_rating >= 1 %> checked<% end %>"></span>
+            <span class="fa fa-star<% if @user.average_rating >= 2 %> checked<% end %>"></span>
+            <span class="fa fa-star<% if @user.average_rating >= 3 %> checked<% end %>"></span>
+            <span class="fa fa-star<% if @user.average_rating >= 4 %> checked<% end %>"></span>
+            <span class="fa fa-star<% if @user.average_rating >= 5 %> checked<% end %>"></span>
+            <% end %>
+          </div>
+          <div class="review-count">(<%= Review.where(receiver: @user).count %>)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="container">
   <h1><%= @user.name %></h1>
 
-  <ul class="list-inline tabs-underlined">
-    <li>
-      <a href="<%= user_path(@user) %>" class="tab-underlined<% if controller_name == 'users' %> active<% end %>">Profile</a>
-    </li>
-    <li>
-      <a href="<%= user_reviews_path(@user) %>" class="tab-underlined<% if controller_name == 'reviews' %> active<% end %>">All reviews</a>
-    </li>
-  </ul>
-
-  <% if controller_name == 'users' %>
   <h2><%= @user.name %> Signature Cuts:</h2>
 
   <% @user.services.each do |service| %>
@@ -44,18 +71,11 @@
   ></div>
   <% end %>
 
-  <!-- these should end up in a caroussel which shows one review at a time -->
   <% unless @reviews.empty? %>
   <div class="review-cards">
     <% @reviews.each do |review| %>
     <%= render partial: "reviews/review-card", locals: {review: review} %>
     <% end %>
   </div>
-  <% end %>
-  <% end %>
-
-
-  <% if controller_name == 'reviews' %>
-  <%= render partial: "reviews/index" %>
   <% end %>
 </div>
