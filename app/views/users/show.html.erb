@@ -39,7 +39,7 @@
     <%= image_tag @user.avatar_url , class: 'avatar profile-avatar' %>
     <div class="barber-profile-description">
       <div class="barber-profile-name">
-        <h1><%= @user.name %></h1>
+        <h1 id="h1-small"><%= @user.name %></h1>
       </div>
       <div class="barber-profile-modes">
         <% if @user.host_service_address %>
