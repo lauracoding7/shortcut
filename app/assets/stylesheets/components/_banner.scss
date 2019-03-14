@@ -3,7 +3,7 @@
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  height: calc(100vh - 100px);
+  height: calc(100vh - #{$navbar_height});
   position: relative;
 }
 

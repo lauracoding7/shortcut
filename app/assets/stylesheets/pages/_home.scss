@@ -57,3 +57,10 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+
+
+.hompage-banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
