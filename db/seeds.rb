@@ -19,7 +19,7 @@ puts 'Done!'
 puts 'Creating users'
 killian = User.create!(email: "killian@gmail.com", password: "secret", name: "Killian", avatar_url: "killian.jpg")
 
-rebekah = User.create!(email: "rebekah@gmail.com", password: "secret", name: "Rebekah Kohler IV", host_service_address: "Keizersgracht 580, 1017 EN Amsterdam", commute_area_address: 'Keizersgracht 580, 1017 EN Amsterdam', commute_area_radius: 10, avatar_url: "pictures/women/img13.jpg")
+rebekah = User.create!(email: "rebekah@gmail.com", password: "secret", name: "Rebekah Kohler IV", host_service_address: "Keizersgracht 580 1017 EN Amsterdam", commute_price: "8",commute_area_address: 'Keizersgracht 580, 1017 EN Amsterdam', commute_area_radius: 10, avatar_url: "pictures/women/img13.jpg")
 
 ivan = User.create!(email: 'ivan@mail.com', password: 'secret', name: 'Ivan', host_service_address: 'Amsterdam Transvaalstraat 17', avatar_url: 'pictures/men/img2.jpg')
 
@@ -65,11 +65,11 @@ end
 puts 'Done!'
 
 puts 'Creating services'
-haircut = Service.new(title: 'Clean High quality Hair cut', description: "It's a dope haircut.", duration: 40, price: 35)
+haircut = Service.new(title: 'Clean High quality Haircut', description: "It's a dope haircut.", duration: 40, price: 35)
 haircut.barber = rebekah
 haircut.save!
 
-haircut = Service.new(title: 'Professional neat Hair cut', description: "It's a dope professional haircut.", duration: 40, price: 25)
+haircut = Service.new(title: 'Professional neat Haircut', description: "It's a dope professional haircut.", duration: 40, price: 25)
 haircut.barber = rebekah
 haircut.save!
 
@@ -162,7 +162,7 @@ fred_review1.receiver = fred
 fred_review1.author = tom
 fred_review1.save!
 
-fred_review2 = Review.new(content: 'Meh...', rating: 2, barber_review: true)
+fred_review2 = Review.new(content: 'Meh...', rating: 3, barber_review: true)
 fred_review2.receiver = fred
 fred_review2.author = isaac
 fred_review2.save!
@@ -203,7 +203,7 @@ rebekah_review4.save!
 User.where(id: User.first.id + 1..User.last.id - 5).each do |user|
   Review.create!(
     content: Faker::Quote.most_interesting_man_in_the_world,
-    rating: Faker::Number.within(0..5),
+    rating: Faker::Number.within(3..5),
     barber_review: true,
     receiver: user,
     author: User.where.not(id: user.id)[Faker::Number.within(0..User.count - 2)]
@@ -214,7 +214,7 @@ end
   receiver = User.find(Faker::Number.within(User.first.id + 1..User.last.id))
   Review.create!(
     content: Faker::Quote.most_interesting_man_in_the_world,
-    rating: Faker::Number.within(0..5),
+    rating: Faker::Number.within(3..5),
     barber_review: true,
     receiver: receiver,
     author: User.where.not(id: receiver.id)[Faker::Number.within(0..User.count - 2)]

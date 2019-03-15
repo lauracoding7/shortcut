@@ -32,7 +32,9 @@
 }
 
 .sent-message.insert-message {
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  margin-top: 60px;
+  margin-bottom: 60px;
 }
 
 #new_message {
@@ -41,7 +43,7 @@
   display: flex;
   flex-wrap: wrap;
   #message_content {
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
     color: $black;
   }
   .btn-message {
@@ -70,5 +72,5 @@
 
 .row.top-border {
   border-top: 0.8px solid $black;
-  margin-top: 15px;
+  margin-top: 60px;
 }
