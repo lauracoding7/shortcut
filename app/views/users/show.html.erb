@@ -100,7 +100,7 @@
     <% end %>
   </div>
 
-  <h2><br>Signature Cuts:</h2>
+  <h2><br>Signature Cuts</h2>
   <% @user.services.each do |service| %>
   <%= render partial: "service-card", locals: {user: @user, service: service} %>
   <% end %>
