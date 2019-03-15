@@ -1,3 +1,4 @@
+<div class="wrapper review">
 <%= simple_form_for [@user, @review] do |f| %>
   <input name="review[barber_review]" type="hidden" value="<%= @review.barber_review %>">
   <%= f.input :rating, collection: 0..5 %>
@@ -5,3 +6,4 @@
   <%= f.submit "Create review", class: "btn btn-danger" %>
 <% end %>
 <%= link_to 'Go back', dashboard_path %>
+</div>
