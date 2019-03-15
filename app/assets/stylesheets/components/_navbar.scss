@@ -1,4 +1,4 @@
-$navbar_height: 90px; // Use this var to set height
+$navbar_height: 70px; // Use this var to set height
 .navbar-shortcut {
   display: flex;
   width: 100%;
@@ -9,8 +9,8 @@ $navbar_height: 90px; // Use this var to set height
 }
 
 .navbar-logo {
-  height: 100px;
-  width: 100px;
+  height: 70px;
+  width: 70px;
 }
 
 .navbar-logo:hover {
@@ -20,11 +20,11 @@ $navbar_height: 90px; // Use this var to set height
 .sign-out {
   color: white;
   margin-left: 150px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: lighter;
   transition: opacity 0.3s ease;
   border: 1px solid $white-text;
-  padding: 6px 20px;
+  padding: 4px 12px;
 }
 
 .sign-out:hover {
@@ -36,8 +36,8 @@ $navbar_height: 90px; // Use this var to set height
 }
 
 .navbar-profile {
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   align-self: flex-end;
   margin-right: 150px;
 }

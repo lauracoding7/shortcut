@@ -132,12 +132,14 @@ appt = Appointment.new(location_address: 'Ingogostraat 14D, Amsterdam', datetime
 appt.service = haircut1
 appt.barber = appt.service.barber
 appt.client = killian
+appt.state = "approved"
 appt.save!
 
-appt1 = Appointment.new(location_address: 'Amsterdam Transvaalstraat 17', datetime: Time.new(2019, 3, 7, 14, 0, 0, "+01:00"))
+appt1 = Appointment.new(location_address: 'Amsterdam Transvaalstraat 17', datetime: Time.new(2019, 3, 7, 18, 0, 0, "+01:00"))
 appt1.service = beard1
 appt1.barber = appt1.service.barber
 appt1.client = killian
+appt1.state = "paid"
 appt1.save!
 puts 'Done!'
 
